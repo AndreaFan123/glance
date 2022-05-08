@@ -1,2 +1,1 @@
 # glance
-simple work place
