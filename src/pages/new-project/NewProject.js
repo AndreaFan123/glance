@@ -1,12 +1,15 @@
 import React from "react";
+
+//component
 import Navbar from "../../components/navbar/Navbar";
 
-export default function Home() {
+// style
+
+export default function NewProject() {
   return (
-    // This div wrapper navbar anf main content
     <div>
       <Navbar />
-      <h2>This is home page</h2>
+      <h2>Create something here</h2>
     </div>
   );
 }
