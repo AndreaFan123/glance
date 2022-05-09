@@ -20,6 +20,7 @@
   "homepage": "https://github.com/AndreaFan123/glance#readme",
   "dependencies": {
     "firebase": "^9.8.0",
+    "npm": "^8.9.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",

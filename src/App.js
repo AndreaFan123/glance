@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/signup/Signup";
 import Projects from "./pages/projects/Projects";
 import Project from "./pages/project/Project";
+import Member from "./pages/mamber/Member";
 import NewProject from "./pages/new-project/NewProject";
 
 // components
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/projects" element={<Projects />}>
             <Route path="/projects/:id" element={<Project />} />
           </Route>
+          <Route path="/user" element={<Member />} />
           <Route path="/newproject" element={<NewProject />} />
         </Routes>
       </BrowserRouter>
