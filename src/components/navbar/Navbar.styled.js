@@ -6,40 +6,46 @@ export const NavbarWrapper = styled.div`
   max-width: 200px;
   height: 100vh;
   background-color: ${COLORS.mainColor};
-`;
+  padding: 20px 0 20px 0;
 
-export const NavListsWrapper = styled.nav`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-left: 20px;
-
-  ul {
-    padding-left: 0;
-
-    li {
-      list-style: none;
-      font-size: 1.3rem;
-
-      a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        color: ${COLORS.fontColorLight};
-      }
-    }
+  a {
+    text-decoration: none;
+    color: ${COLORS.fontColorLight};
   }
 `;
 
 export const Logo = styled.div`
-  font-size: 2rem;
-  font-weight: 800;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: 900;
+  padding-left: 20px;
+  padding-bottom: 15px;
 
-  a {
-    color: ${COLORS.fontColorLight};
-    text-decoration: none;
+  a:hover {
+    transition: all 0.5s ease-in-out;
+    color: ${COLORS.iconColor};
+  }
+`;
+
+export const NavItemWrapper = styled.nav`
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const Links = styled.a`
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  padding: 10px 0 10px 20px;
+
+  &:hover {
+    /* transition animation, grow from right to left */
+    background-color: ${COLORS.iconColor};
+    border-radius: 25px 0 0 25px;
+  }
+
+  div {
+    padding-right: 10px;
   }
 `;

@@ -1,50 +1,50 @@
 import React from "react";
-import { Logo, NavbarWrapper, NavList, NavListsWrapper } from "./Navbar.styled";
+import { Links, Logo, NavbarWrapper, NavItemWrapper } from "./Navbar.styled";
 import { BiUserCircle, BiFile, BiGridAlt, BiLogOut } from "react-icons/bi";
+
 // import { NavbarContents } from "./NavContent";
 
 export default function Navbar() {
   return (
+    // Nav wrapper
     <NavbarWrapper>
-      <NavListsWrapper>
-        {/* top section */}
+      <Logo>
+        <a href="/">Glance</a>
+      </Logo>
+      {/* Nav top */}
+      <NavItemWrapper>
         <div>
-          <Logo>
-            <a href="/">Glance</a>
-          </Logo>
-          <ul>
-            <li>
-              <a href="/">
-                <BiGridAlt />
-                <p>Home</p>
-              </a>
-            </li>
-            <li>
-              <a href="projects">
-                <BiFile />
-                <p>Project</p>
-              </a>
-            </li>
-          </ul>
+          <Links href="/">
+            <div>
+              <BiGridAlt />
+            </div>
+            <p>Home</p>
+          </Links>
+
+          <Links href="/projects">
+            <div>
+              <BiFile />
+            </div>
+            <p>+ Project</p>
+          </Links>
         </div>
-        {/* bottom section */}
+        {/* Nav bottom */}
         <div>
-          <ul>
-            <li>
-              <a href="/member">
-                <BiUserCircle />
-                <p>User</p>
-              </a>
-            </li>
-            <li>
-              <a href="/login">
-                <BiLogOut />
-                <p>Logout</p>
-              </a>
-            </li>
-          </ul>
+          <Links href="/mamber">
+            <div>
+              <BiUserCircle />
+            </div>
+            <p>Jane Doe</p>
+          </Links>
+
+          <Links href="/login">
+            <div>
+              <BiLogOut />
+            </div>
+            <p>Logout</p>
+          </Links>
         </div>
-      </NavListsWrapper>
+      </NavItemWrapper>
     </NavbarWrapper>
   );
 }
