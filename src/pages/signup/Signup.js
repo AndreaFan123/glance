@@ -3,16 +3,16 @@ import React from "react";
 import {
   Background,
   FormWrapper,
-  SignupWrapper,
+  Wrapper,
   TextWrapper,
-} from "./Signup.styled";
+} from "../../global-style/Form.styled";
 
 // Styles
 
 export default function Signup() {
   return (
     <Background>
-      <SignupWrapper>
+      <Wrapper>
         <TextWrapper>
           <p>
             Manage your team in one place, know your team at a
@@ -36,8 +36,11 @@ export default function Signup() {
             <input type="password" />
           </label>
           <button type="submit">Signup</button>
+          <p>
+            Already a member? <a href="/login">Login here</a>
+          </p>
         </FormWrapper>
-      </SignupWrapper>
+      </Wrapper>
     </Background>
   );
 }

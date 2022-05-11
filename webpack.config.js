@@ -44,12 +44,19 @@ module.exports = {
         },
       },
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            limit: 2500,
+            name: "[path][name].[ext]",
+          },
+        },
+      },
+      {
         test: /\.svg$/,
         use: {
-          loader: "svg-url-loader",
-          options: {
-            limit: 10000,
-          },
+          loader: "react-svg-loader",
         },
       },
     ],

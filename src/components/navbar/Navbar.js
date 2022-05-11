@@ -9,12 +9,12 @@ export default function Navbar() {
     // Nav wrapper
     <NavbarWrapper>
       <Logo>
-        <a href="/">Glance</a>
+        <a href="/dashboard">Glance</a>
       </Logo>
       {/* Nav top */}
       <NavItemWrapper>
         <div>
-          <Links href="/">
+          <Links href="/dashboard">
             <div>
               <BiGridAlt />
             </div>

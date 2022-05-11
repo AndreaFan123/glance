@@ -12,11 +12,12 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   html, body {
+    font-family: 'Nunito', sans-serif;
     height: 100%;
   }
 
   body {
-    font-family: 'Nunito', sans-serif;
+    
     font-size: 62.5%;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
