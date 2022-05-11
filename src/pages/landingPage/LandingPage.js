@@ -1,6 +1,10 @@
 import React from "react";
-// import logo from "../../assets/logo.png";
+// import background_2 from "../../assets/background_2.svg";
+
+import FooterCom from "../../components/footer/FooterCom";
+
 import {
+  Container,
   ButtonLogin,
   ButtonSignup,
   ButtonWrapper,
@@ -24,7 +28,7 @@ const btnColor = {
 
 export default function LandingPage() {
   return (
-    <div>
+    <Container>
       <LandingPageBG />
       <NavWrapper>
         <Logo>
@@ -49,6 +53,10 @@ export default function LandingPage() {
           <BrandName>Glance</BrandName>
         </TextWrapper>
       </MainWrapper>
-    </div>
+      <FooterCom />
+      {/* <Footer>
+        <p>Glance &copy; 2022 All roght Reserved</p>
+      </Footer> */}
+    </Container>
   );
 }

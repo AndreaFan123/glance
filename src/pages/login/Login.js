@@ -7,20 +7,24 @@ import {
   TextWrapper,
 } from "../../global-style/Form.styled";
 
-// Styles
+import FooterCom from "../../components/footer/FooterCom";
+
+import { BiArrowBack } from "react-icons/bi";
 
 export default function Login() {
   return (
     <Background>
       <Wrapper>
         <TextWrapper>
-          <p>
-            Manage your team in one place, know your team at a
-            <span> GLANCE</span>
-          </p>
+          <p>Stay organized</p>
+          <span> GLANCE</span>
+          <a href="/">
+            <BiArrowBack />
+            <p>Go back</p>
+          </a>
         </TextWrapper>
         <FormWrapper>
-          <h2>Login</h2>
+          <h2>Welcome back</h2>
 
           <label>
             <p>Email</p>
@@ -33,10 +37,11 @@ export default function Login() {
           </label>
           <button type="submit">Signup</button>
           <p>
-            Not a member yet?<a href="/signup">Signup here</a>
+            Not a member yet?<a href="/signup"> Signup </a> here
           </p>
         </FormWrapper>
       </Wrapper>
+      <FooterCom />
     </Background>
   );
 }
