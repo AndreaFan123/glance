@@ -35,7 +35,7 @@ export default function Login() {
             <p>Password</p>
             <input type="password" />
           </label>
-          <button type="submit">Signup</button>
+          <button type="submit">Login</button>
           <p>
             Not a member yet?<a href="/signup"> Signup </a> here
           </p>

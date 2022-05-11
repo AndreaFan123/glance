@@ -10,7 +10,7 @@ export default function Dashboard() {
       <Navbar />
       {/* main containers will have 2 sections, one is  */}
 
-      <Tabs />
+      {/* <Tabs /> */}
     </DashboardWrapper>
   );
 }

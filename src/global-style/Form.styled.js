@@ -98,6 +98,7 @@ export const FormWrapper = styled.form`
     border-radius: 8px;
     padding: 5px 25px;
     margin-bottom: 20px;
+    cursor: pointer;
   }
 
   p {
