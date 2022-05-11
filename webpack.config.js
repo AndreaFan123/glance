@@ -13,9 +13,10 @@ module.exports = {
 
   plugins: [
     new HTMLWebpackPlugin({
-      title: "easyTodo | Manage your tasks",
+      title: "Glance | Simplified work space",
       filename: "index.html",
       template: "./src/template.html",
+      favicon: "./src/assets/favicon.png",
     }),
   ],
 
@@ -44,7 +45,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpeg|gif)$/i,
         use: {
           loader: "file-loader",
           options: {
@@ -56,7 +57,11 @@ module.exports = {
       {
         test: /\.svg$/,
         use: {
-          loader: "react-svg-loader",
+          loader: "svg-url-loader",
+          options: {
+            limit: 10000,
+            encoding: "base64",
+          },
         },
       },
     ],

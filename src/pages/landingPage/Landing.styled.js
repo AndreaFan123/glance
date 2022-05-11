@@ -1,17 +1,26 @@
 import styled from "styled-components";
-import Background from "react-svg-loader!../../assets/Background.svg";
+import background_3 from "../../assets/background_3.svg";
 import { COLORS } from "../../components/constants";
 
-export const LandingPageBG = styled(Background)`
+export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+`;
+
+export const LandingPageBG = styled.div`
+  background-image: url(${background_3});
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
   z-index: -1000;
   position: absolute;
 `;
 
 export const NavWrapper = styled.header`
-  width: 100%;
-  max-width: 1350px;
+  /* width: 100%; */
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -24,6 +33,7 @@ export const NavWrapper = styled.header`
 `;
 
 export const Logo = styled.div`
+  padding: 10px 20px;
   a {
     font-size: 2rem;
     font-weight: 900;
@@ -36,10 +46,8 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ButtonLogin = styled.a`
-  color: ${(props) => props.btnColor.fontDark};
-
+  color: ${(props) => props.btnColor.bgDark};
   background-color: ${(props) => props.btnColor.fontLight};
-
   padding: 12px 22px;
   border-radius: 8px;
 `;
@@ -49,21 +57,20 @@ export const ButtonSignup = styled.a`
   background-color: ${(props) => props.btnColor.bgDark};
   border: 2px solid ${(props) => props.btnColor.fontLight};
   padding: 10px 12px;
-  margin-left: 30px;
+  margin-left: 40px;
   border-radius: 8px;
   font-weight: 700;
 `;
 
 export const MainWrapper = styled.main`
-  width: 100%;
-  max-width: 1350px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding-top: 5rem;
+  padding-top: 7rem;
 `;
 
 export const TextWrapper = styled.div`
-  width: 100%;
-  max-width: 1350px;
+  /* width: 100%;
+  max-width: 1350px; */
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
@@ -82,12 +89,12 @@ export const Title = styled.p`
   color: ${COLORS.fontColorLight};
   /* background-image: linear-gradient(
     90deg,
-    rgba(250, 250, 250, 1) 0%,
-    rgba(252, 231, 237, 1) 36%,
-    rgba(249, 161, 188, 1) 80%,
-    rgba(245, 71, 126, 1) 130%
-  );
-  -webkit-background-clip: text;
+    rgba(255, 255, 255, 1) 0%,
+    rgba(215, 211, 211, 1) 47%,
+    rgba(125, 132, 162, 1) 98%,
+    rgba(73, 86, 130, 1) 100%
+  ); */
+  /* -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
 `;
 
@@ -101,3 +108,13 @@ export const BrandName = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
+
+// export const Footer = styled.footer`
+//   width: 100%;
+//   bottom: 15px;
+//   text-align: center;
+//   position: fixed;
+//   vertical-align: middle;
+//   color: ${COLORS.mainColor};
+//   font-size: 1rem;
+// `;
