@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { LinksWrapper, Logo, NavbarWrapper } from "./Navbar.styled";
+import { useLogout } from "../../hook/useLogout";
+// import { useState } from "react/cjs/react.production.min";
 
 // import { COLORS } from "../../components/constants";
 
@@ -12,6 +14,7 @@ import { LinksWrapper, Logo, NavbarWrapper } from "./Navbar.styled";
 // };
 
 export default function Navbar() {
+  const { logout, loading, error } = useLogout();
   return (
     <NavbarWrapper>
       <Logo>
@@ -26,9 +29,17 @@ export default function Navbar() {
         <li>
           <Link to="signup">Sign up</Link>
         </li>
-        <li>
-          <button>Logout</button>
-        </li>
+
+        {!loading && (
+          <li>
+            <button onClick={logout}>Logout</button>
+          </li>
+        )}
+        {loading && (
+          <li>
+            <button disabled>Logging out...</button>
+          </li>
+        )}
       </LinksWrapper>
     </NavbarWrapper>
   );

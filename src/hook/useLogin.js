@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useAuthContext } from "./useContext";
 import { ACTIONS } from "../context/authContext";
 
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
+import { doc, updateDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 export const useLogin = () => {
@@ -19,7 +20,11 @@ export const useLogin = () => {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
 
-      console.log(res);
+      console.log(res.user.uid);
+
+      const userID = res.user.uid;
+      const updateRef = doc(db, "users", userID);
+      await updateDoc(updateRef, { online: true });
 
       if (!res) {
         throw new Error("Could not logout, please try again");

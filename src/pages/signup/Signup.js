@@ -41,7 +41,7 @@ export default function Signup() {
     //Get the first item from an array
     let selectedImg = e.target.files[0];
 
-    console.log(selectedImg);
+    // console.log(selectedImg);
 
     try {
       if (!selectedImg) {

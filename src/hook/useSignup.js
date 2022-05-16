@@ -3,7 +3,8 @@ import { useAuthContext } from "./useContext";
 import { ACTIONS } from "../context/authContext";
 
 // import firsebase modules
-import { auth, storage } from "../firebase/config";
+import { auth, storage, db } from "../firebase/config";
+import { doc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
@@ -32,11 +33,7 @@ export const useSignup = () => {
         );
       }
 
-      // create a folder to upload user img
-      // const uploadPath = `userImage/${res.user.uid}/`;
-      // const img = await storage.ref(uploadPath).put(userImg);
-      // const imgURL = await getDownloadURL(imgRef);
-
+      // create a folder to upload user img and update dispaly name and img url
       const imgRef = ref(storage, `userImage/${res.user.uid}/${userImg.name}`);
       await uploadBytes(imgRef, userImg).then(() => {
         // console.log("Image uploaded");
@@ -45,12 +42,18 @@ export const useSignup = () => {
             displayName: displayName,
             photoURL: url,
           });
+          setDoc(doc(db, "users", res.user.uid), {
+            online: true,
+            displayName,
+            photoURL: url,
+          });
+          // console.log(docRef);
         });
       });
 
-      // update user displayname and photo
+      // create user doc and generate user id
 
-      dispatch({
+      await dispatch({
         type: ACTIONS.LOGIN,
         payload: res.user,
       });

@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useLogin } from "../../hook/useLogin";
+import { useLogin } from "../../hook/useLogin";
 
 // component
 import FooterCom from "../../components/footer/FooterCom";
@@ -21,9 +21,12 @@ import { BiArrowBack } from "react-icons/bi";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login, loading, error } = useLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    login(email, password);
 
     // console.log(email, password);
 
@@ -58,12 +61,15 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button>Login</button>
+
+        {!loading && <button>Login</button>}
+        {loading && <button>Loading ...</button>}
         <div>
           <span>
             Not a member? <Link to="/signup">Sign up</Link> here
           </span>
         </div>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </FormWrapper>
     </SignupWrapper>
   );
