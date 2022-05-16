@@ -1,14 +1,14 @@
 import React from "react";
 
 //component
-import Navbar from "../../components/navbar/Navbar";
+// import Sidebar from "../../components/sidebar/Sidebar";
 
 // style
 
 export default function NewProject() {
   return (
     <div>
-      <Navbar />
+      {/* <Sidebar /> */}
       <h2>Create something here</h2>
     </div>
   );

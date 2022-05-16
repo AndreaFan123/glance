@@ -1,39 +1,50 @@
 // React
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import { useAuthContext } from "./hook/useContext";
 
 // Pages
 import Dashboard from "./pages/dashboard/Dashboard";
-import Login from "./pages/Login/Login";
 import Signup from "./pages/signup/Signup";
-import Projects from "./pages/projects/Projects";
+import Login from "./pages/login/Login";
 import Project from "./pages/project/Project";
-import Member from "./pages/mamber/Member";
-import NewProject from "./pages/new-project/NewProject";
-import LandingPage from "./pages/landingPage/LandingPage";
-
+import NewProject from "./pages/newproject/NewProject";
 // components
+import Navbar from "./components/navbar/Navbar";
+import Sidebar from "./components/sidebar/Sidebar";
+//styles
 import { GlobalStyles } from "./global-style/Global.styled";
+import { AppWrapper, Container } from "./App.styled";
+import FooterCom from "./components/footer/FooterCom";
 
 export default function App() {
+  // const { user, alreadyLogin } = useAuthContext();
   return (
-    <div>
+    <AppWrapper>
+      <GlobalStyles />
       <BrowserRouter>
-        <GlobalStyles />
-        {/* <Navbar /> */}
-
-        <Routes>
-          <Route exact="true" path="/" element={<LandingPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/projects" element={<Projects />}>
-            <Route path="/projects/:id" element={<Project />} />
-          </Route>
-          <Route path="/user" element={<Member />} />
-          <Route path="/newproject" element={<NewProject />} />
-        </Routes>
+        <Sidebar />
+        <Container>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <Dashboard />
+            </Route>
+            <Route path="/create">
+              <NewProject />
+            </Route>
+            <Route path="/projects/:id">
+              <Project />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+          </Switch>
+        </Container>
       </BrowserRouter>
-    </div>
+    </AppWrapper>
   );
 }

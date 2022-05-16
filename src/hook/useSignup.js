@@ -3,8 +3,9 @@ import { useAuthContext } from "./useContext";
 import { ACTIONS } from "../context/authContext";
 
 // import firsebase modules
-import { firebaseAuth } from "../firebase/.config";
+import { auth, storage } from "../firebase/config";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 
 export const useSignup = () => {
   // error and loading state
@@ -14,27 +15,40 @@ export const useSignup = () => {
   const { dispatch } = useAuthContext();
 
   // signup with 3 params
-  const signup = async (email, password, name) => {
+  const signup = async (displayName, email, password, userImg) => {
     // init error and loading status
     setError(null);
     setLoading(true);
 
     // connect with firebase
     try {
-      const res = await createUserWithEmailAndPassword(
-        firebaseAuth,
-        email,
-        password
-      );
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(res);
 
       // Show error if there's no response
       if (!res) {
-        throw new Error("Could not complete signup, please try after few mins");
+        throw new Error(
+          "Could not complete sign up, please try after few minutes"
+        );
       }
 
-      await updateProfile(firebaseAuth.currentUser, {
-        name: name,
+      // create a folder to upload user img
+      // const uploadPath = `userImage/${res.user.uid}/`;
+      // const img = await storage.ref(uploadPath).put(userImg);
+      // const imgURL = await getDownloadURL(imgRef);
+
+      const imgRef = ref(storage, `userImage/${res.user.uid}/${userImg.name}`);
+      await uploadBytes(imgRef, userImg).then(() => {
+        // console.log("Image uploaded");
+        getDownloadURL(ref(storage, imgRef)).then((url) => {
+          updateProfile(auth.currentUser, {
+            displayName: displayName,
+            photoURL: url,
+          });
+        });
       });
+
+      // update user displayname and photo
 
       dispatch({
         type: ACTIONS.LOGIN,

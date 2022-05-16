@@ -1,51 +1,42 @@
 import styled from "styled-components";
-import { COLORS } from "../constants";
+import { COLORS } from "../../components/constants";
 
-export const NavbarWrapper = styled.div`
+export const NavbarWrapper = styled.nav`
   width: 100%;
-  max-width: 200px;
-  height: 100vh;
-  background-color: ${COLORS.mainColor};
-  padding: 20px 0 20px 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding: 15px;
+
+  li {
+    list-style: none;
+  }
 
   a {
     text-decoration: none;
-    color: ${COLORS.fontColorLight};
+    color: ${COLORS.mainColor};
   }
 `;
 
-export const Logo = styled.div`
-  font-size: 2.5rem;
+export const Logo = styled.ul`
+  font-size: 2rem;
   font-weight: 900;
-  padding-left: 20px;
-  padding-bottom: 15px;
-
-  a:hover {
-    transition: all 0.5s ease-in-out;
-    color: ${COLORS.iconColor};
-  }
 `;
 
-export const NavItemWrapper = styled.nav`
-  height: 90%;
+export const LinksWrapper = styled.ul`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
+  align-items: baseline;
+  font-size: 1.2rem;
+  gap: 40px;
 
-export const Links = styled.a`
-  display: flex;
-  align-items: center;
-  font-size: 1.3rem;
-  padding: 10px 0 10px 20px;
-
-  &:hover {
-    /* transition animation, grow from right to left */
-    background-color: ${COLORS.iconColor};
-    border-radius: 25px 0 0 25px;
-  }
-
-  div {
-    padding-right: 10px;
+  button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: ${COLORS.mainColor};
+    color: ${COLORS.fontColorLight};
   }
 `;
