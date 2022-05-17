@@ -28,6 +28,7 @@ export const LinkWrapper = styled.nav`
   margin-top: 50px;
   /* margin-left: 10px; */
   font-size: 1.2rem;
+  /* position: relative; */
 
   ul {
     padding-left: 30px;
@@ -47,6 +48,10 @@ export const LinkWrapper = styled.nav`
       span {
         padding-left: 10px;
       }
+    }
+    &:nth-child(3) {
+      position: absolute;
+      bottom: -420px;
     }
   }
 `;

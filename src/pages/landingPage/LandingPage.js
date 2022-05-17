@@ -3,6 +3,7 @@ import React from "react";
 
 import FooterCom from "../../components/footer/FooterCom";
 import Navbar from "../../components/navbar/Navbar";
+import { useAuthContext } from "../../hook/useContext";
 
 import {
   Container,
@@ -24,10 +25,11 @@ import {
 // };
 
 export default function LandingPage() {
+  const { user } = useAuthContext();
   return (
     <Container>
+      {/* {!user && <Navbar />} */}
       <LandingPageBG />
-      <Navbar />
       <MainWrapper>
         <TextWrapper>
           <Slogan>Simplified work space</Slogan>

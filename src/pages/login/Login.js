@@ -10,8 +10,8 @@ import FooterCom from "../../components/footer/FooterCom";
 import {
   FileInput,
   FormWrapper,
-  SignupLeft,
-  SignupWrapper,
+  FormLeft,
+  Wrapper,
 } from "../../global-style/Form.styled";
 // icon
 import { BiArrowBack } from "react-icons/bi";
@@ -35,11 +35,11 @@ export default function Login() {
   };
 
   return (
-    <SignupWrapper>
-      <SignupLeft>
+    <Wrapper>
+      <FormLeft>
         <p>Stay organized</p>
         <h1>Glance</h1>
-      </SignupLeft>
+      </FormLeft>
       <FormWrapper onSubmit={handleSubmit}>
         <h2>Login</h2>
         <label>
@@ -71,6 +71,6 @@ export default function Login() {
         </div>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </FormWrapper>
-    </SignupWrapper>
+    </Wrapper>
   );
 }

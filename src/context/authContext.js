@@ -15,7 +15,7 @@ export const ACTIONS = {
 
 export const initStatus = {
   user: null,
-  alreadyLogin: false,
+  authIsReady: false,
 };
 
 export const reducer = (state, action) => {
@@ -31,7 +31,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
-        alreadyLogin: true,
+        authIsReady: true,
       };
     default:
       return state;

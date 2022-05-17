@@ -9,7 +9,12 @@ export const NavbarWrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
-  padding: 15px;
+  background-color: ${COLORS.mainColor};
+  padding: 20px 30px;
+
+  ul {
+    padding-left: 0;
+  }
 
   li {
     list-style: none;
@@ -17,7 +22,7 @@ export const NavbarWrapper = styled.nav`
 
   a {
     text-decoration: none;
-    color: ${COLORS.mainColor};
+    color: ${COLORS.fontColorLight};
   }
 `;
 

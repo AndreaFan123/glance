@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { COLORS } from "../components/constants";
 import signup from "../assets/signup.png";
 
-export const SignupWrapper = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   max-width: 700px;
   min-height: 550px;
@@ -16,7 +16,7 @@ export const SignupWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const SignupLeft = styled.div`
+export const FormLeft = styled.div`
   background-image: url(${signup});
   background-size: cover;
   width: 100%;

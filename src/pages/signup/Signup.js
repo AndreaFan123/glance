@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import {
   FileInput,
   FormWrapper,
-  SignupLeft,
-  SignupWrapper,
+  FormLeft,
+  Wrapper,
+  Background,
 } from "../../global-style/Form.styled";
 
 import { useSignup } from "../../hook/useSignup";
@@ -68,58 +69,60 @@ export default function Signup() {
   };
 
   return (
-    <SignupWrapper>
-      <SignupLeft>
-        <p>Stay organized</p>
-        <h1>Glance</h1>
-      </SignupLeft>
-      <FormWrapper onSubmit={handleSubmit}>
-        <h2>Sign up</h2>
+    <div>
+      <Wrapper>
+        <FormLeft>
+          <p>Stay organized</p>
+          <h1>Glance</h1>
+        </FormLeft>
+        <FormWrapper onSubmit={handleSubmit}>
+          <h2>Sign up</h2>
 
-        <label>
-          <span>Name</span>
-          <input
-            required
-            type="text"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-          />
-        </label>
+          <label>
+            <span>Name</span>
+            <input
+              required
+              type="text"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+            />
+          </label>
 
-        <label>
-          <span>Email</span>
-          <input
-            required
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+          <label>
+            <span>Email</span>
+            <input
+              required
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
 
-        <label>
-          <span>Password</span>
-          <input
-            required
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
+          <label>
+            <span>Password</span>
+            <input
+              required
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
 
-        <label>
-          <span>User Thumbnail</span>
-          <FileInput required type="file" onChange={handleFileChange} />
-          {uploadError && <p style={{ color: "red" }}>{uploadError}</p>}
-        </label>
-        {!loading && <button>Sign up</button>}
-        {loading && <button disabled>Loading...</button>}
-        <div>
-          <p>
-            Already a member? <Link to="/login">Login</Link> here
-          </p>
-        </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </FormWrapper>
-    </SignupWrapper>
+          <label>
+            <span>User Thumbnail</span>
+            <FileInput required type="file" onChange={handleFileChange} />
+            {uploadError && <p style={{ color: "red" }}>{uploadError}</p>}
+          </label>
+          {!loading && <button>Sign up</button>}
+          {loading && <button disabled>Loading...</button>}
+          <div>
+            <p>
+              Already a member? <Link to="/login">Login</Link> here
+            </p>
+          </div>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </FormWrapper>
+      </Wrapper>
+    </div>
   );
 }

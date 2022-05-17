@@ -1,20 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { LinksWrapper, Logo, NavbarWrapper } from "./Navbar.styled";
-import { useLogout } from "../../hook/useLogout";
-// import { useState } from "react/cjs/react.production.min";
-
-// import { COLORS } from "../../components/constants";
-
-// const btnColor = {
-//   bgDark: `${COLORS.mainColor}`,
-//   bgLight: `${COLORS.fontColorLight}`,
-//   fontDark: `${COLORS.mainColor}`,
-//   fontLight: `${COLORS.fontColorLight}`,
-// };
+import { useAuthContext } from "../../hook/useContext";
+// import { useLogout } from "../../hook/useLogout";
 
 export default function Navbar() {
-  const { logout, loading, error } = useLogout();
+  // const { logout, loading, error } = useLogout();
+  const { user } = useAuthContext();
   return (
     <NavbarWrapper>
       <Logo>
@@ -30,7 +22,7 @@ export default function Navbar() {
           <Link to="signup">Sign up</Link>
         </li>
 
-        {!loading && (
+        {/* {!loading && (
           <li>
             <button onClick={logout}>Logout</button>
           </li>
@@ -39,7 +31,7 @@ export default function Navbar() {
           <li>
             <button disabled>Logging out...</button>
           </li>
-        )}
+        )} */}
       </LinksWrapper>
     </NavbarWrapper>
   );

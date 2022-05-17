@@ -5,4 +5,5 @@ export const DashboardWrapper = styled.div`
   max-width: 1920px;
   display: flex;
   gap: 1;
+  /* padding-top: 30px; */
 `;

@@ -6,5 +6,5 @@ export const AppWrapper = styled.div`
 
 export const Container = styled.div`
   flex-grow: 1;
-  padding: 0 60px;
+  /* padding: 40px 30px 30px 30px; */
 `;
