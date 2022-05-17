@@ -10,30 +10,21 @@ import {
   LandingPageBG,
   TextWrapper,
   MainWrapper,
-  NavWrapper,
   Slogan,
   Title,
   BrandName,
 } from "./Landing.styled";
-// import { COLORS } from "../../components/constants";
-
-// const btnColor = {
-//   bgDark: `${COLORS.mainColor}`,
-//   bgLight: `${COLORS.fontColorLight}`,
-//   fontDark: `${COLORS.mainColor}`,
-//   fontLight: `${COLORS.fontColorLight}`,
-// };
 
 export default function LandingPage() {
   const { user } = useAuthContext();
   return (
     <Container>
-      {/* {!user && <Navbar />} */}
       <LandingPageBG />
+      {!user && <Navbar />}
       <MainWrapper>
         <TextWrapper>
           <Slogan>Simplified work space</Slogan>
-          <Title>Manage your team in one space, Know your team at a</Title>
+          <Title>Manage your team in one space</Title>
           <BrandName>Glance</BrandName>
         </TextWrapper>
       </MainWrapper>

@@ -3,13 +3,16 @@ import React from "react";
 // import FooterCom from "../../components/footer/FooterCom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import FooterCom from "../../components/footer/FooterCom";
+import Navbar from "../../components/navbar/Navbar";
 import {
   FileInput,
   FormWrapper,
   FormLeft,
   Wrapper,
-  Background,
+  BGStyle,
 } from "../../global-style/Form.styled";
+import { useAuthContext } from "../../hook/useContext";
 
 import { useSignup } from "../../hook/useSignup";
 
@@ -26,6 +29,7 @@ export default function Signup() {
   const [displayName, setDisplayName] = useState("");
   const [userImg, setUserImg] = useState(null);
   const [uploadError, setUploadError] = useState(null);
+  const { user } = useAuthContext();
   const { signup, error, loading } = useSignup();
 
   const handleSubmit = (e) => {
@@ -69,7 +73,8 @@ export default function Signup() {
   };
 
   return (
-    <div>
+    <BGStyle>
+      {!user && <Navbar />}
       <Wrapper>
         <FormLeft>
           <p>Stay organized</p>
@@ -123,6 +128,7 @@ export default function Signup() {
           {error && <p style={{ color: "red" }}>{error}</p>}
         </FormWrapper>
       </Wrapper>
-    </div>
+      <FooterCom />
+    </BGStyle>
   );
 }

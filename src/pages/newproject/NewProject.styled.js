@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { COLORS } from "../../components/constants";
 
 export const FormWrapper = styled.div`
-  /* width: 1060px;
-  max-width: 100%; */
+  width: 1060px;
+  max-width: 500px;
   height: 100%;
-  border: 1px solid ${COLORS.fontColorMedium};
-  padding: 20px;
+  /* border: 1px solid ${COLORS.fontColorMedium}; */
+  padding: 40px 30px 30px 30px;
 
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: ${COLORS.mainColor};
     margin-bottom: 20px;
@@ -24,11 +24,7 @@ export const FormWrapper = styled.div`
 
   input,
   textarea {
-    width: 500px;
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-    border: 1px solid ${COLORS.fontColorMedium};
+    width: 100%;
   }
 
   button {

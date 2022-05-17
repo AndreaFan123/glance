@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import { COLORS } from "../components/constants";
+import background_3 from "../assets/background_3.svg";
 import signup from "../assets/signup.png";
+
+export const BGStyle = styled.div`
+  background-image: url(${background_3});
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  z-index: -1000;
+  position: absolute;
+`;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -14,6 +25,7 @@ export const Wrapper = styled.div`
   /* background-color: ${COLORS.fontColorMedium}; */
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: -3px -3px 24px -8px #9c9c9c;
 `;
 
 export const FormLeft = styled.div`
@@ -47,6 +59,7 @@ export const FormWrapper = styled.form`
   width: 100%;
   padding: 20px;
   background-color: ${COLORS.fontColorLight};
+
   /* display: flex;
   flex-direction: column; */
 

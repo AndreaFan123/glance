@@ -17,3 +17,13 @@ export const COLORS = {
   statusDelay: "hsl(0,71%,50%)",
   statusCancel: "hsl(0,0%,47%)",
 };
+
+export const DEPARTMENTS = [
+  { value: "Design", label: "Design" },
+  { value: "R&D", label: "R&D" },
+  { value: "Business", label: "Business" },
+  { value: "Marketing", label: "Marketing" },
+  { value: "Legal", label: "Legal" },
+  { value: "Finance", label: "Finance" },
+  { value: "Content", label: "Content" },
+];

@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { FormWrapper } from "./NewProject.styled";
-
-//component
-// import Sidebar from "../../components/sidebar/Sidebar";
+import Select from "react-select";
+import { DEPARTMENTS } from "../../components/constants";
 
 // style
+import { FormWrapper } from "./NewProject.styled";
+
+// select values
 
 export default function NewProject() {
   // form info
@@ -20,7 +21,7 @@ export default function NewProject() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(projectName, content, dueDate);
+    console.log(projectName, content, dueDate, department);
   };
 
   return (
@@ -59,7 +60,10 @@ export default function NewProject() {
 
         <label>
           <h4>Stakeholders</h4>
-          {/* select differ departments */}
+          <Select
+            onChange={(options) => setDepartment(options)}
+            options={DEPARTMENTS}
+          />
         </label>
 
         <label>

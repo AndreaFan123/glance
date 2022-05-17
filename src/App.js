@@ -31,7 +31,7 @@ export default function App() {
           <BrowserRouter>
             {user && <Sidebar />}
             <Container>
-              {!user && <Navbar />}
+              {/* {!user && <Navbar />} */}
               <Switch>
                 <Route exact path="/">
                   {user && <Redirect to="/dashboard" />}
