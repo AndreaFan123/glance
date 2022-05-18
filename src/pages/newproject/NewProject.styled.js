@@ -19,20 +19,32 @@ export const FormWrapper = styled.div`
   label {
     display: block;
     font-size: 1rem;
-    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    color: ${COLORS.mainColor};
+    margin-bottom: 3px;
   }
 
   input,
   textarea {
     width: 100%;
+    padding: 5px;
+    border: 1px solid ${COLORS.borderLight};
+    border-radius: 5px;
   }
 
   button {
     font-size: 1.1rem;
+    font-weight: 700;
     color: ${COLORS.fontColorLight};
     background-color: ${COLORS.mainColor};
     border: none;
     padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border-radius: 8px;
   }
 `;

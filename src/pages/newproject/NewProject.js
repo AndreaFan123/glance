@@ -1,10 +1,15 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useCollection } from "../../hook/useCollection";
+import { useAuthContext } from "../../hook/useContext";
+import { useFirestore } from "../../hook/useFirestore";
 import Select from "react-select";
-import { DEPARTMENTS } from "../../components/constants";
+import { STAKEHOLDERS } from "../../components/constants";
 
 // style
 import { FormWrapper } from "./NewProject.styled";
+import { timestamp } from "../../firebase/config";
 
 // select values
 
@@ -13,15 +18,75 @@ export default function NewProject() {
   const [projectName, setProjectName] = useState("");
   const [content, setContent] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [department, setDepartment] = useState("");
+  const [stakeholder, setStakeholder] = useState("");
   // const [status, setStatus] = useState("")
   // const [budget, setBudget] = useState("")
-  const [assign, setAssign] = useState([]);
+  const [assignee, setAssignee] = useState([]);
+  // users is the collection in firestore, documents are an array contains all user info
+  const { documents } = useCollection("users");
+  const [users, setUsers] = useState([]);
+  const [formError, setFormError] = useState(null);
+  const { user } = useAuthContext();
+  // Need to specify collection name
+  const { addDocument, response } = useFirestore("projects");
+  const History = useHistory();
 
-  const handleSubmit = (e) => {
+  // Get users from document, using useEffect to render all the users
+  useEffect(() => {
+    // check if there's a doc
+    if (documents) {
+      const options = documents.map((user) => {
+        return { value: user, label: user.displayName };
+      });
+      setUsers(options);
+    }
+  }, [documents]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // since the select is cusotmized, we can't add required, so we need to check if there's an error manually
+    setFormError(null);
+    // check select field
+    if (!stakeholder) {
+      setFormError("Please select a project stakeholder");
+      return;
+    }
+    // since asignee is an array, we can use length to check
+    if (assignee.length < 1) {
+      setFormError("Please assign at least 1 user");
+      return;
+    }
 
-    console.log(projectName, content, dueDate, department);
+    // user who creates project
+    const createdBy = {
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      id: user.uid,
+    };
+    // Clean up objects that we've got from react-select liberary
+    const assigneeList = assignee.map((person) => {
+      return {
+        displayName: person.value.displayName,
+        photoURL: person.value.photoURL,
+        id: person.value.id,
+      };
+    });
+
+    // Need to install all project info
+    const project = {
+      projectName,
+      content,
+      stakeholder: stakeholder.value,
+      dueDate: timestamp.fromDate(new Date(dueDate)),
+      comments: [],
+      createdBy,
+      assigneeList,
+    };
+
+    await addDocument(project);
+    if (!response.error) {
+      History.push("/dashboard");
+    }
   };
 
   return (
@@ -29,7 +94,7 @@ export default function NewProject() {
       <h2>Create project</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          <h4>Project Name</h4>
+          <h4>Project Subject</h4>
           <input
             type="text"
             value={projectName}
@@ -59,19 +124,26 @@ export default function NewProject() {
         </label>
 
         <label>
-          <h4>Stakeholders</h4>
+          <h4>Main Stakeholders</h4>
           <Select
-            onChange={(options) => setDepartment(options)}
-            options={DEPARTMENTS}
+            onChange={(options) => setStakeholder(options)}
+            options={STAKEHOLDERS}
           />
         </label>
 
         <label>
           <h4>Assignees</h4>
-          {/* select differ owners */}
+          <Select
+            onChange={(options) => setAssignee(options)}
+            options={users}
+            isMulti
+          />
         </label>
 
         <button>Submit</button>
+        {formError && (
+          <p style={{ color: "red", fontSize: "1rem" }}>{formError}</p>
+        )}
       </form>
     </FormWrapper>
   );

@@ -7,6 +7,10 @@ export const COLORS = {
   fontColorMedium: "hsl(0,0%,47%)",
   fontColorLight: "hsl(0,0%,90%)",
 
+  borderLight: "hsl(0,0%,80%)",
+  borderMedium: "hsl(0,0%,60%)",
+  borderDark: "hsl(0,0%,40%)",
+
   bgMainColor: "hsl(0,0%,98%)",
 
   iconBgColor: "hsl(342,100%,90%)",
@@ -18,7 +22,7 @@ export const COLORS = {
   statusCancel: "hsl(0,0%,47%)",
 };
 
-export const DEPARTMENTS = [
+export const STAKEHOLDERS = [
   { value: "Design", label: "Design" },
   { value: "R&D", label: "R&D" },
   { value: "Business", label: "Business" },
