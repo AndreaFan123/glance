@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { COLORS } from "../../components/constants";
 
 export const DashboardWrapper = styled.div`
-  margin: 40px 25px 25px 25px;
+  margin: 40px 30px 25px 30px;
   /* font-size: 1rem; */
 
   h2 {

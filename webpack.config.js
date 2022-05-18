@@ -3,7 +3,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    bundle: path.resolve(__dirname, "src/index.js"),
+    bundle: path.resolve(__dirname, "./src/index.js"),
   },
 
   output: {
@@ -24,11 +24,12 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
-    port: 3000,
+    port: 3001,
     open: true,
     hot: true,
     compress: true,
     historyApiFallback: true,
+    proxy: { "/api/**": { target: "http://localhost:3000", secure: false } },
   },
 
   module: {
