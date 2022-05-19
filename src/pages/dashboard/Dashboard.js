@@ -2,7 +2,7 @@
 // create component to handle project details and add to here
 
 import React from "react";
-import ProjectList from "../../components/project/ProjectList";
+import ProjectList from "../../components/projectList/ProjectList";
 import { useCollection } from "../../hook/useCollection";
 import { DashboardWrapper } from "./Dashoboard.styled";
 

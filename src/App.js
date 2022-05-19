@@ -57,6 +57,10 @@ export default function App() {
                   {user && <Redirect to="/" />}
                   {!user && <Signup />}
                 </Route>
+                {/* <Route path={"*"}>
+                  {user && <Redirect to="/notfound" />}
+                  {!user && <LandingPage />}
+                </Route> */}
               </Switch>
             </Container>
             {user && <OnlineUser />}

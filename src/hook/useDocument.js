@@ -11,24 +11,21 @@ export const useDocument = (_collection, id) => {
 
   //realtime data
   useEffect(() => {
-    const docRef = doc(db, _collection, id);
-    // const docSnap = getDoc(docRef);
-
     const unsubscribe = onSnapshot(
-      docRef,
+      doc(db, _collection, id),
       (snapshot) => {
         if (snapshot.data()) {
           setDocument({ ...snapshot.data(), id: snapshot.id });
+          console.log("Documents all set");
           setError(null);
         } else {
+          console.log("Errorrrrrrr");
           setError("No such doc exists");
         }
       },
-      (err) => {
-        // const history = useHistory();
-        console.log(err.message);
+      (error) => {
+        console.log(error.message);
         setError("Failed to get document");
-        // history.push("/dashboard");
       }
     );
     return () => unsubscribe();

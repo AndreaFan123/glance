@@ -12,8 +12,7 @@ export const UserListWrapper = styled.div`
   font-size: 1rem;
 
   h2 {
-    padding: 30px 0;
-    padding-left: 20px;
+    margin: 20px 35px;
   }
 `;
 

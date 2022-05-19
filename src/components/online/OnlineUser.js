@@ -9,7 +9,7 @@ export default function OnlineUser() {
 
   return (
     <UserListWrapper>
-      <h2>Online Users</h2>
+      <h2>Colleagues</h2>
       {error && <div>{error}</div>}
       {documents &&
         documents.map((user) => (

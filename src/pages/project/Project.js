@@ -2,26 +2,32 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hook/useDocument";
-import { ProjectDetailWrapper, Warning } from "./project.styled";
+import ProjectSummary from "../../components/projectSummary/ProjectSummary";
+import { ProjectDetailWrapper, Wraning } from "./project.styled";
 
 export default function Project() {
-  // parameter that we specify on the router "/projects/:id"
   const { id } = useParams();
   const { document, error } = useDocument("projects", id);
 
-  //check if there's error or document
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <Wraning>
+        <h3>{error}</h3>
+      </Wraning>
+    );
   }
 
   if (!document) {
-    return <div>Loading...</div>;
+    return (
+      <Wraning>
+        <h3>Loading...</h3>
+      </Wraning>
+    );
   }
 
   return (
     <ProjectDetailWrapper>
-      {error && <></>}
-      <h1>{document.projectName}</h1>
+      <ProjectSummary project={document} />
     </ProjectDetailWrapper>
   );
 }
