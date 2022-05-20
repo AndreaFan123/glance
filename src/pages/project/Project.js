@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDocument } from "../../hook/useDocument";
 import ProjectSummary from "../../components/projectSummary/ProjectSummary";
 import { ProjectDetailWrapper, Wraning } from "./project.styled";
+import ProjectComment from "../../components/projectComment/ProjectComment";
 
 export default function Project() {
   const { id } = useParams();
@@ -28,6 +29,7 @@ export default function Project() {
   return (
     <ProjectDetailWrapper>
       <ProjectSummary project={document} />
+      <ProjectComment />
     </ProjectDetailWrapper>
   );
 }

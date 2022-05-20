@@ -8,7 +8,7 @@ import Select from "react-select";
 import { STAKEHOLDERS } from "../../components/constants";
 
 // style
-import { FormWrapper } from "./NewProject.styled";
+import { FormWrapper, From } from "./NewProject.styled";
 import { timestamp } from "../../firebase/config";
 
 // select values
@@ -92,7 +92,7 @@ export default function NewProject() {
   return (
     <FormWrapper>
       <h2>Create project</h2>
-      <form onSubmit={handleSubmit}>
+      <From onSubmit={handleSubmit}>
         <label>
           <h4>Project Subject</h4>
           <input
@@ -126,6 +126,7 @@ export default function NewProject() {
         <label>
           <h4>Main Stakeholders</h4>
           <Select
+            menuPlacement="auto"
             onChange={(options) => setStakeholder(options)}
             options={STAKEHOLDERS}
           />
@@ -134,6 +135,7 @@ export default function NewProject() {
         <label>
           <h4>Assignees</h4>
           <Select
+            menuPlacement="auto"
             onChange={(options) => setAssignee(options)}
             options={users}
             isMulti
@@ -144,7 +146,7 @@ export default function NewProject() {
         {formError && (
           <p style={{ color: "red", fontSize: "1rem" }}>{formError}</p>
         )}
-      </form>
+      </From>
     </FormWrapper>
   );
 }

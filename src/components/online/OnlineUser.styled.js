@@ -4,6 +4,7 @@ import { COLORS } from "../constants";
 export const UserListWrapper = styled.div`
   width: 180px;
   min-width: 180px;
+  /* min-height: 100vh; */
 
   /* display: flex;
   flex-direction: column */

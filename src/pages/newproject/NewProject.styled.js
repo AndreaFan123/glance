@@ -4,10 +4,10 @@ import { COLORS } from "../../components/constants";
 
 export const FormWrapper = styled.div`
   width: 1060px;
-  max-width: 500px;
-  height: 100%;
+  max-width: 800px;
+  /* height: 100vh; */
   /* border: 1px solid ${COLORS.fontColorMedium}; */
-  padding: 40px 30px 30px 30px;
+  padding: 40px;
 
   h2 {
     font-size: 1.5rem;
@@ -34,6 +34,7 @@ export const FormWrapper = styled.div`
     padding: 5px;
     border: 1px solid ${COLORS.borderLight};
     border-radius: 5px;
+    white-space: pre-line;
   }
 
   button {
@@ -47,4 +48,9 @@ export const FormWrapper = styled.div`
     margin-bottom: 10px;
     border-radius: 8px;
   }
+`;
+
+export const From = styled.form`
+  width: 100%;
+  height: 100%;
 `;

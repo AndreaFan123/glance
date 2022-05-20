@@ -34,6 +34,10 @@ export const GlobalStyles = createGlobalStyle`
     font: inherit
   }
 
+  button {
+    cursor: pointer;
+  }
+
   p, h1, h2, h3 {
     overflow: break-word;
   }

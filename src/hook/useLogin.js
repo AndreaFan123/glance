@@ -36,8 +36,11 @@ export const useLogin = () => {
         payload: res.user,
       });
     } catch (error) {
-      setError(error.message);
-      console.log(error.message);
+      if (error.code === "auth/wrong-password") {
+        setError("Wrong password, please try again");
+      } else if (error.code === "auth/user-not-found") {
+        setError("Wrong email or password, please try again");
+      }
     } finally {
       setLoading(false);
     }
