@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { COLORS } from "../components/constants";
-import background_1 from "../assets/background_1.svg";
+import background_3 from "../assets/background_3.svg";
+import signup from "../assets/signup.png";
 
-export const Background = styled.div`
-  background: url(${background_1});
+export const BGStyle = styled.div`
+  background-image: url(${background_3});
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -14,99 +15,90 @@ export const Background = styled.div`
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 900px;
-  height: 500px;
-  margin: 100px auto;
+  max-width: 700px;
+  min-height: 550px;
+  /* gap: 30px; */
+  margin: 20px auto;
   display: flex;
   justify-content: center;
-  gap: 14px;
-  background-color: ${COLORS.mainColor};
-  border-radius: 8px;
-  box-shadow: -9px -2px 21px -14px rgba(224, 224, 224, 1);
+  display: flex;
+  /* background-color: ${COLORS.fontColorMedium}; */
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: -3px -3px 24px -8px #9c9c9c;
 `;
 
-export const TextWrapper = styled.div`
-  width: 450px;
+export const FormLeft = styled.div`
+  background-image: url(${signup});
+  background-size: cover;
+  width: 100%;
+  width: 100%;
+  max-width: 350px;
+  /* background-color: ${COLORS.mainColor}; */
   color: ${COLORS.fontColorLight};
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
+  padding-top: 90px;
+  padding-left: 30px;
+  padding-right: 30px;
 
   p {
-    font-size: 1.4rem;
-    font-weight: 300;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
   }
 
-  span {
-    font-size: 5rem;
-    /* border: 3px solid ${COLORS.fontColorLight}; */
-    font-weight: 900;
-  }
-
-  a {
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: ${COLORS.fontColorLight};
-    position: absolute;
-    bottom: 20px;
-
-    p {
-      padding-left: 10px;
-    }
+  h1 {
+    font-size: 3.5rem;
   }
 `;
 
 export const FormWrapper = styled.form`
+  width: 100%;
+  max-width: 350px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: ${COLORS.fontColorMedium};
+  width: 100%;
+  padding: 20px;
   background-color: ${COLORS.fontColorLight};
-  border-radius: 0 8px 8px 0;
-  width: 450px;
-  padding: 50px 30px;
+
+  /* display: flex;
+  flex-direction: column; */
 
   h2 {
-    color: ${COLORS.mainColor};
-    font-size: 1.5rem;
-    padding-bottom: 25px;
-  }
-
-  label {
-    font-size: 1rem;
-    color: ${COLORS.fontColorMedium};
-  }
-
-  input {
-    display: block;
-    padding-left: 10px;
     color: ${COLORS.fontColorDark};
-    width: 300px;
-    border: none;
-    background-color: inherit;
-    border-bottom: 1px solid ${COLORS.fontColorMedium};
-    margin-bottom: 25px;
-  }
-
-  button {
-    border: none;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: ${COLORS.fontColorLight};
-    background-color: ${COLORS.mainColor};
-    border-radius: 8px;
-    padding: 5px 25px;
     margin-bottom: 20px;
   }
 
-  p {
-    font-size: 1rem;
-    font-weight: 300;
-  }
-
   a {
-    color: ${COLORS.iconColor};
+    color: ${COLORS.mainColor};
     font-weight: 700;
   }
+
+  input {
+    width: 310px;
+    display: block;
+    border: none;
+    background-color: #fff;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+
+  button {
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: ${COLORS.mainColor};
+    color: ${COLORS.fontColorLight};
+    padding: 8px 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+`;
+
+export const FileInput = styled.input.attrs(() => ({
+  type: "file",
+}))`
+  font-size: 1rem;
 `;

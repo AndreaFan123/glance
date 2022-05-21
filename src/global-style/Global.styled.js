@@ -1,23 +1,25 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700;800&display=swap');
+  /* @import url("https://fonts.googleapis.com/css2?family=Nunito"); */
 
   *, *::before, *::after {
     box-sizing: border-box;
   }
 
   * {
+    
+    
     margin: 0;
   }
 
   html, body {
-    font-family: 'Nunito', sans-serif;
+    
     height: 100%;
   }
 
   body {
-    
+    font-family: 'Nunito', sans-serif;
     font-size: 62.5%;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -30,6 +32,10 @@ export const GlobalStyles = createGlobalStyle`
 
   input, button, textarea, select {
     font: inherit
+  }
+
+  button {
+    cursor: pointer;
   }
 
   p, h1, h2, h3 {

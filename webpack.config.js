@@ -2,12 +2,10 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: {
-    bundle: path.resolve(__dirname, "src/index.js"),
-  },
+  entry: "./src/index.js",
 
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.join(__dirname, "/dist"),
     filename: "[name][contenthash].js",
   },
 
@@ -15,20 +13,21 @@ module.exports = {
     new HTMLWebpackPlugin({
       title: "Glance | Simplified work space",
       filename: "index.html",
-      template: "./src/template.html",
+      template: "./src/index.html",
       favicon: "./src/assets/favicon.png",
     }),
   ],
 
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, "dist"),
-    },
+    // static: {
+    //   directory: path.resolve(__dirname, "dist"),
+    // },
     port: 3000,
     open: true,
     hot: true,
     compress: true,
     historyApiFallback: true,
+    // proxy: { "/api/**": { target: "http://localhost:3000", secure: false } },
   },
 
   module: {

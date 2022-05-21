@@ -2,54 +2,29 @@ import React from "react";
 // import background_2 from "../../assets/background_2.svg";
 
 import FooterCom from "../../components/footer/FooterCom";
+import Navbar from "../../components/navbar/Navbar";
+import { useAuthContext } from "../../hook/useContext";
 
 import {
   Container,
-  ButtonLogin,
-  ButtonSignup,
-  ButtonWrapper,
   LandingPageBG,
-  Logo,
   TextWrapper,
   MainWrapper,
-  NavWrapper,
   Slogan,
   Title,
   BrandName,
 } from "./Landing.styled";
-import { COLORS } from "../../components/constants";
-
-const btnColor = {
-  bgDark: `${COLORS.mainColor}`,
-  bgLight: `${COLORS.fontColorLight}`,
-  fontDark: `${COLORS.mainColor}`,
-  fontLight: `${COLORS.fontColorLight}`,
-};
 
 export default function LandingPage() {
+  const { user } = useAuthContext();
   return (
     <Container>
       <LandingPageBG />
-      <NavWrapper>
-        <Logo>
-          <a href="/" alt="Simplified work spance">
-            Glance
-          </a>
-        </Logo>
-
-        <ButtonWrapper>
-          <ButtonLogin btnColor={btnColor} href="/login">
-            Login
-          </ButtonLogin>
-          <ButtonSignup btnColor={btnColor} href="/signup">
-            Sign up
-          </ButtonSignup>
-        </ButtonWrapper>
-      </NavWrapper>
+      {!user && <Navbar />}
       <MainWrapper>
         <TextWrapper>
           <Slogan>Simplified work space</Slogan>
-          <Title>Manage your team in one space, Know your team at a</Title>
+          <Title>Manage your team in one space</Title>
           <BrandName>Glance</BrandName>
         </TextWrapper>
       </MainWrapper>

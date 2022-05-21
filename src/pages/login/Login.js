@@ -1,47 +1,84 @@
 // React modules
 import React from "react";
-import {
-  Background,
-  FormWrapper,
-  Wrapper,
-  TextWrapper,
-} from "../../global-style/Form.styled";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useLogin } from "../../hook/useLogin";
+import Navbar from "../../components/navbar/Navbar";
 
+// component
 import FooterCom from "../../components/footer/FooterCom";
 
+import {
+  FileInput,
+  FormWrapper,
+  FormLeft,
+  Wrapper,
+  BGStyle,
+} from "../../global-style/Form.styled";
+// icon
 import { BiArrowBack } from "react-icons/bi";
+import { useAuthContext } from "../../hook/useContext";
+
+/////////////////////////////////////////
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, loading, error } = useLogin();
+  const { user } = useAuthContext();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    login(email, password);
+
+    // console.log(email, password);
+
+    setEmail("");
+    setPassword("");
+  };
+
   return (
-    <Background>
+    <BGStyle>
+      {!user && <Navbar />}
       <Wrapper>
-        <TextWrapper>
+        <FormLeft>
           <p>Stay organized</p>
-          <span> GLANCE</span>
-          <a href="/">
-            <BiArrowBack />
-            <p>Go back</p>
-          </a>
-        </TextWrapper>
-        <FormWrapper>
-          <h2>Welcome back</h2>
-
+          <h1>Glance</h1>
+        </FormLeft>
+        <FormWrapper onSubmit={handleSubmit}>
+          <h2>Login</h2>
           <label>
-            <p>Email</p>
-            <input type="email" />
+            <span>Email</span>
+            <input
+              required
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </label>
 
           <label>
-            <p>Password</p>
-            <input type="password" />
+            <span>Password</span>
+            <input
+              required
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </label>
-          <button type="submit">Signup</button>
-          <p>
-            Not a member yet?<a href="/signup"> Signup </a> here
-          </p>
+
+          {!loading && <button>Login</button>}
+          {loading && <button>Loading ...</button>}
+          <div>
+            <span>
+              Not a member? <Link to="/signup">Sign up</Link> here
+            </span>
+          </div>
+          {error && <p style={{ color: "red" }}>{error}</p>}
         </FormWrapper>
       </Wrapper>
       <FooterCom />
-    </Background>
+    </BGStyle>
   );
 }

@@ -1,50 +1,38 @@
 import React from "react";
-import { Links, Logo, NavbarWrapper, NavItemWrapper } from "./Navbar.styled";
-import { BiUserCircle, BiFile, BiGridAlt, BiLogOut } from "react-icons/bi";
-
-// import { NavbarContents } from "./NavContent";
+import { Link } from "react-router-dom";
+import { LinksWrapper, Logo, NavbarWrapper } from "./Navbar.styled";
+import { useAuthContext } from "../../hook/useContext";
+// import { useLogout } from "../../hook/useLogout";
 
 export default function Navbar() {
+  // const { logout, loading, error } = useLogout();
+  const { user } = useAuthContext();
   return (
-    // Nav wrapper
     <NavbarWrapper>
       <Logo>
-        <a href="/dashboard">Glance</a>
+        <li>
+          <Link to="/">Glance</Link>
+        </li>
       </Logo>
-      {/* Nav top */}
-      <NavItemWrapper>
-        <div>
-          <Links href="/dashboard">
-            <div>
-              <BiGridAlt />
-            </div>
-            <p>Home</p>
-          </Links>
+      <LinksWrapper>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="signup">Sign up</Link>
+        </li>
 
-          <Links href="/projects">
-            <div>
-              <BiFile />
-            </div>
-            <p>+ Project</p>
-          </Links>
-        </div>
-        {/* Nav bottom */}
-        <div>
-          <Links href="/mamber">
-            <div>
-              <BiUserCircle />
-            </div>
-            <p>Jane Doe</p>
-          </Links>
-
-          <Links href="/login">
-            <div>
-              <BiLogOut />
-            </div>
-            <p>Logout</p>
-          </Links>
-        </div>
-      </NavItemWrapper>
+        {/* {!loading && (
+          <li>
+            <button onClick={logout}>Logout</button>
+          </li>
+        )}
+        {loading && (
+          <li>
+            <button disabled>Logging out...</button>
+          </li>
+        )} */}
+      </LinksWrapper>
     </NavbarWrapper>
   );
 }
