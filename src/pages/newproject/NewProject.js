@@ -110,6 +110,9 @@ export default function NewProject() {
             value={content}
             required
             onChange={(e) => setContent(e.target.value)}
+            rows={5}
+            cols={20}
+            wrap="hard"
           ></textarea>
         </label>
 

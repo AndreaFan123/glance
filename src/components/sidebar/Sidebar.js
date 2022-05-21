@@ -7,6 +7,7 @@ import {
   LinkWrapper,
   SidebarContent,
   SidebarWrapper,
+  UserFlex,
   UserWrapper,
 } from "./Sidebar.styled";
 import { useAuthContext } from "../../hook/useContext";
@@ -20,8 +21,18 @@ export default function Navbar() {
       <SidebarContent>
         {/* Avatar and user name later */}
         <UserWrapper>
-          <Avatar src={user.photoURL} />
-          <p>Hello, {user.displayName}</p>
+          <UserFlex>
+            <Avatar src={user.photoURL} />
+            <p>{user.displayName}</p>
+          </UserFlex>
+          {!loading && (
+            <li>
+              <NavLink onClick={logout} to="/login">
+                <BiLogOut />
+                <span>Logout</span>
+              </NavLink>
+            </li>
+          )}
         </UserWrapper>
 
         <LinkWrapper>
@@ -38,15 +49,6 @@ export default function Navbar() {
                 <span>Add project</span>
               </NavLink>
             </li>
-
-            {!loading && (
-              <li>
-                <NavLink onClick={logout} to="/login">
-                  <BiLogOut />
-                  <span>Logout</span>
-                </NavLink>
-              </li>
-            )}
 
             {loading && (
               <li>

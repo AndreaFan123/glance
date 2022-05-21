@@ -20,13 +20,19 @@ export const DetailsWrapper = styled.div`
 export const TitleWrapper = styled.div`
   border-bottom: 0.5px solid ${COLORS.borderMedium};
 
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   h1 {
     padding-bottom: 5px;
   }
 
   span {
-    font-size: 0.8rem;
     color: ${COLORS.fontColorMedium};
+    display: block;
   }
 `;
 
@@ -41,6 +47,7 @@ export const ContentWrapper = styled.div`
 
   p {
     padding-bottom: 20px;
+    white-space: pre-wrap;
   }
 `;
 
@@ -72,3 +79,18 @@ export const AssigneeWrapper = styled.div`
     gap: 10px;
   }
 `;
+
+export const CompleteIcon = {
+  fontSize: "1.6rem",
+  fontWeight: "700",
+  color: "#6FB464",
+  cursor: "pointer",
+};
+
+export const DeleteIcon = {
+  fontSize: "1.5rem",
+  fontWeight: "700",
+  color: "#DA2525",
+  marginLeft: "15px",
+  cursor: "pointer",
+};

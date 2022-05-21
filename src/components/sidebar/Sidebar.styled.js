@@ -20,8 +20,35 @@ export const UserWrapper = styled.div`
   font-size: 1.2rem;
   font-weight: 400;
   text-align: center;
-  padding: 40px 30px;
+  padding: 40px 17px;
   border-bottom: 1px solid ${COLORS.fontColorLight};
+
+  p {
+    font-weight: 700;
+  }
+
+  li {
+    list-style: none;
+    padding-left: 15px;
+    padding-top: 20px;
+
+    a {
+      display: flex;
+      text-decoration: none;
+      align-items: center;
+      color: ${COLORS.fontColorLight};
+      gap: 10px;
+    }
+  }
+`;
+
+export const UserFlex = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  p {
+    padding-left: 10px;
+  }
 `;
 
 export const LinkWrapper = styled.nav`

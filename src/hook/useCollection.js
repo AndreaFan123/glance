@@ -33,7 +33,7 @@ export const useCollection = (_collection, _query, _orderBy) => {
         });
 
         // update state
-        // console.log(results);
+        console.log(results);
         setDocuments(results);
         setError(null);
       },

@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  ProjectLinks,
-  ProjectsWrapper,
-  ProjectWrapper,
-} from "./ProjectList.styled";
-import { Link } from "react-router-dom";
+import { ProjectLinks, ProjectsWrapper } from "./ProjectList.styled";
+
 import Avatar from "../Avatar/Avatar";
 
 export default function ProjectList({ projects }) {

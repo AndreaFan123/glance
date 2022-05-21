@@ -29,7 +29,7 @@ export default function Project() {
   return (
     <ProjectDetailWrapper>
       <ProjectSummary project={document} />
-      <ProjectComment />
+      <ProjectComment project={document} />
     </ProjectDetailWrapper>
   );
 }

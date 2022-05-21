@@ -6,6 +6,12 @@ export const ProjectsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 20px;
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: ${COLORS.statusDelay};
+  }
 `;
 
 export const ProjectLinks = styled(Link)`

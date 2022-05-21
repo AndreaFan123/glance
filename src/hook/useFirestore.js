@@ -1,6 +1,12 @@
 import { useReducer, useEffect, useState } from "react";
 import { db, timestamp } from "../firebase/config";
-import { addDoc, collection, deleteDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 
 let initStatus = {
   document: null,
@@ -13,6 +19,7 @@ let initStatus = {
 const ACTIONS = {
   IS_LOADING: "isLoading",
   ADDED_DOC: "addDoc",
+  UPDATE_DOC: "updateDoc",
   DEL_DOC: "delDoc",
   ERROR: "error",
 };
@@ -27,6 +34,13 @@ const responseReducer = (state, action) => {
         isLoading: false,
         document: action.payload,
         suceess: true,
+        error: null,
+      };
+    case ACTIONS.UPDATE_DOC:
+      return {
+        isLaoding: false,
+        document: action.payload,
+        success: true,
         error: null,
       };
     case ACTIONS.DEL_DOC:
@@ -65,22 +79,40 @@ export const useFirestore = (_collection) => {
       const createdAt = timestamp.fromDate(new Date());
       const addedDocument = await addDoc(refDoc, { ...doc, createdAt });
       dispatchIfNotCancelled({
-        type: "ADDED_DOCUMENT",
+        type: ACTIONS.ADDED_DOC,
         payload: addedDocument,
       });
     } catch (err) {
       dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
     }
   };
-  // delete a document
-  const deleteDocument = async (id) => {
-    dispatch({ type: "IS_PENDING" });
 
+  // update document
+  const updateDocument = async (id, updates) => {
+    dispatch({ type: ACTIONS.IS_LOADING });
     try {
-      await refDoc.doc(id).delete();
-      dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" });
-    } catch (err) {
-      dispatchIfNotCancelled({ type: "ERROR", payload: "could not delete" });
+      const updateRef = doc(refDoc, id);
+      const updatedDoc = await updateDoc(updateRef, updates);
+      console.log(updateDoc);
+      dispatchIfNotCancelled({
+        type: ACTIONS.UPDATE_DOC,
+        payload: updatedDoc,
+      });
+      // since we need to render out the comment details, we need to return data
+      return updateDocument;
+    } catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error.message });
+    }
+  };
+
+  // delete document
+  const deletedocment = async (id) => {
+    dispatch({ type: ACTIONS.IS_LOADING });
+    try {
+      await deleteDoc(doc(refDoc, id));
+      dispatchIfNotCancelled({ type: ACTIONS.DEL_DOC });
+    } catch (error) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: error.message });
     }
   };
 
@@ -88,5 +120,5 @@ export const useFirestore = (_collection) => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addDocument, deleteDocument, response };
+  return { addDocument, updateDocument, deletedocment, response };
 };
