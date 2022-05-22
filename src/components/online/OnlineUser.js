@@ -1,5 +1,6 @@
 import React from "react";
 import { useCollection } from "../../hook/useCollection";
+import { BiMenu } from "react-icons/bi";
 
 import Avatar from "../Avatar/Avatar";
 import { UserListWrapper, UserWrapper } from "./OnlineUser.styled";

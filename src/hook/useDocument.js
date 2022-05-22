@@ -16,10 +16,10 @@ export const useDocument = (_collection, id) => {
       (snapshot) => {
         if (snapshot.data()) {
           setDocument({ ...snapshot.data(), id: snapshot.id });
-          console.log("Documents all set");
+          // console.log("Documents all set");
           setError(null);
         } else {
-          console.log("Errorrrrrrr");
+          // console.log("Errorrrrrrr");
           setError("No such doc exists");
         }
       },

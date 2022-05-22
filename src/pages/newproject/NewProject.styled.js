@@ -48,6 +48,10 @@ export const FormWrapper = styled.div`
     margin-bottom: 10px;
     border-radius: 8px;
   }
+
+  @media (max-width: 1178px) {
+    width: 100%;
+  }
 `;
 
 export const From = styled.form`

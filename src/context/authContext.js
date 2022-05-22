@@ -19,8 +19,8 @@ export const initStatus = {
 };
 
 export const reducer = (state, action) => {
-  console.log("preveState", state);
-  console.log("action:", action);
+  // console.log("preveState", state);
+  // console.log("action:", action);
   // create actions that identify when dispatch function is triggering
   switch (action.type) {
     case ACTIONS.LOGIN:
@@ -42,7 +42,7 @@ export const reducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initStatus);
 
-  console.log("current status: ", state);
+  // console.log("current status: ", state);
 
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, (user) => {

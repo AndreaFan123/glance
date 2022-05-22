@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import background_2 from "../../assets/background_2.svg";
 
 import FooterCom from "../../components/footer/FooterCom";
@@ -26,6 +27,9 @@ export default function LandingPage() {
           <Slogan>Simplified work space</Slogan>
           <Title>Manage your team in one space</Title>
           <BrandName>Glance</BrandName>
+          <div>
+            <Link to="/signup">Sign up</Link>
+          </div>
         </TextWrapper>
       </MainWrapper>
       <FooterCom />

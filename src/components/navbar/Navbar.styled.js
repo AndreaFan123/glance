@@ -23,6 +23,19 @@ export const NavbarWrapper = styled.nav`
   a {
     text-decoration: none;
     color: ${COLORS.fontColorLight};
+
+    /* &:hover,
+    &.active {
+      background-color: #fff;
+      color: ${COLORS.mainColor};
+
+      padding: 10px 10px;
+      border-radius: 15px;
+    }
+
+    &.active {
+      color: ${COLORS.mainColor};
+    } */
   }
 `;
 
@@ -37,11 +50,20 @@ export const LinksWrapper = styled.ul`
   font-size: 1.2rem;
   gap: 40px;
 
-  button {
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: ${COLORS.mainColor};
-    color: ${COLORS.fontColorLight};
+  a {
+    border: 2px solid ${COLORS.fontColorLight};
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+    &:hover,
+    &.active {
+      background-color: #fff;
+      color: ${COLORS.mainColor};
+      border: none;
+      border-radius: 15px;
+    }
+
+    &.active {
+      background-color: ${COLORS.mainColor};
+    }
   }
 `;
