@@ -91,7 +91,7 @@ export default function NewProject() {
 
   return (
     <FormWrapper>
-      <h2>Create project</h2>
+      <h2>Add project</h2>
       <From onSubmit={handleSubmit}>
         <label>
           <h4>Project Subject</h4>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useLogout } from "../../hook/useLogout";
-import { BiUserCircle, BiFile, BiGridAlt, BiLogOut } from "react-icons/bi";
+import { BiFile, BiGridAlt, BiLogOut } from "react-icons/bi";
 import Avatar from "../Avatar/Avatar";
 import { NavLink } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
   SidebarWrapper,
   UserFlex,
   UserWrapper,
+  NavLinkStyled,
 } from "./Sidebar.styled";
 import { useAuthContext } from "../../hook/useContext";
 
@@ -22,32 +23,34 @@ export default function Navbar() {
         {/* Avatar and user name later */}
         <UserWrapper>
           <UserFlex>
-            <Avatar src={user.photoURL} />
-            <p>{user.displayName}</p>
+            <div>
+              <Avatar src={user.photoURL} />
+              <p>{user.displayName}</p>
+            </div>
+            {!loading && (
+              <li>
+                <NavLink onClick={logout} to="/login">
+                  <BiLogOut />
+                  <span>Logout</span>
+                </NavLink>
+              </li>
+            )}
           </UserFlex>
-          {!loading && (
-            <li>
-              <NavLink onClick={logout} to="/login">
-                <BiLogOut />
-                <span>Logout</span>
-              </NavLink>
-            </li>
-          )}
         </UserWrapper>
 
         <LinkWrapper>
           <ul>
             <li>
-              <NavLink exact to="/">
+              <NavLinkStyled exact to="/dashboard">
                 <BiGridAlt />
                 <span>Dashboard</span>
-              </NavLink>
+              </NavLinkStyled>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLinkStyled to="/create">
                 <BiFile />
                 <span>Add project</span>
-              </NavLink>
+              </NavLinkStyled>
             </li>
 
             {loading && (

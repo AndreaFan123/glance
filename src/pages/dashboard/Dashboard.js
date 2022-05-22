@@ -66,7 +66,8 @@ export default function Dashboard() {
 
   return (
     <DashboardWrapper>
-      <h2>Projects</h2>
+      <h1>Dashboard</h1>
+      <h3>All Projects</h3>
       {documents && (
         <ProjectFilter
           currentFilter={currentFilter}

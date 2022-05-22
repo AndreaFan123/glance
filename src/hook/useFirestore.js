@@ -93,7 +93,7 @@ export const useFirestore = (_collection) => {
     try {
       const updateRef = doc(refDoc, id);
       const updatedDoc = await updateDoc(updateRef, updates);
-      console.log(updateDoc);
+
       dispatchIfNotCancelled({
         type: ACTIONS.UPDATE_DOC,
         payload: updatedDoc,

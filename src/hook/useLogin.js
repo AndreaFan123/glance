@@ -20,7 +20,7 @@ export const useLogin = () => {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
 
-      console.log(res);
+      // console.log(res);
 
       if (!res) {
         throw new Error("Could not logout, please try again");

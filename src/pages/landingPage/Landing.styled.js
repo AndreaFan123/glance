@@ -16,6 +16,9 @@ export const LandingPageBG = styled.div`
   height: 100vh;
   z-index: -1000;
   position: absolute;
+
+  /* @media (max-width: 390px) {
+  } */
 `;
 
 export const NavWrapper = styled.header`
@@ -41,31 +44,14 @@ export const Logo = styled.div`
   }
 `;
 
-export const ButtonWrapper = styled.div`
-  font-size: 1.2rem;
-`;
-
-export const ButtonLogin = styled.a`
-  color: ${(props) => props.btnColor.bgDark};
-  background-color: ${(props) => props.btnColor.fontLight};
-  padding: 12px 22px;
-  border-radius: 8px;
-`;
-
-export const ButtonSignup = styled.a`
-  color: ${(props) => props.btnColor.fontLight};
-  background-color: ${(props) => props.btnColor.bgDark};
-  border: 2px solid ${(props) => props.btnColor.fontLight};
-  padding: 10px 12px;
-  margin-left: 40px;
-  border-radius: 8px;
-  font-weight: 700;
-`;
-
 export const MainWrapper = styled.main`
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 7rem;
+  padding-top: 4rem;
+
+  @media (max-width: 721px) {
+    padding-top: 2rem;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -75,6 +61,27 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+
+  a {
+    font-size: 2rem;
+    text-decoration: none;
+    border-radius: 15px;
+    color: ${COLORS.fontColorLight};
+    border: 2px solid ${COLORS.fontColorLight};
+    padding: 8px 20px;
+    transition: all 0.3s ease-in-out;
+    &:hover,
+    &.active {
+      background-color: #fff;
+      color: ${COLORS.mainColor};
+      border: none;
+      border-radius: 0;
+    }
+
+    &.active {
+      background-color: ${COLORS.mainColor};
+    }
+  }
 `;
 
 export const Slogan = styled.p`
@@ -96,10 +103,14 @@ export const Title = styled.p`
   ); */
   /* -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
+  @media (max-width: 721px) {
+    font-size: 2.5rem;
+  }
 `;
 
 export const BrandName = styled.h2`
   font-size: 7rem;
+  margin-bottom: 10px;
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 1) 0%,

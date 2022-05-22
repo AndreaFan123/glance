@@ -14,6 +14,7 @@ import {
   FormLeft,
   Wrapper,
   BGStyle,
+  Container,
 } from "../../global-style/Form.styled";
 // icon
 import { BiArrowBack } from "react-icons/bi";
@@ -41,43 +42,45 @@ export default function Login() {
   return (
     <BGStyle>
       {!user && <Navbar />}
-      <Wrapper>
-        <FormLeft>
-          <p>Stay organized</p>
-          <h1>Glance</h1>
-        </FormLeft>
-        <FormWrapper onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          <label>
-            <span>Email</span>
-            <input
-              required
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
+      <Container>
+        <Wrapper>
+          <FormLeft>
+            <p>Stay organized</p>
+            <h1>Glance</h1>
+          </FormLeft>
+          <FormWrapper onSubmit={handleSubmit}>
+            <h2>Login</h2>
+            <label>
+              <span>Email</span>
+              <input
+                required
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
 
-          <label>
-            <span>Password</span>
-            <input
-              required
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
+            <label>
+              <span>Password</span>
+              <input
+                required
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
 
-          {!loading && <button>Login</button>}
-          {loading && <button>Loading ...</button>}
-          <div>
-            <span>
-              Not a member? <Link to="/signup">Sign up</Link> here
-            </span>
-          </div>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-        </FormWrapper>
-      </Wrapper>
+            {!loading && <button>Login</button>}
+            {loading && <button>Loading ...</button>}
+            <div>
+              <span>
+                Not a member? <Link to="/signup">Sign up</Link> here
+              </span>
+            </div>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+          </FormWrapper>
+        </Wrapper>
+      </Container>
       <FooterCom />
     </BGStyle>
   );

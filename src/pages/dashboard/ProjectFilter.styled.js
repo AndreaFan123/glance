@@ -11,7 +11,7 @@ export const FilterWrapper = styled.div`
     border-radius: 20px;
     color: ${COLORS.fontColorDark};
     padding: 5px 15px;
-    margin-right: 10px;
+    margin: 5px;
 
     &.active {
       font-weight: 900;
