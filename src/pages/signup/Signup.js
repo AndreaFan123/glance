@@ -131,7 +131,7 @@ export default function Signup() {
           </FormWrapper>
         </Wrapper>
       </Container>
-      <FooterCom />
+      {/* <FooterCom /> */}
     </BGStyle>
   );
 }

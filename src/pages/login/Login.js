@@ -81,7 +81,7 @@ export default function Login() {
           </FormWrapper>
         </Wrapper>
       </Container>
-      <FooterCom />
+      {/* <FooterCom /> */}
     </BGStyle>
   );
 }

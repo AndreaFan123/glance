@@ -5,7 +5,6 @@ import { useFirestore } from "../../hook/useFirestore";
 import { timestamp } from "../../firebase/config";
 import Avatar from "../Avatar/Avatar";
 import { v4 as uuidv4 } from "uuid";
-import moment from "moment";
 
 //style
 import {

@@ -19,7 +19,7 @@ export const COLORS = {
   statusOngoing: "hsl(43,100%,56%)",
   statusCompleted: "hsl(112,35%,55%)",
   statusDelay: "hsl(0,71%,50%)",
-  statusCancel: "hsl(0,0%,47%)",
+  statusCancelled: "hsl(0,0%,70%)",
 };
 
 export const STAKEHOLDERS = [
@@ -30,4 +30,11 @@ export const STAKEHOLDERS = [
   { value: "Legal", label: "Legal" },
   { value: "Finance", label: "Finance" },
   { value: "Content", label: "Content" },
+];
+
+export const STATUS = [
+  { value: "Ongoing", label: "Ongoing" },
+  { value: "Completed", label: "Completed" },
+  { value: "Delay", label: "Delay" },
+  { value: "Cancelled", label: "Cancelled" },
 ];

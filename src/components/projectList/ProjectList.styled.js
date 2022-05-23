@@ -22,26 +22,41 @@ export const ProjectLinks = styled(Link)`
   padding: 15px;
   text-decoration: none;
 
-  h4 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: ${COLORS.mainColor};
+  div {
+    display: flex;
+    align-items: center;
+
+    h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: ${COLORS.mainColor};
+      padding-right: 15px;
+    }
+
+    span {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: ${COLORS.fontColorDark};
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
   }
 
   p {
     font-size: 0.8rem;
     font-weight: 300;
     border-bottom: 1px solid ${COLORS.borderLight};
-    color: ${COLORS.fontColorMedium};
+    color: ${COLORS.fontColorDark};
+    padding-top: 10px;
     padding-bottom: 10px;
     /* margin-top: 10px; */
     margin-bottom: 20px;
   }
+`;
 
-  div {
-    width: 40px;
-    height: 40px;
-  }
+export const AssigneeWrapper = styled.div`
+  width: 40px;
+  height: 40px;
 
   ul {
     display: flex;
