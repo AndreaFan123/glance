@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
 import { useFirestore } from "../../hook/useFirestore";
 import Select from "react-select";
-import { STAKEHOLDERS } from "../../components/constants";
+import { STAKEHOLDERS, STATUS } from "../../components/constants";
+import { Editor } from "@tinymce/tinymce-react";
 
 // style
 import { FormWrapper, From } from "./NewProject.styled";
@@ -19,7 +20,7 @@ export default function NewProject() {
   const [content, setContent] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [stakeholder, setStakeholder] = useState("");
-  // const [status, setStatus] = useState("")
+  const [status, setStatus] = useState("");
   // const [budget, setBudget] = useState("")
   const [assignee, setAssignee] = useState([]);
   // users is the collection in firestore, documents are an array contains all user info
@@ -30,6 +31,7 @@ export default function NewProject() {
   // Need to specify collection name
   const { addDocument, response } = useFirestore("projects");
   const History = useHistory();
+  const editorRef = useRef(null);
 
   // Get users from document, using useEffect to render all the users
   useEffect(() => {
@@ -42,14 +44,26 @@ export default function NewProject() {
     }
   }, [documents]);
 
+  const handleEditorChange = () => {
+    if (editorRef.current) {
+      let content = editorRef.current.getContent();
+      setContent(content);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(projectName, content, dueDate);
+
     // since the select is cusotmized, we can't add required, so we need to check if there's an error manually
     setFormError(null);
     // check select field
     if (!stakeholder) {
       setFormError("Please select a project stakeholder");
       return;
+    }
+    if (!status) {
+      setFormError("Please select a project status");
     }
     // since asignee is an array, we can use length to check
     if (assignee.length < 1) {
@@ -77,6 +91,7 @@ export default function NewProject() {
       projectName,
       content,
       stakeholder: stakeholder.value,
+      status: status.value,
       dueDate: timestamp.fromDate(new Date(dueDate)),
       comments: [],
       createdBy,
@@ -105,7 +120,7 @@ export default function NewProject() {
 
         <label>
           <h4>Content</h4>
-          <textarea
+          {/* <textarea
             type="text"
             value={content}
             required
@@ -113,7 +128,46 @@ export default function NewProject() {
             rows={5}
             cols={20}
             wrap="hard"
-          ></textarea>
+          ></textarea> */}
+          <Editor
+            onInit={(evt, editor) => (editorRef.current = editor)}
+            textareaName="description"
+            initialValue="Write something here"
+            // value={content}
+            init={{
+              menubar: false,
+              plugins: [
+                "a11ychecker",
+                "advlist",
+                "advcode",
+                "advtable",
+                "autolink",
+                "checklist",
+                "export",
+                "lists",
+                "link",
+                "image",
+                "charmap",
+                "preview",
+                "anchor",
+                "searchreplace",
+                "visualblocks",
+                "powerpaste",
+                "fullscreen",
+                "formatpainter",
+                "insertdatetime",
+                "media",
+                "table",
+                "help",
+                "wordcount",
+              ],
+              toolbar:
+                "undo redo | casechange blocks | bold italic backcolor | " +
+                "alignleft aligncenter alignright alignjustify | " +
+                "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help",
+            }}
+            onChange={handleEditorChange}
+          />
         </label>
 
         <label>
@@ -132,6 +186,15 @@ export default function NewProject() {
             menuPlacement="auto"
             onChange={(options) => setStakeholder(options)}
             options={STAKEHOLDERS}
+          />
+        </label>
+
+        <label>
+          <h4>Project Status</h4>
+          <Select
+            menuPlacement="auto"
+            onChange={(options) => setStatus(options)}
+            options={STATUS}
           />
         </label>
 

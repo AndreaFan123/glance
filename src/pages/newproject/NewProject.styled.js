@@ -4,10 +4,11 @@ import { COLORS } from "../../components/constants";
 
 export const FormWrapper = styled.div`
   width: 1060px;
-  max-width: 800px;
+  max-width: 1000px;
+  margin: 0 auto;
   /* height: 100vh; */
   /* border: 1px solid ${COLORS.fontColorMedium}; */
-  padding: 40px;
+  padding: 50px;
 
   h2 {
     font-size: 1.5rem;

@@ -37,16 +37,11 @@ export const TitleWrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  margin: 20px 0;
+  margin: 10px 0 10px 0;
   border-bottom: 0.5px solid ${COLORS.borderMedium};
 
-  h3 {
-    font-size: 1.2rem;
-    padding-bottom: 10px;
-  }
-
-  p {
-    padding-bottom: 20px;
+  div {
+    padding: 15px 0 15px 0;
     white-space: pre-wrap;
   }
 `;
@@ -55,6 +50,22 @@ export const StakeholderWrapper = styled.div`
   display: flex;
   align-items: baseline;
   margin-bottom: 15px;
+  h4 {
+    padding-right: 15px;
+  }
+
+  span {
+    background-color: ${COLORS.borderLight};
+    border-radius: 20px;
+    padding: 2px 15px;
+  }
+`;
+
+export const StatusWrapper = styled.div`
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 15px;
+
   h4 {
     padding-right: 15px;
   }
