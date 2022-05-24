@@ -14,6 +14,7 @@ import {
   DeleteIcon,
   DetailsWrapper,
   StakeholderWrapper,
+  StatusWrapper,
   TitleWrapper,
 } from "./ProjectSummary.styled";
 
@@ -24,6 +25,7 @@ export default function Projectsummary({ project }) {
   const history = useHistory();
   const { deletedocment } = useFirestore("projects");
   const { user } = useAuthContext();
+  const body = project.content;
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -39,7 +41,7 @@ export default function Projectsummary({ project }) {
           <h1>{project.projectName}</h1>
           {user.uid === project.createdBy.id && (
             <div>
-              <BsCheck2Circle style={CompleteIcon} />
+              {/* <BsCheck2Circle style={CompleteIcon} /> */}
               <BsXCircle style={DeleteIcon} onClick={handleDelete} />
             </div>
           )}
@@ -48,13 +50,33 @@ export default function Projectsummary({ project }) {
         <span>Project owner: {project.createdBy.displayName}</span>
       </TitleWrapper>
       <ContentWrapper>
-        <h3>Summary: </h3>
-        <p>{project.content}</p>
+        {/* <h3>Summary: </h3> */}
+
+        <div dangerouslySetInnerHTML={{ __html: body }} />
       </ContentWrapper>
       <StakeholderWrapper>
         <h4>Stakeholder:</h4>
         <span>{project.stakeholder}</span>
       </StakeholderWrapper>
+      <StatusWrapper>
+        <h4>Status:</h4>
+        <span
+          style={{
+            backgroundColor:
+              project.status === "Ongoing"
+                ? "hsl(43,100%,56%)"
+                : project.status === "Delay"
+                ? "hsl(0,71%,50%)"
+                : project.status === "Completed"
+                ? "hsl(112,35%,55%)"
+                : project.status === "Cancelled"
+                ? "hsl(0,0%,70%)"
+                : "",
+          }}
+        >
+          {project.status}
+        </span>
+      </StatusWrapper>
       <AssigneeWrapper>
         <h4>Assignee: </h4>
         <div>

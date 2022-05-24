@@ -2,8 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { db } from "../firebase/config";
 import { collection, onSnapshot } from "firebase/firestore";
 
-// import Avatar from "../components/Avatar/Avatar";
-
 export const useCollection = (_collection, _query, _orderBy) => {
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);

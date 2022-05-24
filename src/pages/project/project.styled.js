@@ -8,12 +8,12 @@ export const Space = styled.div`
 export const ProjectDetailWrapper = styled.div`
   /* margin: 40px 30px 25px 30px; */
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  /* grid-template-columns: 3fr 2fr; */
   grid-gap: 20px;
 
   @media (max-width: 834px) {
     display: grid;
-    grid-template-columns: none;
+    /* grid-template-columns: none; */
     grid-template-rows: 3fr 2fr;
   }
 `;
