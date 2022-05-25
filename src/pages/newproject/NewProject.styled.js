@@ -45,8 +45,7 @@ export const FormWrapper = styled.div`
     background-color: ${COLORS.mainColor};
     border: none;
     padding: 10px 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-right: 15px;
     border-radius: 8px;
   }
 

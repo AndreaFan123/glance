@@ -1,13 +1,11 @@
-// React modules
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../hook/useLogin";
 import Navbar from "../../components/navbar/Navbar";
-
 // component
 import FooterCom from "../../components/footer/FooterCom";
-
+// styles
 import {
   FileInput,
   FormWrapper,
@@ -28,16 +26,24 @@ export default function Login() {
   const { login, loading, error } = useLogin();
   const { user } = useAuthContext();
 
+  const windowStorage = window.localStorage;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    windowStorage.clear();
     login(email, password);
-
-    // console.log(email, password);
-
     setEmail("");
     setPassword("");
   };
+
+  useEffect(() => {
+    if (windowStorage.getItem("email"))
+      setEmail(windowStorage.getItem("email"));
+  }, []);
+
+  useEffect(() => {
+    windowStorage.setItem("email", email);
+  }, [email]);
 
   return (
     <BGStyle>

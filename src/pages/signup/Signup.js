@@ -1,10 +1,12 @@
 // React modules
-import React from "react";
-// import FooterCom from "../../components/footer/FooterCom";
+import React, { useEffect } from "react";
+import { useAuthContext } from "../../hook/useContext";
+import { useSignup } from "../../hook/useSignup";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import FooterCom from "../../components/footer/FooterCom";
+// component
 import Navbar from "../../components/navbar/Navbar";
+// styles
 import {
   FileInput,
   FormWrapper,
@@ -13,14 +15,6 @@ import {
   BGStyle,
   Container,
 } from "../../global-style/Form.styled";
-import { useAuthContext } from "../../hook/useContext";
-
-import { useSignup } from "../../hook/useSignup";
-
-// icon
-// import { BiArrowBack } from "react-icons/bi";
-
-// styles
 
 /////////////////////////////////////////////
 
@@ -33,12 +27,25 @@ export default function Signup() {
   const { user } = useAuthContext();
   const { signup, error, loading } = useSignup();
 
+  const windowStorage = window.localStorage;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(displayName, email, password, userImg);
+    windowStorage.clear();
     signup(displayName, email, password, userImg);
   };
+
+  useEffect(() => {
+    if (windowStorage.getItem("displayName"))
+      setDisplayName(windowStorage.getItem("displayName"));
+    if (windowStorage.getItem("email"))
+      setEmail(windowStorage.getItem("email"));
+  }, []);
+
+  useEffect(() => {
+    windowStorage.setItem("displayName", displayName);
+    windowStorage.setItem("email", email);
+  }, [displayName, email]);
 
   const handleFileChange = (e) => {
     e.preventDefault();
@@ -46,9 +53,6 @@ export default function Signup() {
     setUserImg(null);
     //Get the first item from an array
     let selectedImg = e.target.files[0];
-
-    // console.log(selectedImg);
-
     try {
       if (!selectedImg) {
         setUploadError("Please upload your avatar");
