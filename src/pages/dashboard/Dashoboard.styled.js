@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { COLORS } from "../../components/constants";
 
 export const DashboardWrapper = styled.div`
-  margin: 40px 30px 25px 30px;
+  /* padding: 50px; */
+  width: 1060px;
+  max-width: 1200px;
+  margin: 35px auto;
 
   h1 {
     font-size: 2rem;
@@ -18,4 +21,8 @@ export const DashboardWrapper = styled.div`
     color: ${COLORS.mainColor};
     margin-bottom: 15px;
   }
+`;
+
+export const MrktingWrapper = styled.div`
+  display: flex;
 `;

@@ -20,8 +20,9 @@
   "homepage": "https://github.com/AndreaFan123/glance#readme",
   "dependencies": {
     "@tinymce/tinymce-react": "^4.1.0",
+    "dayjs": "^1.11.2",
+    "feather-icons": "^4.29.0",
     "firebase": "^9.8.0",
-    "moment": "^2.29.3",
     "npm": "^8.9.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

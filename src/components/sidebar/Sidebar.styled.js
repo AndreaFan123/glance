@@ -1,146 +1,113 @@
 import styled from "styled-components";
-
 import { COLORS } from "../constants";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { btnReset } from "../constants";
 
-// export const NavbarWrapper = styled.div`
-export const SidebarWrapper = styled.div`
-  width: 200px;
-  min-width: 200px;
-  min-height: 100vh;
+export const SideBar = styled.div`
+  width: ${({ isOpen }) => (!isOpen ? `auto` : `200px`)};
   background-color: ${COLORS.mainColor};
-  color: ${COLORS.fontColorLight};
-
-  /* @media (max-width: 1178px) {
-    width: 100%;
-    min-height: 80px;
-    position: sticky;
-  } */
-`;
-
-export const SidebarContent = styled.div`
-  width: inherit;
-  position: fixed;
-
-  /* @media (max-width: 1178px) {
-    display: flex;
-  } */
-`;
-
-export const UserWrapper = styled.div`
-  font-size: 1.2rem;
-  font-weight: 400;
-  text-align: center;
-  padding: 40px 17px;
-  border-bottom: 1px solid ${COLORS.fontColorLight};
-
-  div {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }
-
-  p {
-    font-weight: 700;
-    /* padding-left: 15px; */
-  }
-
-  li {
-    list-style: none;
-
-    a {
-      display: flex;
-      text-decoration: none;
-      align-items: center;
-      color: ${COLORS.fontColorLight};
-      gap: 10px;
-    }
-  }
-  /* 
-  @media (max-width: 1178px) {
-    display: flex;
-    padding: 0;
-    border-bottom: none;
-  } */
-`;
-
-export const UserFlex = styled.div`
+  min-height: 100vh;
+  position: relative;
+  padding: 24px 15px;
   display: flex;
   flex-direction: column;
-
-  /* @media (max-width: 1178px) {
-    flex-direction: row;
-  } */
+  align-items: ${({ isOpen }) => (!isOpen ? `center` : ``)};
 `;
 
-export const LinkWrapper = styled.nav`
-  margin-top: 50px;
-  /* margin-left: 10px; */
+export const SidebarBtn = styled.button`
+  ${btnReset};
+  position: absolute;
+  width: 35px;
+  height: 32px;
   font-size: 1.2rem;
-  /* position: relative; */
-
-  ul {
-    padding-left: 30px;
-  }
-
-  li {
-    list-style: none;
-    /* padding: 20px 0 20px 0; */
-    margin: 20px 0;
-
-    span {
-      padding-left: 10px;
-    }
-  }
-  &:nth-child(3) {
-    position: absolute;
-    bottom: -420px;
-  }
-
-  /* @media (max-width: 1178px) {
-    margin-top: 0;
-
-    ul {
-      display: flex;
-    }
-
-    span {
-      display: none;
-    }
-  } */
+  color: ${COLORS.fontColorLight};
+  top: 40px;
+  right: ${({ isOpen }) => (isOpen ? `-16px` : `-40px`)};
+  background-color: ${COLORS.mainColor};
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  //NOTE:針對開合作特效
 `;
 
-export const NavLinkStyled = styled(NavLink)`
+export const UserProfile = styled.div`
+  width: 100%;
+  height: 120px;
+
+  position: relative;
+  color: ${COLORS.fontColorLight};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const UserPhoto = styled.div`
+  width: 40px;
+  height: 40px;
+  text-align: center;
+
+  p {
+    font-size: 1.2rem;
+  }
+`;
+
+export const UserEditIcon = styled(Link)`
+  text-decoration: none;
+  color: ${COLORS.fontColorLight};
+  /* font-size: 1rem; */
+  display: flex;
+  align-items: center;
+
+  p {
+    font-size: 1.2rem;
+    padding: 0 8px;
+  }
+
+  :hover {
+    color: ${COLORS.iconBgColor};
+  }
+`;
+
+export const SidebarDivider = styled.div`
+  background-color: rgb(230, 230, 230);
+  height: 1px;
+  width: 100%;
+  margin: 24px 0;
+`;
+
+export const LinkContainer = styled.div`
+  background: ${({ isActive }) =>
+    !isActive ? `transparent` : COLORS.iconColor};
+  border-radius: 6px;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+
+  :hover {
+    box-shadow: inset 0 0 0 1px rgb(230, 230, 230);
+  }
+`;
+
+export const LinkItem = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
+  font-size: 1.2rem;
   color: ${COLORS.fontColorLight};
-  width: 100%;
-  padding: 5px 0 5px 10px;
+  padding: 6px 0;
+`;
 
-  &:hover,
-  &.active {
-    background-color: #fff;
-    color: ${COLORS.mainColor};
-    border-radius: 20px 0px 0px 20px;
-    transition: all 0.5s ease-in-out;
+export const LinkIcon = styled.div`
+  padding: 8px 10px;
+  display: flex;
+
+  svg {
+    font-size: 25px;
+    /* width: ${({ isOpen }) => (!isOpen ? `1em` : `2em`)};
+    height: ${({ isOpen }) => (!isOpen ? `1em` : `2em`)}; */
   }
-
-  &.active {
-    color: ${COLORS.mainColor};
-  }
-
-  /* @media (max-width: 1178px) {
-    &:hover,
-    &.active {
-      background-color: #fff;
-      color: ${COLORS.mainColor};
-      border-radius: 50%;
-      transition: all 0.5s ease-in-out;
-    } */
-
-  /* &.active {
-      color: ${COLORS.mainColor};
-    } */
-  /* } */
 `;

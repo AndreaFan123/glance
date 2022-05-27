@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const AvatarWrapper = styled.div`
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
 

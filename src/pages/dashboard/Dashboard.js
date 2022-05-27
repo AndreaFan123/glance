@@ -11,8 +11,9 @@ import { useAuthContext } from "../../hook/useContext";
 // component
 import ProjectFilter from "./ProjectFilter";
 import ProjectList from "../../components/projectList/ProjectList";
+import Marketing from "../marketing/Marketing";
 // style
-import { DashboardWrapper } from "./Dashoboard.styled";
+import { DashboardWrapper, MrktingWrapper } from "./Dashoboard.styled";
 
 export default function Dashboard() {
   const { documents, error } = useCollection("projects");
@@ -67,6 +68,11 @@ export default function Dashboard() {
   return (
     <DashboardWrapper>
       <h1>Dashboard</h1>
+      <MrktingWrapper>
+        <Marketing />
+        <Marketing />
+        <Marketing />
+      </MrktingWrapper>
       <h3>All Projects</h3>
       {documents && (
         <ProjectFilter

@@ -1,3 +1,48 @@
+import {
+  MdOutlineDashboard,
+  MdPostAdd,
+  MdCalendarToday,
+  MdLogout,
+  MdOutlineSettings,
+} from "react-icons/md";
+
+import { BsKanban } from "react-icons/bs";
+
+import { css } from "styled-components";
+
+// export const LINKSARR = [
+//   {
+//     label: "Dashboard",
+//     icon: <MdOutlineDashboard />,
+//     to: "/dashboard",
+//   },
+//   {
+//     label: "Add Project",
+//     icon: <MdPostAdd />,
+//     to: "/create",
+//   },
+//   {
+//     label: "Kanban",
+//     icon: <BsKanban />,
+//     to: "/kanban",
+//   },
+//   {
+//     label: "Calendar",
+//     icon: <MdCalendarToday />,
+//     to: "/schedule",
+//   },
+//   {
+//     label: "Setting",
+//     icon: <MdOutlineSettings />,
+//     to: "/setting",
+//   },
+//   {
+//     label: "Logout",
+//     icon: <MdLogout />,
+//     to: "/login",
+//   },
+// ];
+
 export const COLORS = {
   mainColor: "hsl(227,56%,27%)",
   mainColorMedium: "hsl(227,28%,40%)",
@@ -22,6 +67,7 @@ export const COLORS = {
   statusCancelled: "hsl(0,0%,70%)",
 };
 
+// react-select
 export const STAKEHOLDERS = [
   { value: "Design", label: "Design" },
   { value: "R&D", label: "R&D" },
@@ -38,3 +84,58 @@ export const STATUS = [
   { value: "Delay", label: "Delay" },
   { value: "Cancelled", label: "Cancelled" },
 ];
+
+// export const LINKSARRAY = [
+//   {
+//     label: "Dashboard",
+//     icon: <MdOutlineDashboard />,
+//     to: "/dashboard",
+//   },
+//   {
+//     label: "Add Project",
+//     icon: <MdPostAdd />,
+//     to: "/create",
+//   },
+//   {
+//     label: "Kanban",
+//     icon: <BsKanban />,
+//     to: "/kanban",
+//   },
+//   {
+//     label: "Calendar",
+//     icon: <MdCalendarToday />,
+//     to: "/schedule",
+//   },
+//   {
+//     label: "Setting",
+//     icon: <MdOutlineSettings />,
+//     to: "/setting",
+//   },
+//   {
+//     label: "Logout",
+//     icon: <MdLogout />,
+//     to: "/login",
+//   },
+// ];
+
+export const VARS = {
+  sidebarWidth: `300px`,
+  smSpacing: `8px`,
+  mdSpacing: `16px`,
+  lgSpacing: `24px`,
+  xlSpacing: `32px`,
+  xxlSpacing: `48px`,
+  borderRadius: `6px`,
+};
+
+export const btnReset = css`
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background: none;
+  letter-spacing: inherit;
+  color: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  padding: 0;
+`;
