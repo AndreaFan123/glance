@@ -52,6 +52,7 @@ export default function NewProject() {
   const handleEditorChange = () => {
     if (editorRef.current) {
       let texts = editorRef.current.getContent();
+      console.log(texts);
       setTexts(texts);
     }
   };
@@ -109,21 +110,22 @@ export default function NewProject() {
     }
   };
 
-  //TEST: 測試看是否可以點擊後存在本地端
+  //TEST: Test store data in localstorage
+  //RESULT: TinyMCE will need more time to try it, others are okay
   useEffect(() => {
     if (windowStorage.getItem("projectName"))
       setProjectName(windowStorage.getItem("projectName"));
     if (windowStorage.getItem("dueDate"))
       setDueDate(windowStorage.getItem("dueDate"));
-    if (windowStorage.getItem("Contents"))
-      setTexts(windowStorage.getItem("Contents"));
+    // if (windowStorage.getItem("Contents"))
+    //   setTexts(windowStorage.getItem("Contents"));
   }, []);
 
   useEffect(() => {
     windowStorage.setItem("projectName", projectName);
     windowStorage.setItem("dueDate", dueDate);
-    windowStorage.setItem("EditContent", texts);
-  }, [projectName, dueDate, texts]);
+    // windowStorage.setItem("EditContent", texts);
+  }, [projectName, dueDate]);
 
   const handleStakeholder = (s) => {
     windowStorage.setItem(SELECT_STAKEHOLDER_KEY, JSON.stringify(s));
@@ -175,10 +177,8 @@ export default function NewProject() {
           <h4>Content</h4>
           <Editor
             onInit={(evt, editor) => (editorRef.current = editor)}
-            onDirty={() => setDirty(true)}
             textareaName="description"
             initialValue={"Write something here"}
-            // value={texts}
             init={{
               menubar: false,
               plugins: [
@@ -206,8 +206,6 @@ export default function NewProject() {
                 "help",
                 "wordcount",
               ],
-              autosave_restore_when_empty: true,
-              autosave_ask_before_unload: true,
               toolbar:
                 "undo redo | casechange blocks | bold italic backcolor | " +
                 "alignleft aligncenter alignright alignjustify | " +

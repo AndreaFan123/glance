@@ -7,13 +7,29 @@ import React from "react";
 import { useState } from "react";
 import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
+import { Link } from "react-router-dom";
 
 // component
 import ProjectFilter from "./ProjectFilter";
 import ProjectList from "../../components/projectList/ProjectList";
 import Marketing from "../marketing/Marketing";
 // style
-import { DashboardWrapper, MrktingWrapper } from "./Dashoboard.styled";
+import {
+  DashboardWrapper,
+  Links,
+  MrktingWrapper,
+  Icons,
+  IconBG,
+} from "./Dashoboard.styled";
+import Okr from "../marketing/Okr";
+import Doc from "../marketing/Doc";
+
+//icons
+import {
+  AiOutlineRead,
+  AiOutlineFund,
+  AiOutlinePartition,
+} from "react-icons/ai";
 
 export default function Dashboard() {
   const { documents, error } = useCollection("projects");
@@ -68,10 +84,26 @@ export default function Dashboard() {
   return (
     <DashboardWrapper>
       <h1>Dashboard</h1>
+
       <MrktingWrapper>
-        <Marketing />
-        <Marketing />
-        <Marketing />
+        <Links to="/markeing/doc">
+          <IconBG>
+            <AiOutlineRead style={Icons} />
+          </IconBG>
+          <h4>Documentations</h4>
+        </Links>
+        <Links to="/marketing/main">
+          <IconBG>
+            <AiOutlineFund style={Icons} />
+          </IconBG>
+          <h4>Revenue</h4>
+        </Links>
+        <Links to="/marketing/okr">
+          <IconBG>
+            <AiOutlinePartition style={Icons} />
+          </IconBG>
+          <h4>OKR</h4>
+        </Links>
       </MrktingWrapper>
       <h3>All Projects</h3>
       {documents && (

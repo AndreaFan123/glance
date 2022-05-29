@@ -20,6 +20,9 @@ import OnlineUser from "./components/online/OnlineUser";
 //styles
 import { GlobalStyles } from "./global-style/Global.styled";
 import { AppWrapper, Container } from "./App.styled";
+import Okr from "./pages/marketing/Okr";
+import Doc from "./pages/marketing/Doc";
+import Marketing from "./pages/marketing/Marketing";
 
 // import FooterCom from "./components/footer/FooterCom";
 
@@ -71,6 +74,18 @@ export default function App() {
                 <Route path="/calendar/:id">
                   {!user && <Redirect to="/" />}
                   {user && <Calendar />}
+                </Route>
+                <Route path="/marketing/okr">
+                  {!user && <Redirect to="/" />}
+                  {user && <Okr />}
+                </Route>
+                <Route path="/marketing/doc">
+                  {!user && <Redirect to="/" />}
+                  {user && <Doc />}
+                </Route>
+                <Route path="/marketing/revenue">
+                  {!user && <Redirect to="/" />}
+                  {user && <Marketing />}
                 </Route>
                 {/* <Route path={"*"}>
                   {user && <Redirect to="/notfound" />}
