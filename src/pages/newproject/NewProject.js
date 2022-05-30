@@ -5,7 +5,11 @@ import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
 import { useFirestore } from "../../hook/useFirestore";
 import Select from "react-select";
-import { STAKEHOLDERS, STATUS } from "../../components/constants";
+import {
+  STAKEHOLDERS,
+  STATUS,
+  BUDGETCATEGORY,
+} from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
 
 // style
@@ -15,15 +19,17 @@ import { timestamp } from "../../firebase/config";
 // select values
 
 export default function NewProject() {
-  // form info
+  //  NOTE: form info
   const [projectName, setProjectName] = useState("");
-  const [content, setContent] = useState("");
+  const [texts, setTexts] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [stakeholder, setStakeholder] = useState("");
   const [status, setStatus] = useState("");
   // const [budget, setBudget] = useState("")
+  // const [budgetCategory, setBudgetCategory ] = useState([])
   const [assignee, setAssignee] = useState([]);
-  // users is the collection in firestore, documents are an array contains all user info
+  //  NOTE: hooks below
+  //NOTE: users is the collection in firestore, documents are an array contains all user info
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
   const [formError, setFormError] = useState(null);
@@ -33,9 +39,15 @@ export default function NewProject() {
   const History = useHistory();
   const editorRef = useRef(null);
 
-  // Get users from document, using useEffect to render all the users
+  const SELECT_STAKEHOLDER_KEY = "SelectStakeholder";
+  const SELECT_ASSIGNEE_KEY = "SelectAssignee";
+  const SELECT_STATUS_KEY = "SelectStatus";
+  const SELECT_BGT_KEY = "BudgetCategory";
+  const windowStorage = window.localStorage;
+
+  //  NOTE: Get users from document, using useEffect to render all the users
   useEffect(() => {
-    // check if there's a doc
+    // NOTE:  check if there's a doc
     if (documents) {
       const options = documents.map((user) => {
         return { value: user, label: user.displayName };
@@ -46,18 +58,19 @@ export default function NewProject() {
 
   const handleEditorChange = () => {
     if (editorRef.current) {
-      let content = editorRef.current.getContent();
-      setContent(content);
+      let texts = editorRef.current.getContent();
+      console.log(texts);
+      setTexts(texts);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(projectName, content, dueDate);
+    windowStorage.clear();
 
-    // since the select is cusotmized, we can't add required, so we need to check if there's an error manually
+    // NOTE: since the select is customized, we can't add required, so we need to check if there's an error manually
     setFormError(null);
-    // check select field
+    //  NOTE: check select field
     if (!stakeholder) {
       setFormError("Please select a project stakeholder");
       return;
@@ -65,19 +78,19 @@ export default function NewProject() {
     if (!status) {
       setFormError("Please select a project status");
     }
-    // since asignee is an array, we can use length to check
+    //  NOTE: since assignee is an array, we can use length to check
     if (assignee.length < 1) {
       setFormError("Please assign at least 1 user");
       return;
     }
 
-    // user who creates project
+    // NOTE:  user who creates project
     const createdBy = {
       displayName: user.displayName,
       photoURL: user.photoURL,
       id: user.uid,
     };
-    // Clean up objects that we've got from react-select liberary
+    //  NOTE:  Clean up objects that we've got from react-select liberary
     const assigneeList = assignee.map((person) => {
       return {
         displayName: person.value.displayName,
@@ -86,10 +99,10 @@ export default function NewProject() {
       };
     });
 
-    // Need to install all project info
+    //  NOTE: Need to install all project info
     const project = {
       projectName,
-      content,
+      texts,
       stakeholder: stakeholder.value,
       status: status.value,
       dueDate: timestamp.fromDate(new Date(dueDate)),
@@ -103,6 +116,64 @@ export default function NewProject() {
       History.push("/dashboard");
     }
   };
+
+  //TEST: Test store data in localstorage
+  //RESULT: TinyMCE will need more time to try it, others are okay
+  useEffect(() => {
+    if (windowStorage.getItem("projectName"))
+      setProjectName(windowStorage.getItem("projectName"));
+    if (windowStorage.getItem("dueDate"))
+      setDueDate(windowStorage.getItem("dueDate"));
+    // if (windowStorage.getItem("Contents"))
+    //   setTexts(windowStorage.getItem("Contents"));
+  }, []);
+
+  useEffect(() => {
+    windowStorage.setItem("projectName", projectName);
+    windowStorage.setItem("dueDate", dueDate);
+    // windowStorage.setItem("EditContent", texts);
+  }, [projectName, dueDate]);
+
+  const handleStakeholder = (s) => {
+    windowStorage.setItem(SELECT_STAKEHOLDER_KEY, JSON.stringify(s));
+    setStakeholder(s);
+  };
+
+  const handleStatus = (i) => {
+    windowStorage.setItem(SELECT_STATUS_KEY, JSON.stringify(i));
+    setStatus(i);
+  };
+
+  const handleAssignee = (a) => {
+    windowStorage.setItem(SELECT_ASSIGNEE_KEY, JSON.stringify(a));
+    setAssignee(a);
+  };
+
+  // TEST: 這邊處理預算種類並儲存在 local storage
+  /* 
+  const handleBgtCategory = (b) => {
+    windowStorage.setItem(SELECT_BGT_KEY, JSON.stringify(b))
+    setBudget(b)
+  }
+
+  */
+
+  useEffect(() => {
+    const lastStakeholder = JSON.parse(
+      windowStorage.getItem(SELECT_STAKEHOLDER_KEY) ?? "[]"
+    );
+
+    const lastStatus = JSON.parse(
+      windowStorage.getItem(SELECT_STATUS_KEY) ?? "[]"
+    );
+
+    const lastAssignee = JSON.parse(
+      windowStorage.getItem(SELECT_ASSIGNEE_KEY) ?? "[]"
+    );
+    setStakeholder(lastStakeholder);
+    setStatus(lastStatus);
+    setAssignee(lastAssignee);
+  }, []);
 
   return (
     <FormWrapper>
@@ -120,20 +191,10 @@ export default function NewProject() {
 
         <label>
           <h4>Content</h4>
-          {/* <textarea
-            type="text"
-            value={content}
-            required
-            onChange={(e) => setContent(e.target.value)}
-            rows={5}
-            cols={20}
-            wrap="hard"
-          ></textarea> */}
           <Editor
             onInit={(evt, editor) => (editorRef.current = editor)}
             textareaName="description"
-            initialValue="Write something here"
-            // value={content}
+            initialValue={"Write something here"}
             init={{
               menubar: false,
               plugins: [
@@ -169,7 +230,10 @@ export default function NewProject() {
             onChange={handleEditorChange}
           />
         </label>
-
+        {/* TEST: Separate forms into 2 parts */}
+        {/* <section> */}
+        {/* NOTE: first part of form */}
+        {/* <div> */}
         <label>
           <h4>Due date</h4>
           <input
@@ -184,8 +248,10 @@ export default function NewProject() {
           <h4>Main Stakeholders</h4>
           <Select
             menuPlacement="auto"
-            onChange={(options) => setStakeholder(options)}
+            // onChange={(options) => setStakeholder(options)}
+            onChange={handleStakeholder}
             options={STAKEHOLDERS}
+            value={stakeholder}
           />
         </label>
 
@@ -193,8 +259,10 @@ export default function NewProject() {
           <h4>Project Status</h4>
           <Select
             menuPlacement="auto"
-            onChange={(options) => setStatus(options)}
+            // onChange={(options) => setStatus(options)}
+            onChange={handleStatus}
             options={STATUS}
+            value={status}
           />
         </label>
 
@@ -202,13 +270,38 @@ export default function NewProject() {
           <h4>Assignees</h4>
           <Select
             menuPlacement="auto"
-            onChange={(options) => setAssignee(options)}
+            // onChange={(options) => setAssignee(options)}
+            onChange={handleAssignee}
             options={users}
+            value={assignee}
+            isMulti
+          />
+        </label>
+        {/* </div> */}
+
+        {/* NOTE: second part of form */}
+        {/* <div> */}
+        {/* TEST: budget category setup */}
+        {/* <label>
+        <h4>Budget Category</h4>
+          <Select
+            menuPlacement="auto"
+            // onChange={(options) => setAssignee(options)}
+            onChange={handleBudget}
+            options={BUDGETCATEGORY}
+            value={budgetCategory}
             isMulti
           />
         </label>
 
-        <button>Submit</button>
+        <label>
+        <h4>Amount</h4>
+        </label>
+        </div>
+        </section> */}
+        <div>
+          <button>Submit</button>
+        </div>
         {formError && (
           <p style={{ color: "red", fontSize: "1rem" }}>{formError}</p>
         )}

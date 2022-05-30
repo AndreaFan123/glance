@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 export const COLORS = {
   mainColor: "hsl(227,56%,27%)",
   mainColorMedium: "hsl(227,28%,40%)",
@@ -20,8 +22,13 @@ export const COLORS = {
   statusCompleted: "hsl(112,35%,55%)",
   statusDelay: "hsl(0,71%,50%)",
   statusCancelled: "hsl(0,0%,70%)",
+
+  spentBGcolor: "hsl(43,100%,70%)",
+  remainBGColor: "hsl(228,50%,70%)",
+  totalBudgetColor: "hsl(342,100%,90%)",
 };
 
+// react-select
 export const STAKEHOLDERS = [
   { value: "Design", label: "Design" },
   { value: "R&D", label: "R&D" },
@@ -38,3 +45,37 @@ export const STATUS = [
   { value: "Delay", label: "Delay" },
   { value: "Cancelled", label: "Cancelled" },
 ];
+
+export const EXPENSECATEGORY = [
+  { value: "Influencer", label: "Influencer" },
+  { value: "Social Media", label: "Social Media" },
+  { value: "Giveaways", label: "Giveaways" },
+  { value: "Community", label: "Community" },
+  { value: "Freelancer", label: "Freelancer" },
+  { value: "Agency", label: "Agency" },
+  { value: "Esports", label: "Esports" },
+  { value: "Online Campaign", label: "Online Campaign" },
+  { value: "Offline Campaign", label: "Offline Campaign" },
+];
+
+export const VARS = {
+  sidebarWidth: `300px`,
+  smSpacing: `8px`,
+  mdSpacing: `16px`,
+  lgSpacing: `24px`,
+  xlSpacing: `32px`,
+  xxlSpacing: `48px`,
+  borderRadius: `6px`,
+};
+
+export const btnReset = css`
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background: none;
+  letter-spacing: inherit;
+  color: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  padding: 0;
+`;

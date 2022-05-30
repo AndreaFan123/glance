@@ -25,7 +25,7 @@ export default function Projectsummary({ project }) {
   const history = useHistory();
   const { deletedocment } = useFirestore("projects");
   const { user } = useAuthContext();
-  const body = project.content;
+  const body = project.texts;
 
   const handleDelete = (e) => {
     e.preventDefault();
