@@ -1,47 +1,4 @@
-import {
-  MdOutlineDashboard,
-  MdPostAdd,
-  MdCalendarToday,
-  MdLogout,
-  MdOutlineSettings,
-} from "react-icons/md";
-
-import { BsKanban } from "react-icons/bs";
-
 import { css } from "styled-components";
-
-// export const LINKSARR = [
-//   {
-//     label: "Dashboard",
-//     icon: <MdOutlineDashboard />,
-//     to: "/dashboard",
-//   },
-//   {
-//     label: "Add Project",
-//     icon: <MdPostAdd />,
-//     to: "/create",
-//   },
-//   {
-//     label: "Kanban",
-//     icon: <BsKanban />,
-//     to: "/kanban",
-//   },
-//   {
-//     label: "Calendar",
-//     icon: <MdCalendarToday />,
-//     to: "/schedule",
-//   },
-//   {
-//     label: "Setting",
-//     icon: <MdOutlineSettings />,
-//     to: "/setting",
-//   },
-//   {
-//     label: "Logout",
-//     icon: <MdLogout />,
-//     to: "/login",
-//   },
-// ];
 
 export const COLORS = {
   mainColor: "hsl(227,56%,27%)",
@@ -65,6 +22,10 @@ export const COLORS = {
   statusCompleted: "hsl(112,35%,55%)",
   statusDelay: "hsl(0,71%,50%)",
   statusCancelled: "hsl(0,0%,70%)",
+
+  spentBGcolor: "hsl(43,100%,70%)",
+  remainBGColor: "hsl(228,50%,70%)",
+  totalBudgetColor: "hsl(342,100%,90%)",
 };
 
 // react-select
@@ -85,38 +46,17 @@ export const STATUS = [
   { value: "Cancelled", label: "Cancelled" },
 ];
 
-// export const LINKSARRAY = [
-//   {
-//     label: "Dashboard",
-//     icon: <MdOutlineDashboard />,
-//     to: "/dashboard",
-//   },
-//   {
-//     label: "Add Project",
-//     icon: <MdPostAdd />,
-//     to: "/create",
-//   },
-//   {
-//     label: "Kanban",
-//     icon: <BsKanban />,
-//     to: "/kanban",
-//   },
-//   {
-//     label: "Calendar",
-//     icon: <MdCalendarToday />,
-//     to: "/schedule",
-//   },
-//   {
-//     label: "Setting",
-//     icon: <MdOutlineSettings />,
-//     to: "/setting",
-//   },
-//   {
-//     label: "Logout",
-//     icon: <MdLogout />,
-//     to: "/login",
-//   },
-// ];
+export const EXPENSECATEGORY = [
+  { value: "Influencer", label: "Influencer" },
+  { value: "Social Media", label: "Social Media" },
+  { value: "Giveaways", label: "Giveaways" },
+  { value: "Community", label: "Community" },
+  { value: "Freelancer", label: "Freelancer" },
+  { value: "Agency", label: "Agency" },
+  { value: "Esports", label: "Esports" },
+  { value: "Online Campaign", label: "Online Campaign" },
+  { value: "Offline Campaign", label: "Offline Campaign" },
+];
 
 export const VARS = {
   sidebarWidth: `300px`,

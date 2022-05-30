@@ -5,7 +5,7 @@ export const KanbanWrapper = styled.div`
   padding: 30px 40px;
   /* width: 100%; */
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 40px auto 0 auto;
 
   h2 {
     font-size: 2rem;

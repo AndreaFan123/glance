@@ -14,8 +14,8 @@ import {
 } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { FaChevronRight } from "react-icons/fa";
+import { MdAttachMoney } from "react-icons/md";
 
-import { css } from "styled-components";
 import { useAuthContext } from "../../hook/useContext";
 import {
   LinkContainer,
@@ -61,7 +61,7 @@ export default function Sidebar() {
                 ? `/dashboard`
                 : `${label}` === "Add Project"
                 ? `/create`
-                : `${label}` === "Calendar"
+                : `${label}` === "Budget"
                 ? `/${label}/${user.uid}`
                 : `${label}` === "Kanban"
                 ? `/${label}/${user.uid}`
@@ -104,9 +104,9 @@ export const LinkArray = [
     to: `/kanban/:id`,
   },
   {
-    label: "Calendar",
-    icon: <AiOutlineCalendar />,
-    to: `/calendar/:id`,
+    label: "Budget",
+    icon: <MdAttachMoney />,
+    to: `/budget/:id`,
   },
 ];
 

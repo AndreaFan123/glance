@@ -12,7 +12,7 @@ import NewProject from "./pages/newproject/NewProject";
 import LandingPage from "./pages/landingPage/LandingPage";
 import Member from "./pages/mamber/Member";
 import Kanban from "./pages/kanban/Kanban";
-import Calendar from "./pages/calendar/Calendar";
+import Budget from "./pages/budget/Budget";
 // components
 import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -71,9 +71,9 @@ export default function App() {
                   {!user && <Redirect to="/" />}
                   {user && <Kanban />}
                 </Route>
-                <Route path="/calendar/:id">
+                <Route path="/budget/:id">
                   {!user && <Redirect to="/" />}
-                  {user && <Calendar />}
+                  {user && <Budget />}
                 </Route>
                 <Route path="/marketing/okr">
                   {!user && <Redirect to="/" />}
