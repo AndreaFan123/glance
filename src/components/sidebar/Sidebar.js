@@ -35,21 +35,22 @@ export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const { pathname } = useLocation();
   return (
-    <SideBar isOpen={sidebarOpen}>
-      <>
+    //isOpen={sidebarOpen}
+    <SideBar>
+      {/* <>
         <SidebarBtn
           isOpen={sidebarOpen}
           onClick={() => setSidebarOpen((sidebarOpen) => !sidebarOpen)}
         >
           <FaChevronRight />
         </SidebarBtn>
-      </>
+      </> */}
       <UserProfile>
         <Avatar src={user.photoURL} />
 
         <UserEditIcon to={`/member/${user.uid}`}>
           <p>{user.displayName}</p>
-          <FiEdit />
+          {/* <FiEdit /> */}
         </UserEditIcon>
       </UserProfile>
       <SidebarDivider />
@@ -62,10 +63,11 @@ export default function Sidebar() {
                 : `${label}` === "Add Project"
                 ? `/create`
                 : `${label}` === "Budget"
-                ? `/${label}/${user.uid}`
+                ? `/budget`
                 : `${label}` === "Kanban"
-                ? `/${label}/${user.uid}`
+                ? `/kanban`
                 : null
+              // TEST: figure it out how to implement logout here
             }
             style={!sidebarOpen ? { width: `fit-content` } : {}}
           >
@@ -101,21 +103,21 @@ export const LinkArray = [
   {
     label: "Kanban",
     icon: <AiOutlineProject />,
-    to: `/kanban/:id`,
+    to: `/kanban`,
   },
   {
     label: "Budget",
     icon: <MdAttachMoney />,
-    to: `/budget/:id`,
+    to: `/budget`,
   },
 ];
 
 export const secondaryLinks = [
-  {
-    label: "Setting",
-    icon: <AiOutlineSetting />,
-    to: "/setting",
-  },
+  // {
+  //   label: "Setting",
+  //   icon: <AiOutlineSetting />,
+  //   to: "/setting",
+  // },
   {
     label: "Logout",
     icon: <AiOutlineLogout />,

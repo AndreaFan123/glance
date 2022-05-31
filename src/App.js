@@ -67,15 +67,15 @@ export default function App() {
                   {!user && <Redirect to="/" />}
                   {user && <Member />}
                 </Route>
-                <Route path="/kanban/:id">
+                <Route path="/kanban">
                   {!user && <Redirect to="/" />}
                   {user && <Kanban />}
                 </Route>
-                <Route path="/budget/:id">
+                <Route path="/budget">
                   {!user && <Redirect to="/" />}
                   {user && <Budget />}
                 </Route>
-                <Route path="/marketing/okr">
+                {/* <Route path="/marketing/okr">
                   {!user && <Redirect to="/" />}
                   {user && <Okr />}
                 </Route>
@@ -86,7 +86,7 @@ export default function App() {
                 <Route path="/marketing/revenue">
                   {!user && <Redirect to="/" />}
                   {user && <Marketing />}
-                </Route>
+                </Route> */}
                 {/* <Route path={"*"}>
                   {user && <Redirect to="/notfound" />}
                   {!user && <LandingPage />}

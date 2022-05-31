@@ -5,11 +5,7 @@ import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
 import { useFirestore } from "../../hook/useFirestore";
 import Select from "react-select";
-import {
-  STAKEHOLDERS,
-  STATUS,
-  BUDGETCATEGORY,
-} from "../../components/constants";
+import { STAKEHOLDERS, STATUS } from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
 
 // style
@@ -25,8 +21,6 @@ export default function NewProject() {
   const [dueDate, setDueDate] = useState("");
   const [stakeholder, setStakeholder] = useState("");
   const [status, setStatus] = useState("");
-  // const [budget, setBudget] = useState("")
-  // const [budgetCategory, setBudgetCategory ] = useState([])
   const [assignee, setAssignee] = useState([]);
   //  NOTE: hooks below
   //NOTE: users is the collection in firestore, documents are an array contains all user info
@@ -42,7 +36,6 @@ export default function NewProject() {
   const SELECT_STAKEHOLDER_KEY = "SelectStakeholder";
   const SELECT_ASSIGNEE_KEY = "SelectAssignee";
   const SELECT_STATUS_KEY = "SelectStatus";
-  const SELECT_BGT_KEY = "BudgetCategory";
   const windowStorage = window.localStorage;
 
   //  NOTE: Get users from document, using useEffect to render all the users
@@ -128,6 +121,7 @@ export default function NewProject() {
     //   setTexts(windowStorage.getItem("Contents"));
   }, []);
 
+  ///////////  NOTE: Local storage //////////////////
   useEffect(() => {
     windowStorage.setItem("projectName", projectName);
     windowStorage.setItem("dueDate", dueDate);
@@ -149,15 +143,6 @@ export default function NewProject() {
     setAssignee(a);
   };
 
-  // TEST: 這邊處理預算種類並儲存在 local storage
-  /* 
-  const handleBgtCategory = (b) => {
-    windowStorage.setItem(SELECT_BGT_KEY, JSON.stringify(b))
-    setBudget(b)
-  }
-
-  */
-
   useEffect(() => {
     const lastStakeholder = JSON.parse(
       windowStorage.getItem(SELECT_STAKEHOLDER_KEY) ?? "[]"
@@ -174,6 +159,8 @@ export default function NewProject() {
     setStatus(lastStatus);
     setAssignee(lastAssignee);
   }, []);
+
+  /////////////////////////////////////////////
 
   return (
     <FormWrapper>
@@ -196,7 +183,12 @@ export default function NewProject() {
             textareaName="description"
             initialValue={"Write something here"}
             init={{
+              selector: "textarea",
+              // height: 500,
               menubar: false,
+              // mobile: {
+              //   menubar: true,
+              // },
               plugins: [
                 "a11ychecker",
                 "advlist",
@@ -207,7 +199,7 @@ export default function NewProject() {
                 "export",
                 "lists",
                 "link",
-                "image",
+                // "image",
                 "charmap",
                 "preview",
                 "anchor",
@@ -219,8 +211,7 @@ export default function NewProject() {
                 "insertdatetime",
                 "media",
                 "table",
-                "help",
-                "wordcount",
+                "autoresize",
               ],
               toolbar:
                 "undo redo | casechange blocks | bold italic backcolor | " +
@@ -230,10 +221,7 @@ export default function NewProject() {
             onChange={handleEditorChange}
           />
         </label>
-        {/* TEST: Separate forms into 2 parts */}
-        {/* <section> */}
-        {/* NOTE: first part of form */}
-        {/* <div> */}
+
         <label>
           <h4>Due date</h4>
           <input
@@ -277,28 +265,6 @@ export default function NewProject() {
             isMulti
           />
         </label>
-        {/* </div> */}
-
-        {/* NOTE: second part of form */}
-        {/* <div> */}
-        {/* TEST: budget category setup */}
-        {/* <label>
-        <h4>Budget Category</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setAssignee(options)}
-            onChange={handleBudget}
-            options={BUDGETCATEGORY}
-            value={budgetCategory}
-            isMulti
-          />
-        </label>
-
-        <label>
-        <h4>Amount</h4>
-        </label>
-        </div>
-        </section> */}
         <div>
           <button>Submit</button>
         </div>

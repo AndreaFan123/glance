@@ -4,14 +4,22 @@ import { Link } from "react-router-dom";
 import { btnReset } from "../constants";
 
 export const SideBar = styled.div`
-  width: ${({ isOpen }) => (!isOpen ? `auto` : `200px`)};
+  width: 200px;
   background-color: ${COLORS.mainColor};
   min-height: 100vh;
   position: relative;
   padding: 24px 15px;
   display: flex;
   flex-direction: column;
-  align-items: ${({ isOpen }) => (!isOpen ? `center` : ``)};
+
+  @media screen and (max-width: 561px) {
+    align-items: center;
+    width: auto;
+
+    span {
+      display: none;
+    }
+  } ;
 `;
 
 export const SidebarBtn = styled.button`
@@ -21,8 +29,9 @@ export const SidebarBtn = styled.button`
   height: 32px;
   font-size: 1.2rem;
   color: ${COLORS.fontColorLight};
-  top: 40px;
-  right: ${({ isOpen }) => (isOpen ? `-16px` : `-40px`)};
+  top: 153px;
+  right: -19px;
+  /* right: ${({ isOpen }) => (isOpen ? `-16px` : `-40px`)}; */
   background-color: ${COLORS.mainColor};
   border-radius: 50%;
   border: 3px solid #fff;
@@ -30,7 +39,11 @@ export const SidebarBtn = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  //NOTE:針對開合作特效
+
+  @media screen and (max-width: 561px) {
+    top: 153px;
+    right: 1px;
+  } ;
 `;
 
 export const UserProfile = styled.div`

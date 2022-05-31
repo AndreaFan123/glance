@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { COLORS } from "../../components/constants";
 
 export const FormWrapper = styled.div`
-  width: 1060px;
+  padding: 20px;
+  /* width: 1060px; */
   max-width: 1200px;
-  margin: 37px auto;
+  margin: 40px auto;
   /* height: 100vh; */
   /* border: 1px solid ${COLORS.fontColorMedium}; */
 
@@ -46,10 +47,6 @@ export const FormWrapper = styled.div`
     padding: 10px 20px;
     margin-right: 15px;
     border-radius: 8px;
-  }
-
-  @media (max-width: 1178px) {
-    width: 100%;
   }
 `;
 

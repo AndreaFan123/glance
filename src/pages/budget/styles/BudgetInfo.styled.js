@@ -11,32 +11,30 @@ export const BudgetInfoCard = styled.section`
   font-size: 1.2rem;
 `;
 
-export const RemainBudgetCard = styled.div`
+export const BudgetCard = styled.div`
   width: 100%;
   height: 100px;
-  background-color: ${COLORS.remainBGColor};
+  background-color: ${COLORS.mainColor};
+  color: ${COLORS.fontColorLight};
   border-radius: 5px;
   display: flex;
   align-items: center;
-  padding: 15px;
-`;
+  padding: 20px;
 
-export const SpentCard = styled.div`
-  width: 100%;
-  height: 100px;
-  background-color: ${COLORS.spentBGcolor};
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  padding: 15px;
-`;
+  p {
+    font-weight: 700;
+  }
 
-export const TotalBudgetCard = styled.div`
-  width: 100%;
-  height: 100px;
-  background-color: ${COLORS.iconBgColor};
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  padding: 15px;
+  button {
+    margin-left: 25px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: ${COLORS.fontColorLight};
+    color: ${COLORS.mainColor};
+  }
+
+  @media screen and (max-width: 430px) {
+    flex-direction: column;
+  }
 `;

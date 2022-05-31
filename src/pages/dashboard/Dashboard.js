@@ -85,7 +85,7 @@ export default function Dashboard() {
     <DashboardWrapper>
       <h1>Dashboard</h1>
 
-      <MrktingWrapper>
+      {/* <MrktingWrapper>
         <Links to="/markeing/doc">
           <IconBG>
             <AiOutlineRead style={Icons} />
@@ -104,7 +104,7 @@ export default function Dashboard() {
           </IconBG>
           <h4>OKR</h4>
         </Links>
-      </MrktingWrapper>
+      </MrktingWrapper> */}
       <h3>All Projects</h3>
       {documents && (
         <ProjectFilter
