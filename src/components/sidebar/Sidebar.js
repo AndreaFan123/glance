@@ -10,7 +10,7 @@ import {
   AiOutlineFileAdd,
   AiOutlineProject,
   AiOutlineLogout,
-  AiOutlineSetting,
+  AiOutlineLineChart,
 } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { FaChevronRight } from "react-icons/fa";
@@ -64,8 +64,8 @@ export default function Sidebar() {
                 ? `/create`
                 : `${label}` === "Budget"
                 ? `/budget`
-                : `${label}` === "Kanban"
-                ? `/kanban`
+                : `${label}` === "Revenue"
+                ? `/revenue`
                 : null
               // TEST: figure it out how to implement logout here
             }
@@ -101,9 +101,9 @@ export const LinkArray = [
     to: "/create",
   },
   {
-    label: "Kanban",
-    icon: <AiOutlineProject />,
-    to: `/kanban`,
+    label: "Revenue",
+    icon: <AiOutlineLineChart />,
+    to: `/revenue`,
   },
   {
     label: "Budget",

@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { COLORS } from "../../components/constants";
 
 export const FormWrapper = styled.div`
-  padding: 20px;
+  padding: 30px;
   /* width: 1060px; */
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 40px;
   /* height: 100vh; */
   /* border: 1px solid ${COLORS.fontColorMedium}; */
 

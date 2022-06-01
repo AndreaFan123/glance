@@ -22,6 +22,19 @@ export const DashboardWrapper = styled.div`
     color: ${COLORS.mainColor};
     margin-bottom: 15px;
   }
+
+  section {
+    margin: 20px 0;
+  }
+`;
+
+export const ChartsWrapper = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
+  grid-gap: 30px;
+  padding: 30px 0;
+  font-size: 1.2rem;
 `;
 
 export const MrktingWrapper = styled.div`

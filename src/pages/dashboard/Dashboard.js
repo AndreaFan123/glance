@@ -7,12 +7,12 @@ import React from "react";
 import { useState } from "react";
 import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
-import { Link } from "react-router-dom";
 
 // component
 import ProjectFilter from "./ProjectFilter";
 import ProjectList from "../../components/projectList/ProjectList";
-import Marketing from "../marketing/Marketing";
+import DoughnutChart from "./DoughnutChart";
+import Linechart from "./Linechart";
 // style
 import {
   DashboardWrapper,
@@ -20,9 +20,8 @@ import {
   MrktingWrapper,
   Icons,
   IconBG,
+  ChartsWrapper,
 } from "./Dashoboard.styled";
-import Okr from "../marketing/Okr";
-import Doc from "../marketing/Doc";
 
 //icons
 import {
@@ -32,8 +31,9 @@ import {
 } from "react-icons/ai";
 
 export default function Dashboard() {
-  const { documents, error } = useCollection("projects");
   const { user } = useAuthContext();
+  const { documents, error } = useCollection("projects");
+
   const [currentFilter, setCurrentFilter] = useState("All");
 
   const changeFilter = (newFilter) => {
@@ -84,38 +84,29 @@ export default function Dashboard() {
   return (
     <DashboardWrapper>
       <h1>Dashboard</h1>
+      <ChartsWrapper>
+        <div>
+          <h3>Budget Expenses</h3>
+          <DoughnutChart />
+        </div>
+        <div>
+          <h3>Revenue</h3>
+          <Linechart />
+        </div>
+      </ChartsWrapper>
+      <section>
+        <h3>All Projects</h3>
+        {documents && (
+          <ProjectFilter
+            currentFilter={currentFilter}
+            changeFilter={changeFilter}
+          />
+        )}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {/* <MrktingWrapper>
-        <Links to="/markeing/doc">
-          <IconBG>
-            <AiOutlineRead style={Icons} />
-          </IconBG>
-          <h4>Documentations</h4>
-        </Links>
-        <Links to="/marketing/main">
-          <IconBG>
-            <AiOutlineFund style={Icons} />
-          </IconBG>
-          <h4>Revenue</h4>
-        </Links>
-        <Links to="/marketing/okr">
-          <IconBG>
-            <AiOutlinePartition style={Icons} />
-          </IconBG>
-          <h4>OKR</h4>
-        </Links>
-      </MrktingWrapper> */}
-      <h3>All Projects</h3>
-      {documents && (
-        <ProjectFilter
-          currentFilter={currentFilter}
-          changeFilter={changeFilter}
-        />
-      )}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {/* pass documents as a prop so that child component can use */}
-      {documents && <ProjectList projects={projects} />}
+        {/* pass documents as a prop so that child component can use */}
+        {projects && <ProjectList projects={projects} />}
+      </section>
     </DashboardWrapper>
   );
 }

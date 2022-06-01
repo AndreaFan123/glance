@@ -184,8 +184,8 @@ export default function NewProject() {
             initialValue={"Write something here"}
             init={{
               selector: "textarea",
-              // height: 500,
-              menubar: false,
+              height: 500,
+              menubar: true,
               // mobile: {
               //   menubar: true,
               // },
@@ -199,6 +199,7 @@ export default function NewProject() {
                 "export",
                 "lists",
                 "link",
+
                 // "image",
                 "charmap",
                 "preview",
@@ -214,9 +215,9 @@ export default function NewProject() {
                 "autoresize",
               ],
               toolbar:
-                "undo redo | casechange blocks | bold italic backcolor | " +
+                "undo redo | casechange blocks | bold italic backcolor | save |" +
                 "alignleft aligncenter alignright alignjustify | " +
-                "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help",
+                "bullist numlist checklist outdent indent | removeformat |a11ycheck code table help",
             }}
             onChange={handleEditorChange}
           />

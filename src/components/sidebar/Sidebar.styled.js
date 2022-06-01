@@ -12,14 +12,17 @@ export const SideBar = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 561px) {
+  @media screen and (max-width: 600px) {
     align-items: center;
     width: auto;
 
     span {
       display: none;
     }
-  } ;
+  }
+
+  @media screen and (max-width: 390px) {
+  }
 `;
 
 export const SidebarBtn = styled.button`

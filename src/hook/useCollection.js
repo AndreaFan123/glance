@@ -38,7 +38,15 @@ export const useCollection = (_collection, _query, _orderBy) => {
 
         // update state
         // console.log(results);
-        setDocuments(results);
+        if (results) {
+          setDocuments(results);
+          console.log(results);
+        }
+
+        if (!results) {
+          setDocuments(null);
+          console.log(results);
+        }
 
         setError(null);
       },
