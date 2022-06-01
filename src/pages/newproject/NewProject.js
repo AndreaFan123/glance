@@ -9,7 +9,7 @@ import { STAKEHOLDERS, STATUS } from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
 
 // style
-import { FormWrapper, From } from "./NewProject.styled";
+import { FormWrapper, From, FormSections } from "./NewProject.styled";
 import { timestamp } from "../../firebase/config";
 
 // select values
@@ -32,6 +32,7 @@ export default function NewProject() {
   const { addDocument, response } = useFirestore("projects");
   const History = useHistory();
   const editorRef = useRef(null);
+  const [initValue, setInitValue] = useState("Write something");
 
   const SELECT_STAKEHOLDER_KEY = "SelectStakeholder";
   const SELECT_ASSIGNEE_KEY = "SelectAssignee";
@@ -52,9 +53,22 @@ export default function NewProject() {
   const handleEditorChange = () => {
     if (editorRef.current) {
       let texts = editorRef.current.getContent();
-      console.log(texts);
       setTexts(texts);
     }
+  };
+
+  const localSave = (e) => {
+    e.preventDefault();
+    if (editorRef.current) {
+      let texts = editorRef.current.getContent();
+      windowStorage.setItem("localContent", texts);
+    }
+  };
+
+  const localLoad = (e) => {
+    e.preventDefault();
+    let localContent = windowStorage.getItem("localContent");
+    setTexts(localContent);
   };
 
   const handleSubmit = async (e) => {
@@ -117,15 +131,12 @@ export default function NewProject() {
       setProjectName(windowStorage.getItem("projectName"));
     if (windowStorage.getItem("dueDate"))
       setDueDate(windowStorage.getItem("dueDate"));
-    // if (windowStorage.getItem("Contents"))
-    //   setTexts(windowStorage.getItem("Contents"));
   }, []);
 
   ///////////  NOTE: Local storage //////////////////
   useEffect(() => {
     windowStorage.setItem("projectName", projectName);
     windowStorage.setItem("dueDate", dueDate);
-    // windowStorage.setItem("EditContent", texts);
   }, [projectName, dueDate]);
 
   const handleStakeholder = (s) => {
@@ -155,9 +166,14 @@ export default function NewProject() {
     const lastAssignee = JSON.parse(
       windowStorage.getItem(SELECT_ASSIGNEE_KEY) ?? "[]"
     );
+    // NOTE: not working
+    const lastContent = windowStorage.getItem("");
+
     setStakeholder(lastStakeholder);
     setStatus(lastStatus);
     setAssignee(lastAssignee);
+    //NOTE: Not working
+    // setTexts(lastContent)
   }, []);
 
   /////////////////////////////////////////////
@@ -181,11 +197,17 @@ export default function NewProject() {
           <Editor
             onInit={(evt, editor) => (editorRef.current = editor)}
             textareaName="description"
-            initialValue={"Write something here"}
+            initialValue={initValue}
             init={{
               selector: "textarea",
               height: 500,
               menubar: true,
+              setup: function (editor) {
+                editor.on("init", function (e) {
+                  editor.setContent(windowStorage.getItem("localContent"));
+                });
+              },
+              // autosave_interval: "1s",
               // mobile: {
               //   menubar: true,
               // },
@@ -199,8 +221,6 @@ export default function NewProject() {
                 "export",
                 "lists",
                 "link",
-
-                // "image",
                 "charmap",
                 "preview",
                 "anchor",
@@ -215,57 +235,65 @@ export default function NewProject() {
                 "autoresize",
               ],
               toolbar:
-                "undo redo | casechange blocks | bold italic backcolor | save |" +
+                "undo redo | restoredraft| casechange blocks | bold italic backcolor | save |" +
                 "alignleft aligncenter alignright alignjustify | " +
                 "bullist numlist checklist outdent indent | removeformat |a11ycheck code table help",
             }}
             onChange={handleEditorChange}
           />
+          <div>
+            <button onClick={localSave}>Save</button>
+            {/* <button onClick={localLoad}>Load</button> */}
+          </div>
         </label>
+        <FormSections>
+          <div>
+            <label>
+              <h4>Due date</h4>
+              <input
+                type="date"
+                value={dueDate}
+                required
+                onChange={(e) => setDueDate(e.target.value)}
+              />
+            </label>
 
-        <label>
-          <h4>Due date</h4>
-          <input
-            type="date"
-            value={dueDate}
-            required
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-        </label>
+            <label>
+              <h4>Main Stakeholders</h4>
+              <Select
+                menuPlacement="auto"
+                // onChange={(options) => setStakeholder(options)}
+                onChange={handleStakeholder}
+                options={STAKEHOLDERS}
+                value={stakeholder}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              <h4>Project Status</h4>
+              <Select
+                menuPlacement="auto"
+                // onChange={(options) => setStatus(options)}
+                onChange={handleStatus}
+                options={STATUS}
+                value={status}
+              />
+            </label>
 
-        <label>
-          <h4>Main Stakeholders</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setStakeholder(options)}
-            onChange={handleStakeholder}
-            options={STAKEHOLDERS}
-            value={stakeholder}
-          />
-        </label>
-
-        <label>
-          <h4>Project Status</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setStatus(options)}
-            onChange={handleStatus}
-            options={STATUS}
-            value={status}
-          />
-        </label>
-
-        <label>
-          <h4>Assignees</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setAssignee(options)}
-            onChange={handleAssignee}
-            options={users}
-            value={assignee}
-            isMulti
-          />
-        </label>
+            <label>
+              <h4>Assignees</h4>
+              <Select
+                menuPlacement="auto"
+                // onChange={(options) => setAssignee(options)}
+                onChange={handleAssignee}
+                options={users}
+                value={assignee}
+                isMulti
+              />
+            </label>
+          </div>
+        </FormSections>
         <div>
           <button>Submit</button>
         </div>

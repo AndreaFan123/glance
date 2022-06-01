@@ -54,3 +54,12 @@ export const From = styled.form`
   width: 100%;
   height: 100%;
 `;
+
+export const FormSections = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: stretch;
+  grid-gap: 20px;
+  padding: 15px 0;
+  font-size: 1.2rem;
+`;

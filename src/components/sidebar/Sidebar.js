@@ -103,12 +103,12 @@ export const LinkArray = [
   {
     label: "Revenue",
     icon: <AiOutlineLineChart />,
-    to: `/revenue`,
+    to: "/revenue",
   },
   {
     label: "Budget",
     icon: <MdAttachMoney />,
-    to: `/budget`,
+    to: "/budget",
   },
 ];
 
