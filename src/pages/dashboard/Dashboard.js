@@ -12,27 +12,24 @@ import { useAuthContext } from "../../hook/useContext";
 import ProjectFilter from "./ProjectFilter";
 import ProjectList from "../../components/projectList/ProjectList";
 import DoughnutChart from "./DoughnutChart";
-import Linechart from "./Linechart";
+
+// import Linechart from "./Linechart";
 // style
 import {
   DashboardWrapper,
-  Links,
-  MrktingWrapper,
-  Icons,
-  IconBG,
   ChartsWrapper,
+  ChartWrapper,
+  div,
 } from "./Dashoboard.styled";
-
-//icons
-import {
-  AiOutlineRead,
-  AiOutlineFund,
-  AiOutlinePartition,
-} from "react-icons/ai";
+import Linechart from "./Linechart";
 
 export default function Dashboard() {
   const { user } = useAuthContext();
-  const { documents, error } = useCollection("projects");
+  // const { documents, error } = useCollection("projects");
+  const { documents, error } = useCollection("projects", null, [
+    "dueDate",
+    "asc",
+  ]);
 
   const [currentFilter, setCurrentFilter] = useState("All");
 
@@ -84,28 +81,36 @@ export default function Dashboard() {
   return (
     <DashboardWrapper>
       <h1>Dashboard</h1>
-      <ChartsWrapper>
+      <div>
         <div>
-          <h3>Budget Expenses</h3>
-          <DoughnutChart />
+          <ChartWrapper>
+            <div>
+              <h3>Revenue</h3>
+              <Linechart />
+            </div>
+          </ChartWrapper>
         </div>
-        <div>
-          <h3>Revenue</h3>
-          <Linechart />
-        </div>
-      </ChartsWrapper>
+      </div>
       <section>
-        <h3>All Projects</h3>
-        {documents && (
-          <ProjectFilter
-            currentFilter={currentFilter}
-            changeFilter={changeFilter}
-          />
-        )}
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        <ChartWrapper>
+          <div>
+            <h3>Budget Expenses</h3>
+            <DoughnutChart />
+          </div>
+        </ChartWrapper>
+        <div>
+          <h3>All Projects</h3>
+          {documents && (
+            <ProjectFilter
+              currentFilter={currentFilter}
+              changeFilter={changeFilter}
+            />
+          )}
+          {error && <p style={{ color: "red" }}>{error}</p>}
 
-        {/* pass documents as a prop so that child component can use */}
-        {projects && <ProjectList projects={projects} />}
+          {/* pass documents as a prop so that child component can use */}
+          {projects && <ProjectList projects={projects} />}
+        </div>
       </section>
     </DashboardWrapper>
   );

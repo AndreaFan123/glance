@@ -9,7 +9,12 @@ import { STAKEHOLDERS, STATUS } from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
 
 // style
-import { FormWrapper, From, FormSections } from "./NewProject.styled";
+import {
+  FormWrapper,
+  From,
+  FormSections,
+  ButtonWrapper,
+} from "./NewProject.styled";
 import { timestamp } from "../../firebase/config";
 
 // select values
@@ -32,12 +37,10 @@ export default function NewProject() {
   const { addDocument, response } = useFirestore("projects");
   const History = useHistory();
   const editorRef = useRef(null);
-  const [initValue, setInitValue] = useState("Write something");
-
-  const SELECT_STAKEHOLDER_KEY = "SelectStakeholder";
-  const SELECT_ASSIGNEE_KEY = "SelectAssignee";
-  const SELECT_STATUS_KEY = "SelectStatus";
+  const [initValue, setInitValue] = useState(initValue ?? "Write something");
   const windowStorage = window.localStorage;
+  const apiKey = "autvx4gcpszihsp19r37ws5e9yi25xdhbng5sunrywcqk41e";
+  // const apiKey = process.env.TINYMCE_APP_API_KEY;
 
   //  NOTE: Get users from document, using useEffect to render all the users
   useEffect(() => {
@@ -68,7 +71,7 @@ export default function NewProject() {
   const localLoad = (e) => {
     e.preventDefault();
     let localContent = windowStorage.getItem("localContent");
-    setTexts(localContent);
+    setInitValue(localContent);
   };
 
   const handleSubmit = async (e) => {
@@ -131,52 +134,22 @@ export default function NewProject() {
       setProjectName(windowStorage.getItem("projectName"));
     if (windowStorage.getItem("dueDate"))
       setDueDate(windowStorage.getItem("dueDate"));
+    if (windowStorage.getItem("stakeholder"))
+      setStakeholder(JSON.parse(windowStorage.getItem("stakeholder")));
+    if (windowStorage.getItem("status"))
+      setStatus(JSON.parse(windowStorage.getItem("status")));
+    if (windowStorage.getItem("assignee"))
+      setAssignee(JSON.parse(windowStorage.getItem("assignee")));
   }, []);
 
   ///////////  NOTE: Local storage //////////////////
   useEffect(() => {
     windowStorage.setItem("projectName", projectName);
     windowStorage.setItem("dueDate", dueDate);
-  }, [projectName, dueDate]);
-
-  const handleStakeholder = (s) => {
-    windowStorage.setItem(SELECT_STAKEHOLDER_KEY, JSON.stringify(s));
-    setStakeholder(s);
-  };
-
-  const handleStatus = (i) => {
-    windowStorage.setItem(SELECT_STATUS_KEY, JSON.stringify(i));
-    setStatus(i);
-  };
-
-  const handleAssignee = (a) => {
-    windowStorage.setItem(SELECT_ASSIGNEE_KEY, JSON.stringify(a));
-    setAssignee(a);
-  };
-
-  useEffect(() => {
-    const lastStakeholder = JSON.parse(
-      windowStorage.getItem(SELECT_STAKEHOLDER_KEY) ?? "[]"
-    );
-
-    const lastStatus = JSON.parse(
-      windowStorage.getItem(SELECT_STATUS_KEY) ?? "[]"
-    );
-
-    const lastAssignee = JSON.parse(
-      windowStorage.getItem(SELECT_ASSIGNEE_KEY) ?? "[]"
-    );
-    // NOTE: not working
-    const lastContent = windowStorage.getItem("");
-
-    setStakeholder(lastStakeholder);
-    setStatus(lastStatus);
-    setAssignee(lastAssignee);
-    //NOTE: Not working
-    // setTexts(lastContent)
-  }, []);
-
-  /////////////////////////////////////////////
+    windowStorage.setItem("stakeholder", JSON.stringify(stakeholder));
+    windowStorage.setItem("status", JSON.stringify(status));
+    windowStorage.setItem("assignee", JSON.stringify(assignee));
+  }, [projectName, dueDate, stakeholder, status, assignee]);
 
   return (
     <FormWrapper>
@@ -198,19 +171,11 @@ export default function NewProject() {
             onInit={(evt, editor) => (editorRef.current = editor)}
             textareaName="description"
             initialValue={initValue}
+            apiKey={apiKey}
             init={{
               selector: "textarea",
               height: 500,
               menubar: true,
-              setup: function (editor) {
-                editor.on("init", function (e) {
-                  editor.setContent(windowStorage.getItem("localContent"));
-                });
-              },
-              // autosave_interval: "1s",
-              // mobile: {
-              //   menubar: true,
-              // },
               plugins: [
                 "a11ychecker",
                 "advlist",
@@ -241,10 +206,10 @@ export default function NewProject() {
             }}
             onChange={handleEditorChange}
           />
-          <div>
+          <ButtonWrapper>
             <button onClick={localSave}>Save</button>
-            {/* <button onClick={localLoad}>Load</button> */}
-          </div>
+            <button onClick={localLoad}>Restore</button>
+          </ButtonWrapper>
         </label>
         <FormSections>
           <div>
@@ -262,8 +227,7 @@ export default function NewProject() {
               <h4>Main Stakeholders</h4>
               <Select
                 menuPlacement="auto"
-                // onChange={(options) => setStakeholder(options)}
-                onChange={handleStakeholder}
+                onChange={(options) => setStakeholder(options)}
                 options={STAKEHOLDERS}
                 value={stakeholder}
               />
@@ -274,8 +238,7 @@ export default function NewProject() {
               <h4>Project Status</h4>
               <Select
                 menuPlacement="auto"
-                // onChange={(options) => setStatus(options)}
-                onChange={handleStatus}
+                onChange={(options) => setStatus(options)}
                 options={STATUS}
                 value={status}
               />
@@ -285,8 +248,7 @@ export default function NewProject() {
               <h4>Assignees</h4>
               <Select
                 menuPlacement="auto"
-                // onChange={(options) => setAssignee(options)}
-                onChange={handleAssignee}
+                onChange={(options) => setAssignee(options)}
                 options={users}
                 value={assignee}
                 isMulti

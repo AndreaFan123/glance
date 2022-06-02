@@ -53,9 +53,9 @@ export default function DoughnutChart() {
   }, [documents]);
 
   return (
-    <div style={{ width: "350px", height: "350px" }}>
+    <div style={{ height: "100%", width: "100%" }}>
       {documents && <Doughnut data={chartData} />}
-      {!documents && <h4>{defaultData}</h4>}
+      {!documents || (documents === null && <h4>{defaultData}</h4>)}
     </div>
   );
 }

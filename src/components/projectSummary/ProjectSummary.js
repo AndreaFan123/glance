@@ -41,7 +41,6 @@ export default function Projectsummary({ project }) {
           <h1>{project.projectName}</h1>
           {user.uid === project.createdBy.id && (
             <div>
-              {/* <BsCheck2Circle style={CompleteIcon} /> */}
               <BsXCircle style={DeleteIcon} onClick={handleDelete} />
             </div>
           )}

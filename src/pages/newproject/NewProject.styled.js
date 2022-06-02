@@ -63,3 +63,25 @@ export const FormSections = styled.section`
   padding: 15px 0;
   font-size: 1.2rem;
 `;
+
+export const ButtonWrapper = styled.div`
+  margin-top: 15px;
+  position: relative;
+
+  :last-child {
+    :hover::after {
+      content: "Reload your save content";
+      position: absolute;
+      top: 33px;
+      left: 136px;
+      background-color: ${COLORS.fontColorLight};
+      color: ${COLORS.fontColorDark};
+      padding: 10px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  button {
+    padding: 7px 15px;
+  }
+`;

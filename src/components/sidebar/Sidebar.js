@@ -5,15 +5,11 @@ import Avatar from "../Avatar/Avatar";
 import { useLocation, Link } from "react-router-dom";
 
 import {
-  AiOutlineCalendar,
   AiOutlineAppstore,
   AiOutlineFileAdd,
-  AiOutlineProject,
   AiOutlineLogout,
-  AiOutlineLineChart,
 } from "react-icons/ai";
-import { FiEdit } from "react-icons/fi";
-import { FaChevronRight } from "react-icons/fa";
+import { BsChatDots } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 
 import { useAuthContext } from "../../hook/useContext";
@@ -50,7 +46,6 @@ export default function Sidebar() {
 
         <UserEditIcon to={`/member/${user.uid}`}>
           <p>{user.displayName}</p>
-          {/* <FiEdit /> */}
         </UserEditIcon>
       </UserProfile>
       <SidebarDivider />
@@ -64,8 +59,8 @@ export default function Sidebar() {
                 ? `/create`
                 : `${label}` === "Budget"
                 ? `/budget`
-                : `${label}` === "Revenue"
-                ? `/revenue`
+                : `${label}` === "Chatroom"
+                ? `/chatroom`
                 : null
               // TEST: figure it out how to implement logout here
             }
@@ -77,11 +72,18 @@ export default function Sidebar() {
         </LinkContainer>
       ))}
       <SidebarDivider />
-      {secondaryLinks.map(({ icon, label }) => (
-        <LinkContainer key={label}>
-          <LinkItem to="/" style={!sidebarOpen ? { width: `fit-content` } : {}}>
+      {secondaryLinks.map(({ icon, label, to }) => (
+        <LinkContainer key={label} isActive={pathname === to}>
+          <LinkItem
+            to={to}
+            style={!sidebarOpen ? { width: `fit-content` } : {}}
+          >
             <LinkIcon>{icon}</LinkIcon>
-            {sidebarOpen && <span>{label}</span>}
+
+            {sidebarOpen && !loading && <span onClick={logout}>{label}</span>}
+            {sidebarOpen && loading && (
+              <span onClick={logout}>Logging...out</span>
+            )}
           </LinkItem>
         </LinkContainer>
       ))}
@@ -101,9 +103,9 @@ export const LinkArray = [
     to: "/create",
   },
   {
-    label: "Revenue",
-    icon: <AiOutlineLineChart />,
-    to: "/revenue",
+    label: "Chatroom",
+    icon: <BsChatDots />,
+    to: "/chatroom",
   },
   {
     label: "Budget",
@@ -113,11 +115,6 @@ export const LinkArray = [
 ];
 
 export const secondaryLinks = [
-  // {
-  //   label: "Setting",
-  //   icon: <AiOutlineSetting />,
-  //   to: "/setting",
-  // },
   {
     label: "Logout",
     icon: <AiOutlineLogout />,

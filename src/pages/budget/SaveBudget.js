@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EditBudget({ handleEdit, budget }) {
+export default function SaveBudget({ handleEdit, budget }) {
   return (
     <>
       <p>Total Budget : $ {budget}</p>

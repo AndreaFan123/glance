@@ -40,12 +40,12 @@ export const useCollection = (_collection, _query, _orderBy) => {
         // console.log(results);
         if (results) {
           setDocuments(results);
-          console.log(results);
+          // console.log(results);
         }
 
         if (!results) {
           setDocuments(null);
-          console.log(results);
+          // console.log(results);
         }
 
         setError(null);

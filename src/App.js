@@ -10,8 +10,8 @@ import Login from "./pages/login/Login";
 import Project from "./pages/project/Project";
 import NewProject from "./pages/newproject/NewProject";
 import LandingPage from "./pages/landingPage/LandingPage";
-import Revenue from "./pages/revenue/Revenue";
 import Budget from "./pages/budget/Budget";
+import ChatRoom from "./pages/chatroom/ChatRoom";
 // components
 // import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -59,13 +59,9 @@ export default function App() {
                   {user && <Redirect to="/" />}
                   {!user && <Signup />}
                 </Route>
-                {/* <Route path="/member/:id">
-                  {!user && <Redirect to="/" />}
-                  {user && <Member />}
-                </Route> */}
-                <Route path="/revenue">
-                  {!user && <Redirect to="/" />}
-                  {user && <Revenue />}
+                <Route path="/chatroom">
+                  {!user && <Redirect to="/login" />}
+                  {user && <ChatRoom />}
                 </Route>
                 <Route path="/budget">
                   {!user && <Redirect to="/" />}

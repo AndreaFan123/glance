@@ -12,7 +12,7 @@ export const SideBar = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
     align-items: center;
     width: auto;
 
