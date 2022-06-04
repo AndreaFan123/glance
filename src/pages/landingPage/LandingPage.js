@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 // import background_2 from "../../assets/background_2.svg";
 
 import FooterCom from "../../components/footer/FooterCom";

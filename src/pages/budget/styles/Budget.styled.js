@@ -25,12 +25,12 @@ export const ExpenseGrid = styled.section`
   h3 {
     color: ${COLORS.mainColor};
     padding-bottom: 20px;
-    color: ${COLORS.fontColorLight};
+    color: ${COLORS.mainColor};
   }
 `;
 
-export const AddExpenseCard = styled.div`
+export const ExpenseSecton = styled.div`
   padding: 25px;
-  background-color: ${COLORS.mainColor};
+  border: 2px solid ${COLORS.mainColor};
   border-radius: 5px;
 `;

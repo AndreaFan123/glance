@@ -10,19 +10,15 @@ import Login from "./pages/login/Login";
 import Project from "./pages/project/Project";
 import NewProject from "./pages/newproject/NewProject";
 import LandingPage from "./pages/landingPage/LandingPage";
-import Member from "./pages/mamber/Member";
-import Kanban from "./pages/kanban/Kanban";
 import Budget from "./pages/budget/Budget";
+import ChatRoom from "./pages/chatroom/ChatRoom";
 // components
-import Navbar from "./components/navbar/Navbar";
+// import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
-import OnlineUser from "./components/online/OnlineUser";
+// import OnlineUser from "./components/online/OnlineUser";
 //styles
 import { GlobalStyles } from "./global-style/Global.styled";
 import { AppWrapper, Container } from "./App.styled";
-import Okr from "./pages/marketing/Okr";
-import Doc from "./pages/marketing/Doc";
-import Marketing from "./pages/marketing/Marketing";
 
 // import FooterCom from "./components/footer/FooterCom";
 
@@ -63,34 +59,14 @@ export default function App() {
                   {user && <Redirect to="/" />}
                   {!user && <Signup />}
                 </Route>
-                <Route path="/member/:id">
-                  {!user && <Redirect to="/" />}
-                  {user && <Member />}
+                <Route path="/chatroom">
+                  {!user && <Redirect to="/login" />}
+                  {user && <ChatRoom />}
                 </Route>
-                <Route path="/kanban/:id">
-                  {!user && <Redirect to="/" />}
-                  {user && <Kanban />}
-                </Route>
-                <Route path="/budget/:id">
+                <Route path="/budget">
                   {!user && <Redirect to="/" />}
                   {user && <Budget />}
                 </Route>
-                <Route path="/marketing/okr">
-                  {!user && <Redirect to="/" />}
-                  {user && <Okr />}
-                </Route>
-                <Route path="/marketing/doc">
-                  {!user && <Redirect to="/" />}
-                  {user && <Doc />}
-                </Route>
-                <Route path="/marketing/revenue">
-                  {!user && <Redirect to="/" />}
-                  {user && <Marketing />}
-                </Route>
-                {/* <Route path={"*"}>
-                  {user && <Redirect to="/notfound" />}
-                  {!user && <LandingPage />}
-                </Route> */}
               </Switch>
             </Container>
             {/* {user && <OnlineUser />} */}

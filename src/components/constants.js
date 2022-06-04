@@ -23,7 +23,7 @@ export const COLORS = {
   statusDelay: "hsl(0,71%,50%)",
   statusCancelled: "hsl(0,0%,70%)",
 
-  spentBGcolor: "hsl(43,100%,70%)",
+  spentBGcolor: "hsl(342,100%,90%)",
   remainBGColor: "hsl(228,50%,70%)",
   totalBudgetColor: "hsl(342,100%,90%)",
 };

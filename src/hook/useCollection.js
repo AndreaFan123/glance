@@ -1,6 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { db } from "../firebase/config";
-import { collection, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  getDoc,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 
 export const useCollection = (_collection, _query, _orderBy) => {
   const [documents, setDocuments] = useState(null);
@@ -8,22 +15,21 @@ export const useCollection = (_collection, _query, _orderBy) => {
 
   // if we don't use a ref --> infinite loop in useEffect
   // _query is an array and is "different" on every function call
-  const query = useRef(_query).current;
-  const orderBy = useRef(_orderBy).current;
+  const queryRef = useRef(_query).current;
+  const orderByRef = useRef(_orderBy).current;
 
   useEffect(() => {
-    let ref = collection(db, _collection);
+    let expenseRef = collection(db, _collection);
     // console.log(ref);
 
-    if (query) {
-      ref = ref.where(...query);
+    if (queryRef) {
+      expenseRef = query(expenseRef, where(...queryRef));
     }
-    if (orderBy) {
-      ref = ref.orderBy(...orderBy);
+    if (orderByRef) {
+      expenseRef = query(expenseRef, orderBy(...orderByRef));
     }
-
     const unsubscribe = onSnapshot(
-      ref,
+      expenseRef,
       (querySnapshot) => {
         let results = [];
         querySnapshot.docs.forEach((doc) => {
@@ -32,7 +38,16 @@ export const useCollection = (_collection, _query, _orderBy) => {
 
         // update state
         // console.log(results);
-        setDocuments(results);
+        if (results) {
+          setDocuments(results);
+          // console.log(results);
+        }
+
+        if (!results) {
+          setDocuments(null);
+          // console.log(results);
+        }
+
         setError(null);
       },
       (error) => {
@@ -43,7 +58,7 @@ export const useCollection = (_collection, _query, _orderBy) => {
 
     // unsubscribe on unmount
     return () => unsubscribe();
-  }, [collection, query, orderBy]);
+  }, [collection, queryRef, orderByRef]);
 
   return { documents, error };
 };

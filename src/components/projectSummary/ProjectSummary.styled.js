@@ -5,7 +5,7 @@ export const DetailsWrapper = styled.div`
   border: 1px solid ${COLORS.borderLight};
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  padding: 25px;
+  padding: 30px;
   color: ${COLORS.fontColorDark};
   font-family: sans-serif;
   font-size: 1rem;

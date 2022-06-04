@@ -5,15 +5,11 @@ import Avatar from "../Avatar/Avatar";
 import { useLocation, Link } from "react-router-dom";
 
 import {
-  AiOutlineCalendar,
   AiOutlineAppstore,
   AiOutlineFileAdd,
-  AiOutlineProject,
   AiOutlineLogout,
-  AiOutlineSetting,
 } from "react-icons/ai";
-import { FiEdit } from "react-icons/fi";
-import { FaChevronRight } from "react-icons/fa";
+import { BsChatDots } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 
 import { useAuthContext } from "../../hook/useContext";
@@ -35,21 +31,21 @@ export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const { pathname } = useLocation();
   return (
-    <SideBar isOpen={sidebarOpen}>
-      <>
+    //isOpen={sidebarOpen}
+    <SideBar>
+      {/* <>
         <SidebarBtn
           isOpen={sidebarOpen}
           onClick={() => setSidebarOpen((sidebarOpen) => !sidebarOpen)}
         >
           <FaChevronRight />
         </SidebarBtn>
-      </>
+      </> */}
       <UserProfile>
         <Avatar src={user.photoURL} />
 
         <UserEditIcon to={`/member/${user.uid}`}>
           <p>{user.displayName}</p>
-          <FiEdit />
         </UserEditIcon>
       </UserProfile>
       <SidebarDivider />
@@ -62,10 +58,11 @@ export default function Sidebar() {
                 : `${label}` === "Add Project"
                 ? `/create`
                 : `${label}` === "Budget"
-                ? `/${label}/${user.uid}`
-                : `${label}` === "Kanban"
-                ? `/${label}/${user.uid}`
+                ? `/budget`
+                : `${label}` === "Chatroom"
+                ? `/chatroom`
                 : null
+              // TEST: figure it out how to implement logout here
             }
             style={!sidebarOpen ? { width: `fit-content` } : {}}
           >
@@ -75,11 +72,18 @@ export default function Sidebar() {
         </LinkContainer>
       ))}
       <SidebarDivider />
-      {secondaryLinks.map(({ icon, label }) => (
-        <LinkContainer key={label}>
-          <LinkItem to="/" style={!sidebarOpen ? { width: `fit-content` } : {}}>
+      {secondaryLinks.map(({ icon, label, to }) => (
+        <LinkContainer key={label} isActive={pathname === to}>
+          <LinkItem
+            to={to}
+            style={!sidebarOpen ? { width: `fit-content` } : {}}
+          >
             <LinkIcon>{icon}</LinkIcon>
-            {sidebarOpen && <span>{label}</span>}
+
+            {sidebarOpen && !loading && <span onClick={logout}>{label}</span>}
+            {sidebarOpen && loading && (
+              <span onClick={logout}>Logging...out</span>
+            )}
           </LinkItem>
         </LinkContainer>
       ))}
@@ -99,23 +103,18 @@ export const LinkArray = [
     to: "/create",
   },
   {
-    label: "Kanban",
-    icon: <AiOutlineProject />,
-    to: `/kanban/:id`,
+    label: "Chatroom",
+    icon: <BsChatDots />,
+    to: "/chatroom",
   },
   {
     label: "Budget",
     icon: <MdAttachMoney />,
-    to: `/budget/:id`,
+    to: "/budget",
   },
 ];
 
 export const secondaryLinks = [
-  {
-    label: "Setting",
-    icon: <AiOutlineSetting />,
-    to: "/setting",
-  },
   {
     label: "Logout",
     icon: <AiOutlineLogout />,

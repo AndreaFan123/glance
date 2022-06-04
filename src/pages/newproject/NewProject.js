@@ -5,15 +5,16 @@ import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
 import { useFirestore } from "../../hook/useFirestore";
 import Select from "react-select";
-import {
-  STAKEHOLDERS,
-  STATUS,
-  BUDGETCATEGORY,
-} from "../../components/constants";
+import { STAKEHOLDERS, STATUS } from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
 
 // style
-import { FormWrapper, From } from "./NewProject.styled";
+import {
+  FormWrapper,
+  From,
+  FormSections,
+  ButtonWrapper,
+} from "./NewProject.styled";
 import { timestamp } from "../../firebase/config";
 
 // select values
@@ -25,8 +26,6 @@ export default function NewProject() {
   const [dueDate, setDueDate] = useState("");
   const [stakeholder, setStakeholder] = useState("");
   const [status, setStatus] = useState("");
-  // const [budget, setBudget] = useState("")
-  // const [budgetCategory, setBudgetCategory ] = useState([])
   const [assignee, setAssignee] = useState([]);
   //  NOTE: hooks below
   //NOTE: users is the collection in firestore, documents are an array contains all user info
@@ -38,12 +37,10 @@ export default function NewProject() {
   const { addDocument, response } = useFirestore("projects");
   const History = useHistory();
   const editorRef = useRef(null);
-
-  const SELECT_STAKEHOLDER_KEY = "SelectStakeholder";
-  const SELECT_ASSIGNEE_KEY = "SelectAssignee";
-  const SELECT_STATUS_KEY = "SelectStatus";
-  const SELECT_BGT_KEY = "BudgetCategory";
+  const [initValue, setInitValue] = useState(initValue ?? "Write something");
   const windowStorage = window.localStorage;
+  const apiKey = "autvx4gcpszihsp19r37ws5e9yi25xdhbng5sunrywcqk41e";
+  // const apiKey = process.env.TINYMCE_APP_API_KEY;
 
   //  NOTE: Get users from document, using useEffect to render all the users
   useEffect(() => {
@@ -59,9 +56,22 @@ export default function NewProject() {
   const handleEditorChange = () => {
     if (editorRef.current) {
       let texts = editorRef.current.getContent();
-      console.log(texts);
       setTexts(texts);
     }
+  };
+
+  const localSave = (e) => {
+    e.preventDefault();
+    if (editorRef.current) {
+      let texts = editorRef.current.getContent();
+      windowStorage.setItem("localContent", texts);
+    }
+  };
+
+  const localLoad = (e) => {
+    e.preventDefault();
+    let localContent = windowStorage.getItem("localContent");
+    setInitValue(localContent);
   };
 
   const handleSubmit = async (e) => {
@@ -124,56 +134,22 @@ export default function NewProject() {
       setProjectName(windowStorage.getItem("projectName"));
     if (windowStorage.getItem("dueDate"))
       setDueDate(windowStorage.getItem("dueDate"));
-    // if (windowStorage.getItem("Contents"))
-    //   setTexts(windowStorage.getItem("Contents"));
+    if (windowStorage.getItem("stakeholder"))
+      setStakeholder(JSON.parse(windowStorage.getItem("stakeholder")));
+    if (windowStorage.getItem("status"))
+      setStatus(JSON.parse(windowStorage.getItem("status")));
+    if (windowStorage.getItem("assignee"))
+      setAssignee(JSON.parse(windowStorage.getItem("assignee")));
   }, []);
 
+  ///////////  NOTE: Local storage //////////////////
   useEffect(() => {
     windowStorage.setItem("projectName", projectName);
     windowStorage.setItem("dueDate", dueDate);
-    // windowStorage.setItem("EditContent", texts);
-  }, [projectName, dueDate]);
-
-  const handleStakeholder = (s) => {
-    windowStorage.setItem(SELECT_STAKEHOLDER_KEY, JSON.stringify(s));
-    setStakeholder(s);
-  };
-
-  const handleStatus = (i) => {
-    windowStorage.setItem(SELECT_STATUS_KEY, JSON.stringify(i));
-    setStatus(i);
-  };
-
-  const handleAssignee = (a) => {
-    windowStorage.setItem(SELECT_ASSIGNEE_KEY, JSON.stringify(a));
-    setAssignee(a);
-  };
-
-  // TEST: 這邊處理預算種類並儲存在 local storage
-  /* 
-  const handleBgtCategory = (b) => {
-    windowStorage.setItem(SELECT_BGT_KEY, JSON.stringify(b))
-    setBudget(b)
-  }
-
-  */
-
-  useEffect(() => {
-    const lastStakeholder = JSON.parse(
-      windowStorage.getItem(SELECT_STAKEHOLDER_KEY) ?? "[]"
-    );
-
-    const lastStatus = JSON.parse(
-      windowStorage.getItem(SELECT_STATUS_KEY) ?? "[]"
-    );
-
-    const lastAssignee = JSON.parse(
-      windowStorage.getItem(SELECT_ASSIGNEE_KEY) ?? "[]"
-    );
-    setStakeholder(lastStakeholder);
-    setStatus(lastStatus);
-    setAssignee(lastAssignee);
-  }, []);
+    windowStorage.setItem("stakeholder", JSON.stringify(stakeholder));
+    windowStorage.setItem("status", JSON.stringify(status));
+    windowStorage.setItem("assignee", JSON.stringify(assignee));
+  }, [projectName, dueDate, stakeholder, status, assignee]);
 
   return (
     <FormWrapper>
@@ -194,9 +170,12 @@ export default function NewProject() {
           <Editor
             onInit={(evt, editor) => (editorRef.current = editor)}
             textareaName="description"
-            initialValue={"Write something here"}
+            initialValue={initValue}
+            apiKey={apiKey}
             init={{
-              menubar: false,
+              selector: "textarea",
+              height: 500,
+              menubar: true,
               plugins: [
                 "a11ychecker",
                 "advlist",
@@ -207,7 +186,6 @@ export default function NewProject() {
                 "export",
                 "lists",
                 "link",
-                "image",
                 "charmap",
                 "preview",
                 "anchor",
@@ -219,86 +197,65 @@ export default function NewProject() {
                 "insertdatetime",
                 "media",
                 "table",
-                "help",
-                "wordcount",
+                "autoresize",
               ],
               toolbar:
-                "undo redo | casechange blocks | bold italic backcolor | " +
+                "undo redo | restoredraft| casechange blocks | bold italic backcolor | save |" +
                 "alignleft aligncenter alignright alignjustify | " +
-                "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help",
+                "bullist numlist checklist outdent indent | removeformat |a11ycheck code table help",
             }}
             onChange={handleEditorChange}
           />
+          <ButtonWrapper>
+            <button onClick={localSave}>Save</button>
+            <button onClick={localLoad}>Restore</button>
+          </ButtonWrapper>
         </label>
-        {/* TEST: Separate forms into 2 parts */}
-        {/* <section> */}
-        {/* NOTE: first part of form */}
-        {/* <div> */}
-        <label>
-          <h4>Due date</h4>
-          <input
-            type="date"
-            value={dueDate}
-            required
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-        </label>
+        <FormSections>
+          <div>
+            <label>
+              <h4>Due date</h4>
+              <input
+                type="date"
+                value={dueDate}
+                required
+                onChange={(e) => setDueDate(e.target.value)}
+              />
+            </label>
 
-        <label>
-          <h4>Main Stakeholders</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setStakeholder(options)}
-            onChange={handleStakeholder}
-            options={STAKEHOLDERS}
-            value={stakeholder}
-          />
-        </label>
+            <label>
+              <h4>Main Stakeholders</h4>
+              <Select
+                menuPlacement="auto"
+                onChange={(options) => setStakeholder(options)}
+                options={STAKEHOLDERS}
+                value={stakeholder}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              <h4>Project Status</h4>
+              <Select
+                menuPlacement="auto"
+                onChange={(options) => setStatus(options)}
+                options={STATUS}
+                value={status}
+              />
+            </label>
 
-        <label>
-          <h4>Project Status</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setStatus(options)}
-            onChange={handleStatus}
-            options={STATUS}
-            value={status}
-          />
-        </label>
-
-        <label>
-          <h4>Assignees</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setAssignee(options)}
-            onChange={handleAssignee}
-            options={users}
-            value={assignee}
-            isMulti
-          />
-        </label>
-        {/* </div> */}
-
-        {/* NOTE: second part of form */}
-        {/* <div> */}
-        {/* TEST: budget category setup */}
-        {/* <label>
-        <h4>Budget Category</h4>
-          <Select
-            menuPlacement="auto"
-            // onChange={(options) => setAssignee(options)}
-            onChange={handleBudget}
-            options={BUDGETCATEGORY}
-            value={budgetCategory}
-            isMulti
-          />
-        </label>
-
-        <label>
-        <h4>Amount</h4>
-        </label>
-        </div>
-        </section> */}
+            <label>
+              <h4>Assignees</h4>
+              <Select
+                menuPlacement="auto"
+                onChange={(options) => setAssignee(options)}
+                options={users}
+                value={assignee}
+                isMulti
+              />
+            </label>
+          </div>
+        </FormSections>
         <div>
           <button>Submit</button>
         </div>

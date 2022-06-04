@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { COLORS } from "../../components/constants";
-import { Link } from "react-router-dom";
 
 export const DashboardWrapper = styled.div`
   padding: 20px;
@@ -24,47 +23,42 @@ export const DashboardWrapper = styled.div`
   }
 `;
 
-export const MrktingWrapper = styled.div`
-  /* width: 1060px;
-  max-width: 1200px;
-  margin: 35px auto; */
+// export const ChartsWrapper = styled.section`
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//   justify-items: center;
+//   grid-gap: 30px;
+//   padding: 30px 0;
+//   font-size: 1.2rem;
+//   border-radius: 5px;
+//   border: 1px solid ${COLORS.borderMedium};
+//   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+// `;
+
+export const ChartsWrapper = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center;
-  align-items: center;
-  grid-gap: 10px;
-  padding-bottom: 50px;
+  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  margin: 30px 0;
+
+  h3 {
+    text-align: center;
+  }
 `;
 
-export const Links = styled(Link)`
-  text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: ${COLORS.fontColorDark};
-  width: 100%;
-  height: 200px;
-  border-radius: 5px;
-  border: 1px solid ${COLORS.borderMedium};
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+export const ChartWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid ${COLORS.borderMedium};
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  padding: 20px;
 `;
 
-export const IconBG = styled.div`
-  width: 70px;
-  height: 70px;
-  background-color: ${COLORS.iconBgColor};
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const SecondPart = styled.section`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  margin: 30px 0;
 `;
-
-export const Icons = {
-  fontSize: "3rem",
-  color: `${COLORS.iconColor}`,
-};
