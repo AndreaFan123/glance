@@ -153,7 +153,7 @@ export default function NewProject() {
 
   return (
     <FormWrapper>
-      <h2>Add project</h2>
+      <h1>Add project</h1>
       <From onSubmit={handleSubmit}>
         <label>
           <h4>Project Subject</h4>
@@ -202,7 +202,7 @@ export default function NewProject() {
               toolbar:
                 "undo redo | restoredraft| casechange blocks | bold italic backcolor | save |" +
                 "alignleft aligncenter alignright alignjustify | " +
-                "bullist numlist checklist outdent indent | removeformat |a11ycheck code table help",
+                "bullist numlist checklist outdent indent",
             }}
             onChange={handleEditorChange}
           />

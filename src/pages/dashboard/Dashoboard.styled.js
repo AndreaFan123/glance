@@ -21,25 +21,19 @@ export const DashboardWrapper = styled.div`
     color: ${COLORS.mainColor};
     margin-bottom: 15px;
   }
-`;
 
-// export const ChartsWrapper = styled.section`
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-//   justify-items: center;
-//   grid-gap: 30px;
-//   padding: 30px 0;
-//   font-size: 1.2rem;
-//   border-radius: 5px;
-//   border: 1px solid ${COLORS.borderMedium};
-//   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
-// `;
+  @media screen and (max-width: 600px) {
+    margin: 20px auto 50px auto;
+  }
+`;
 
 export const ChartsWrapper = styled.section`
   display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 20px;
-  margin: 30px 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: stretch;
+  grid-gap: 30px;
+  padding: 30px 0;
+  font-size: 1.2rem;
 
   h3 {
     text-align: center;
@@ -53,7 +47,7 @@ export const ChartWrapper = styled.div`
   border-radius: 5px;
   border: 1px solid ${COLORS.borderMedium};
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
-  padding: 20px;
+  padding: 15px;
 `;
 
 export const SecondPart = styled.section`

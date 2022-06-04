@@ -6,17 +6,16 @@ export const Space = styled.div`
 `;
 
 export const ProjectDetailWrapper = styled.div`
-  /* margin: 40px 30px 25px 30px; */
   max-width: 1200px;
   margin: 40px;
   display: grid;
-  /* grid-template-columns: 3fr 2fr; */
+
   grid-gap: 20px;
 
-  @media (max-width: 834px) {
+  @media (max-width: 600px) {
     display: grid;
-    /* grid-template-columns: none; */
-    grid-template-rows: 3fr 2fr;
+    grid-template-rows: 3fr;
+    margin: 20px 0px 40px 0px;
   }
 `;
 

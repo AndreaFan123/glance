@@ -36,5 +36,6 @@ export const BudgetCard = styled.div`
 
   @media screen and (max-width: 430px) {
     flex-direction: column;
+    justify-content: center;
   }
 `;

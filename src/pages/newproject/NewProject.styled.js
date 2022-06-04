@@ -3,24 +3,22 @@ import styled from "styled-components";
 import { COLORS } from "../../components/constants";
 
 export const FormWrapper = styled.div`
-  padding: 30px;
-  /* width: 1060px; */
+  padding: 20px;
   max-width: 1200px;
-  margin: 40px;
-  /* height: 100vh; */
-  /* border: 1px solid ${COLORS.fontColorMedium}; */
+  margin: 40px auto 0 auto;
 
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
+  h1 {
+    font-size: 2rem;
+    font-weight: 900;
     color: ${COLORS.mainColor};
     margin-bottom: 20px;
+    border-bottom: 2px solid ${COLORS.mainColor};
   }
 
   label {
     display: block;
     font-size: 1rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   h4 {
@@ -32,6 +30,7 @@ export const FormWrapper = styled.div`
   input,
   textarea {
     width: 100%;
+    max-width: 100%;
     padding: 5px;
     border: 1px solid ${COLORS.borderLight};
     border-radius: 5px;
@@ -48,6 +47,11 @@ export const FormWrapper = styled.div`
     margin-right: 15px;
     border-radius: 8px;
   }
+
+  @media screen and (max-width: 600px) {
+    margin: 20px auto 30px auto;
+    padding: 0 20px 50px 20px;
+  }
 `;
 
 export const From = styled.form`
@@ -56,10 +60,6 @@ export const From = styled.form`
 `;
 
 export const FormSections = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  justify-items: stretch;
-  grid-gap: 20px;
   padding: 15px 0;
   font-size: 1.2rem;
 `;
@@ -83,5 +83,9 @@ export const ButtonWrapper = styled.div`
 
   button {
     padding: 7px 15px;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin-top: 10px;
   }
 `;
