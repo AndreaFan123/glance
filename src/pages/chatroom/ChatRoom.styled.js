@@ -38,19 +38,23 @@ export const ChatRoomWrapper = styled.main`
     margin: 0;
     padding: 3px;
     border: none;
-    height: 60vh;
+    height: 70vh;
   }
 
   @media screen and (max-width: 400px) {
     margin: 0;
     border: none;
     padding: 3px;
-    height: 70vh;
+    height: 67vh;
   }
 `;
 
 export const FormWrapper = styled.div`
   margin: 0 20px 0 20px;
+
+  @media screen and (max-width: 600px) {
+    margin: 0;
+  }
 
   @media screen and (max-width: 400px) {
     margin: 0;
@@ -102,6 +106,11 @@ export const FlexNormal = styled.div`
 
     :disabled {
       background-color: ${COLORS.mainColorMedium};
+    }
+
+    @media screen and (max-width: 600px) {
+      border-radius: 0;
+      border-top: 3px solid ${COLORS.mainColor};
     }
 
     @media screen and (max-width: 400px) {

@@ -49,7 +49,7 @@ export const FormWrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 45px auto 30px auto;
+    margin: 20px auto 30px auto;
     padding: 0 20px 50px 20px;
   }
 `;

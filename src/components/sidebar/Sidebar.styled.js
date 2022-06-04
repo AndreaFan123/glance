@@ -28,7 +28,7 @@ export const SideBar = styled.div`
 
     position: fixed;
     left: 50%;
-    bottom: -20px;
+    bottom: -30px;
     transform: translate(-50%, -50%);
     align-items: center;
     width: fit-content;

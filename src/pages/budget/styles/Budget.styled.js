@@ -14,11 +14,7 @@ export const BudgetWrapper = styled.section`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 80px auto 0 auto;
-  }
-
-  @media screen and (max-width: 400px) {
-    margin: 120px auto 0 auto;
+    margin: 20px auto 0 auto;
   }
 `;
 

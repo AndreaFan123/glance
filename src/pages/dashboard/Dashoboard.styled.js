@@ -23,21 +23,9 @@ export const DashboardWrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 40px auto 50px auto;
+    margin: 20px auto 50px auto;
   }
 `;
-
-// export const ChartsWrapper = styled.section`
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-//   justify-items: center;
-//   grid-gap: 30px;
-//   padding: 30px 0;
-//   font-size: 1.2rem;
-//   border-radius: 5px;
-//   border: 1px solid ${COLORS.borderMedium};
-//   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
-// `;
 
 export const ChartsWrapper = styled.section`
   display: grid;
