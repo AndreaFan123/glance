@@ -35,15 +35,17 @@ export const ChatRoomWrapper = styled.main`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 40px 20px 0 20px;
-    height: 80vh;
+    margin: 0;
+    padding: 3px;
+    border: none;
+    height: 60vh;
   }
 
   @media screen and (max-width: 400px) {
     margin: 0;
     border: none;
     padding: 3px;
-    height: 85vh;
+    height: 70vh;
   }
 `;
 
@@ -69,6 +71,11 @@ export const FlexStretch = styled.div`
     border: 3px solid ${COLORS.mainColor};
     border-top: 0;
     border-radius: 0 0 0 5px;
+
+    @media screen and (max-width: 600px) {
+      border-radius: 0;
+      border-top: 3px solid ${COLORS.mainColor};
+    }
 
     @media screen and (max-width: 400px) {
       border-radius: 0;

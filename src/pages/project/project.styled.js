@@ -15,7 +15,7 @@ export const ProjectDetailWrapper = styled.div`
   @media (max-width: 600px) {
     display: grid;
     grid-template-rows: 3fr;
-    margin: 40px 10px 40px 10px;
+    margin: 20px 0px 40px 0px;
   }
 `;
 
