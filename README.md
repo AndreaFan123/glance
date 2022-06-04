@@ -25,7 +25,7 @@ This project is inspired by Netninja's [React course](https://www.udemy.com/cour
 - User can click login button to switch page from signup to login
 - User needs to upload a photo, if size of the photo is over 100kb, it will show warning.
   ![Signup](src/docs/sign-up.png)
-- Login UI
+- Login UI, user can click signup to switch page for signing up.
   ![Login](src/docs/login.png)
 
 ### Dashboard
