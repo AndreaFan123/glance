@@ -11,18 +11,46 @@ export const SideBar = styled.div`
   padding: 24px 15px;
   display: flex;
   flex-direction: column;
+  /* align-items: ${({ isOpen }) => (!isOpen ? `center` : ``)}; */
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1200px) {
     align-items: center;
     width: auto;
+    span {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    /* position: fixed; */
+    z-index: 10;
+    /* left: 15%; */
+    bottom: 0;
+
+    position: fixed;
+    left: 50%;
+    bottom: -20px;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    width: fit-content;
+    flex-direction: revert;
+    min-height: 20px;
+    height: 60px;
+    padding: 0;
+    justify-content: space-evenly;
+    border-radius: 50px;
+    background: linear-gradient(
+      90deg,
+      rgba(30, 47, 107, 1) 0%,
+      rgba(20, 20, 100, 1) 95%
+    );
 
     span {
       display: none;
     }
   }
 
-  @media screen and (max-width: 390px) {
-  }
+  /* @media screen and (max-width: 390px) {
+  } */
 `;
 
 export const SidebarBtn = styled.button`
@@ -42,11 +70,6 @@ export const SidebarBtn = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
-  @media screen and (max-width: 561px) {
-    top: 153px;
-    right: 1px;
-  } ;
 `;
 
 export const UserProfile = styled.div`
@@ -60,6 +83,12 @@ export const UserProfile = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: row;
+    width: auto;
+    margin: 0 15px;
+  }
 `;
 
 export const UserPhoto = styled.div`
@@ -87,6 +116,10 @@ export const UserEditIcon = styled(Link)`
   :hover {
     color: ${COLORS.iconBgColor};
   }
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const SidebarDivider = styled.div`
@@ -94,6 +127,10 @@ export const SidebarDivider = styled.div`
   height: 1px;
   width: 100%;
   margin: 24px 0;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const LinkContainer = styled.div`
@@ -106,6 +143,10 @@ export const LinkContainer = styled.div`
   :hover {
     box-shadow: inset 0 0 0 1px rgb(230, 230, 230);
   }
+
+  @media screen and (max-width: 600px) {
+    margin: 0 10px;
+  }
 `;
 
 export const LinkItem = styled(Link)`
@@ -115,6 +156,10 @@ export const LinkItem = styled(Link)`
   font-size: 1.2rem;
   color: ${COLORS.fontColorLight};
   padding: 6px 0;
+
+  @media screen and (max-width: 600px) {
+    padding: 0px;
+  }
 `;
 
 export const LinkIcon = styled.div`

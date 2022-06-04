@@ -4,6 +4,7 @@ export const COLORS = {
   mainColor: "hsl(227,56%,27%)",
   mainColorMedium: "hsl(227,28%,40%)",
   mainColorLight: "hsl(228,19%,55%)",
+  mainColorLighter: "hsl(250,60%,55%)",
 
   fontColorDark: "hsl(0,0%,20%)",
   fontColorMedium: "hsl(0,0%,47%)",

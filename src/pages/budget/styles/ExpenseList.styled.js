@@ -34,8 +34,8 @@ export const ExpenseFlexVer = styled.div`
     border-radius: 20px;
     font-weight: 700;
     font-size: 0.8rem;
-    color: ${COLORS.iconColor};
-    background-color: ${COLORS.iconBgColor};
+    color: ${COLORS.fontColorLight};
+    background-color: ${COLORS.mainColorMedium};
     margin-right: 10px;
   }
 `;

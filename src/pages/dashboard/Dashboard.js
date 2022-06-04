@@ -13,7 +13,6 @@ import ProjectFilter from "./ProjectFilter";
 import ProjectList from "../../components/projectList/ProjectList";
 import DoughnutChart from "./DoughnutChart";
 
-// import Linechart from "./Linechart";
 // style
 import {
   DashboardWrapper,
@@ -21,7 +20,6 @@ import {
   ChartWrapper,
   div,
 } from "./Dashoboard.styled";
-import Linechart from "./Linechart";
 
 export default function Dashboard() {
   const { user } = useAuthContext();
@@ -81,23 +79,13 @@ export default function Dashboard() {
   return (
     <DashboardWrapper>
       <h1>Dashboard</h1>
-      <div>
-        <div>
-          <ChartWrapper>
-            <div>
-              <h3>Revenue</h3>
-              <Linechart />
-            </div>
-          </ChartWrapper>
-        </div>
-      </div>
-      <section>
+      <ChartsWrapper>
         <ChartWrapper>
-          <div>
-            <h3>Budget Expenses</h3>
-            <DoughnutChart />
-          </div>
+          <h3>Budget Expenses</h3>
+          <DoughnutChart />
         </ChartWrapper>
+      </ChartsWrapper>
+      <section>
         <div>
           <h3>All Projects</h3>
           {documents && (

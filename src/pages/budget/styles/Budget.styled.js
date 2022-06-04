@@ -12,6 +12,14 @@ export const BudgetWrapper = styled.section`
     color: ${COLORS.mainColor};
     border-bottom: 2px solid ${COLORS.mainColor};
   }
+
+  @media screen and (max-width: 600px) {
+    margin: 80px auto 0 auto;
+  }
+
+  @media screen and (max-width: 400px) {
+    margin: 120px auto 0 auto;
+  }
 `;
 
 export const ExpenseGrid = styled.section`

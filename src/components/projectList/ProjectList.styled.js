@@ -68,3 +68,13 @@ export const AssigneeWrapper = styled.div`
     list-style: none;
   }
 `;
+
+export const LodeMoreBtn = styled.button`
+  margin: 20px 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: ${COLORS.mainColor};
+  color: ${COLORS.fontColorLight};
+`;

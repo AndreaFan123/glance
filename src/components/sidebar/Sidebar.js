@@ -78,7 +78,7 @@ export default function Sidebar() {
             to={to}
             style={!sidebarOpen ? { width: `fit-content` } : {}}
           >
-            <LinkIcon>{icon}</LinkIcon>
+            {!loading && <LinkIcon onClick={logout}>{icon}</LinkIcon>}
 
             {sidebarOpen && !loading && <span onClick={logout}>{label}</span>}
             {sidebarOpen && loading && (
