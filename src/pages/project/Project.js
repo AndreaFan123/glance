@@ -9,6 +9,8 @@ import ProjectComment from "../../components/projectComment/ProjectComment";
 export default function Project() {
   const { id } = useParams();
   const { document, error } = useDocument("projects", id);
+  // const { doc, err } = useDocument("expenses");
+  // const {docs, err} = useCollection("expenses")
 
   if (error) {
     return (

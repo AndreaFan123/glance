@@ -103,5 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# tinymce api key
-.env
+# firebase api key
+.config.js

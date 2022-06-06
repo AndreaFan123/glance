@@ -5,7 +5,11 @@ import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
 import { useFirestore } from "../../hook/useFirestore";
 import Select from "react-select";
-import { STAKEHOLDERS, STATUS } from "../../components/constants";
+import {
+  STAKEHOLDERS,
+  STATUS,
+  EXPENSECATEGORY,
+} from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
 
 // style
@@ -26,6 +30,7 @@ export default function NewProject() {
   const [dueDate, setDueDate] = useState("");
   const [stakeholder, setStakeholder] = useState("");
   const [status, setStatus] = useState("");
+
   const [assignee, setAssignee] = useState([]);
   //  NOTE: hooks below
   //NOTE: users is the collection in firestore, documents are an array contains all user info
@@ -40,7 +45,6 @@ export default function NewProject() {
   const [initValue, setInitValue] = useState(initValue ?? "Write something");
   const windowStorage = window.localStorage;
   const apiKey = "autvx4gcpszihsp19r37ws5e9yi25xdhbng5sunrywcqk41e";
-  // const apiKey = process.env.TINYMCE_APP_API_KEY;
 
   //  NOTE: Get users from document, using useEffect to render all the users
   useEffect(() => {
@@ -100,6 +104,8 @@ export default function NewProject() {
       photoURL: user.photoURL,
       id: user.uid,
     };
+
+    //
     //  NOTE:  Clean up objects that we've got from react-select liberary
     const assigneeList = assignee.map((person) => {
       return {
@@ -111,6 +117,7 @@ export default function NewProject() {
 
     //  NOTE: Need to install all project info
     const project = {
+      created: user.displayName,
       projectName,
       texts,
       stakeholder: stakeholder.value,
@@ -127,7 +134,6 @@ export default function NewProject() {
     }
   };
 
-  //TEST: Test store data in localstorage
   //RESULT: TinyMCE will need more time to try it, others are okay
   useEffect(() => {
     if (windowStorage.getItem("projectName"))
