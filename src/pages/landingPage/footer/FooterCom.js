@@ -17,13 +17,16 @@ export default function FooterCom() {
     <Footer>
       <FooterWrapper>
         <TextWrapper>
-          <h1>Glance</h1>
+          <a href="#about">
+            <h1>Glance</h1>
+          </a>
           <p>Andrea Fan &copy; 2022 All Right Reserved</p>
         </TextWrapper>
 
         <LinkWrapper>
-          <Link to="#about">About</Link>
-          <Link to="#about">How it works</Link>
+          <a href="#about">About</a>
+          <a href="#howitworks">How it works</a>
+          <a href="#contact">Contact</a>
         </LinkWrapper>
 
         <IconWrapper>

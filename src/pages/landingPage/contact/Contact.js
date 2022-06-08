@@ -7,7 +7,7 @@ import {
 
 export default function Contact() {
   return (
-    <SectionContainer>
+    <SectionContainer id="contact">
       <ContactWrapper>
         <h2>Let's Connect</h2>
         <p>HIRE me!</p>

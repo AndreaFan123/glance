@@ -10,20 +10,20 @@ export default function Navbar() {
   return (
     <NavbarWrapper>
       <Logo>
-        <li>
+        <div>
           <Link to="/">Glance</Link>
-        </li>
+        </div>
       </Logo>
 
       <NavWrap>
         <li>
-          <NavLink to="#abount">About</NavLink>
+          <a href="#about">About</a>
         </li>
         <li>
-          <NavLink to="#how">How it works</NavLink>
+          <a href="#howitworks">How it works</a>
         </li>
         <li>
-          <NavLink to="#contact">Contact</NavLink>
+          <a href="#contact">Contact</a>
         </li>
       </NavWrap>
       <LoginWrap>

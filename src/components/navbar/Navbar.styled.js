@@ -9,8 +9,8 @@ export const NavbarWrapper = styled.nav`
   align-items: baseline;
   font-size: 1rem;
   padding: 20px 30px;
-  position: fixed;
-  top: 0;
+  /* position: fixed;
+  top: 0; */
 
   ul {
     padding-left: 0;
@@ -24,10 +24,16 @@ export const NavbarWrapper = styled.nav`
     text-decoration: none;
     color: ${COLORS.mainColor};
   }
+
+  @media (max-width: 721px) {
+    ul {
+      display: none;
+    }
+  }
 `;
 
-export const Logo = styled.ul`
-  font-size: 2rem;
+export const Logo = styled.div`
+  font-size: 2.5rem;
   font-weight: 900;
 `;
 
@@ -60,5 +66,22 @@ export const NavWrap = styled.ul`
   display: flex;
   font-size: 1.2rem;
   align-items: baseline;
-  gap: 90px;
+  gap: 70px;
+
+  li {
+    a {
+      text-decoration: none;
+      color: ${COLORS.mainColor};
+
+      &:hover {
+        color: #78ee;
+        border-bottom: 1px solid #78ee;
+      }
+    }
+    &:first-of-type {
+      a {
+        font-weight: 900;
+      }
+    }
+  }
 `;

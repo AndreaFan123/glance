@@ -33,13 +33,11 @@ export const Logo = styled.div`
 
 export const MainWrapper = styled.main`
   max-width: 1200px;
-  margin: 13rem auto;
-  /* padding-top: 4rem;
-  padding-bottom: 5rem; */
+  margin: 3rem auto 0 auto;
 
-  @media (max-width: 721px) {
+  /* @media (max-width: 721px) {
     padding-top: 2rem;
-  }
+  } */
 `;
 
 export const TextWrapper = styled.div`
@@ -49,25 +47,22 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  position: relative;
 
   a {
     font-size: 2rem;
     text-decoration: none;
     border-radius: 5px;
-    color: ${COLORS.mainColor};
-    border: 2px solid ${COLORS.mainColorMedium};
+    color: ${COLORS.fontColorLight};
+    background-color: ${COLORS.mainColor};
     padding: 8px 20px;
-    transition: all 0.3s ease-in-out;
+    transition: 0.3s ease-out;
     &:hover,
     &.active {
-      background-color: ${COLORS.mainColor};
-      color: ${COLORS.fontColorLight};
-      border: none;
+      background-color: transparent;
+      border: 2px solid ${COLORS.mainColorMedium};
+      color: ${COLORS.mainColor};
       border-radius: 15px;
-    }
-
-    &.active {
-      background-color: ${COLORS.mainColor};
     }
   }
 `;
@@ -113,4 +108,20 @@ export const BrandName = styled.h2`
 
 export const SignUpBtn = styled.div`
   margin: 20px 0;
+`;
+
+export const SVGWrapper = styled.div`
+  height: 200px;
+
+  svg {
+    position: absolute;
+    top: -337px;
+    z-index: -10;
+  }
+
+  @media (max-width: 721px) {
+    svg {
+      top: 25px;
+    }
+  }
 `;

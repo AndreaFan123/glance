@@ -1,11 +1,11 @@
 import React from "react";
 import {
   SectionContainer,
-  SectionWrapper,
   ImgWrapper,
   TextWrapper,
   HowitWorksSection,
   HowitWorksGrid,
+  SVGWrapper,
 } from "../sections.styled";
 
 // Images
@@ -15,7 +15,7 @@ import MockupAddProject from "../../../assets/MockupAddProject.png";
 
 export default function How() {
   return (
-    <SectionContainer>
+    <SectionContainer id="howitworks">
       <TextWrapper>
         <h2>How it works</h2>
         <p>

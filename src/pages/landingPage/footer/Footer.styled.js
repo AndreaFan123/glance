@@ -4,24 +4,42 @@ import { COLORS } from "../../../components/constants";
 
 export const Footer = styled.footer`
   width: 100%;
-  height: 150px;
+  max-width: 1920px;
+  margin: 0 auto;
+  height: 200px;
   background-color: ${COLORS.mainColor};
+
+  @media (max-width: 490px) {
+    height: fit-content;
+  }
 `;
 
 export const FooterWrapper = styled.div`
-  max-width: 1400px;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* grid-gap: 30px; */
   justify-items: center;
   align-items: center;
   padding: 20px;
+
+  ul {
+    padding-left: 0px;
+  }
+
+  @media (max-width: 490px) {
+    display: grid;
+    grid-template-columns: none;
+    justify-items: start;
+    grid-gap: 30px;
+  }
 `;
 
 export const TextWrapper = styled.div`
+  a {
+    text-decoration: none;
+  }
   h1 {
     font-size: 3rem;
     /* color: ${COLORS.fontColorLight}; */

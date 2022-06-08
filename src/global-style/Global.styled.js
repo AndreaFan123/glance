@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { COLORS } from "../components/constants";
 
 export const GlobalStyles = createGlobalStyle`
   /* @import url("https://fonts.googleapis.com/css2?family=Nunito"); */
@@ -44,6 +45,15 @@ export const GlobalStyles = createGlobalStyle`
 
   #root, #__next {
   isolation: isolate;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: ${COLORS.mainColor};
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: ${COLORS.iconColor};
 }
 
 `;
