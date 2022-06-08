@@ -1,24 +1,11 @@
 import styled from "styled-components";
-import background_3 from "../../assets/background_3.svg";
+
 import { COLORS } from "../../components/constants";
 
 export const Container = styled.div`
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-`;
-
-export const LandingPageBG = styled.div`
-  background-image: url(${background_3});
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  z-index: -1000;
-  position: absolute;
-
-  /* @media (max-width: 390px) {
-  } */
 `;
 
 export const NavWrapper = styled.header`
@@ -46,8 +33,9 @@ export const Logo = styled.div`
 
 export const MainWrapper = styled.main`
   max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 4rem;
+  margin: 13rem auto;
+  /* padding-top: 4rem;
+  padding-bottom: 5rem; */
 
   @media (max-width: 721px) {
     padding-top: 2rem;
@@ -65,17 +53,17 @@ export const TextWrapper = styled.div`
   a {
     font-size: 2rem;
     text-decoration: none;
-    border-radius: 15px;
-    color: ${COLORS.fontColorLight};
-    border: 2px solid ${COLORS.fontColorLight};
+    border-radius: 5px;
+    color: ${COLORS.mainColor};
+    border: 2px solid ${COLORS.mainColorMedium};
     padding: 8px 20px;
     transition: all 0.3s ease-in-out;
     &:hover,
     &.active {
-      background-color: #fff;
-      color: ${COLORS.mainColor};
+      background-color: ${COLORS.mainColor};
+      color: ${COLORS.fontColorLight};
       border: none;
-      border-radius: 0;
+      border-radius: 15px;
     }
 
     &.active {
@@ -86,14 +74,16 @@ export const TextWrapper = styled.div`
 
 export const Slogan = styled.p`
   font-size: 1.3rem;
-  color: ${COLORS.fontColorLight};
+  color: ${COLORS.mainColorMedium};
   display: inline-block;
   letter-spacing: 1.5px;
 `;
 
 export const Title = styled.p`
   font-size: 3rem;
-  color: ${COLORS.fontColorLight};
+  font-weight: 700;
+
+  color: ${COLORS.mainColor};
   /* background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 1) 0%,
@@ -111,21 +101,16 @@ export const Title = styled.p`
 export const BrandName = styled.h2`
   font-size: 7rem;
   margin-bottom: 10px;
-  background-image: linear-gradient(
+  background: rgb(30, 47, 107);
+  background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(117, 126, 255, 1) 95%
+    rgba(30, 47, 107, 1) 35%,
+    rgba(58, 86, 232, 1) 85%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
-// export const Footer = styled.footer`
-//   width: 100%;
-//   bottom: 15px;
-//   text-align: center;
-//   position: fixed;
-//   vertical-align: middle;
-//   color: ${COLORS.mainColor};
-//   font-size: 1rem;
-// `;
+export const SignUpBtn = styled.div`
+  margin: 20px 0;
+`;

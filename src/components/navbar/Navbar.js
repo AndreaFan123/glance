@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { LinksWrapper, Logo, NavbarWrapper } from "./Navbar.styled";
+import { Link, NavLink } from "react-router-dom";
+import { LoginWrap, Logo, NavbarWrapper, NavWrap } from "./Navbar.styled";
 import { useAuthContext } from "../../hook/useContext";
 // import { useLogout } from "../../hook/useLogout";
 
@@ -14,25 +14,23 @@ export default function Navbar() {
           <Link to="/">Glance</Link>
         </li>
       </Logo>
-      <LinksWrapper>
+
+      <NavWrap>
+        <li>
+          <NavLink to="#abount">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="#how">How it works</NavLink>
+        </li>
+        <li>
+          <NavLink to="#contact">Contact</NavLink>
+        </li>
+      </NavWrap>
+      <LoginWrap>
         <li>
           <Link to="/login">Login</Link>
         </li>
-        {/* <li>
-          <Link to="signup">Sign up</Link>
-        </li> */}
-
-        {/* {!loading && (
-          <li>
-            <button onClick={logout}>Logout</button>
-          </li>
-        )}
-        {loading && (
-          <li>
-            <button disabled>Logging out...</button>
-          </li>
-        )} */}
-      </LinksWrapper>
+      </LoginWrap>
     </NavbarWrapper>
   );
 }

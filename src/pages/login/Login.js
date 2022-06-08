@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useLogin } from "../../hook/useLogin";
 import Navbar from "../../components/navbar/Navbar";
 // component
-import FooterCom from "../../components/footer/FooterCom";
+import FooterCom from "../landingPage/footer/FooterCom";
 // styles
 import {
   FileInput,
