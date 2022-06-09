@@ -38,7 +38,7 @@ export const ChatRoomWrapper = styled.main`
     margin: 0;
     padding: 3px;
     border: none;
-    height: 70vh;
+    height: 78vh;
   }
 
   @media screen and (max-width: 400px) {

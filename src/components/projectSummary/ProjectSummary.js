@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFirestore } from "../../hook/useFirestore";
 import { useAuthContext } from "../../hook/useContext";
 import { useHistory } from "react-router-dom";
+// TEST: 嘗試將預算的部分輸出到文件上
+import { useCollection } from "../../hook/useCollection";
 
 // component
-import Avatar from "../Avatar/Avatar";
+// import Avatar from "../Avatar/Avatar";
 
 // styles
 import {
   AssigneeWrapper,
+  BudgetTable,
   CompleteIcon,
   ContentWrapper,
   DeleteIcon,
@@ -23,8 +26,11 @@ import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
 
 export default function Projectsummary({ project }) {
   const history = useHistory();
+  const [totalSpent, setTotalSpent] = useState("0");
   const { deletedocment } = useFirestore("projects");
   const { user } = useAuthContext();
+  const { documents } = useCollection("expenses", ["uid", "==", user.uid]);
+
   const body = project.texts;
 
   const handleDelete = (e) => {
@@ -33,6 +39,26 @@ export default function Projectsummary({ project }) {
     deletedocment(project.id);
     history.push("/dashboard");
   };
+
+  // console.log(project.projectName);
+  // if (documents) {
+  //   documents.map((expense) => {
+  //     console.log(expense.assignProject.projectName);
+  //   });
+  // }
+
+  // NOTE: Map all amount and add it up
+  useEffect(() => {
+    if (documents) {
+      let amounts = documents.map((expense) => expense.amount);
+
+      let totalSpent = amounts.reduce(
+        (preValue, currValue) => Number(preValue) + Number(currValue),
+        0
+      );
+      setTotalSpent(totalSpent);
+    }
+  }, [documents]);
 
   return (
     <DetailsWrapper>
@@ -45,8 +71,8 @@ export default function Projectsummary({ project }) {
             </div>
           )}
         </div>
-        <span>Due Date: {project.dueDate.toDate().toDateString()}</span>
-        <span>Project owner: {project.createdBy.displayName}</span>
+        <span>Due Date : {project.dueDate.toDate().toDateString()}</span>
+        <span>Project owner : {project.createdBy.displayName}</span>
       </TitleWrapper>
       <ContentWrapper>
         {/* <h3>Summary: </h3> */}
@@ -54,11 +80,11 @@ export default function Projectsummary({ project }) {
         <div dangerouslySetInnerHTML={{ __html: body }} />
       </ContentWrapper>
       <StakeholderWrapper>
-        <h4>Stakeholder:</h4>
+        <h4>Stakeholder :</h4>
         <span>{project.stakeholder}</span>
       </StakeholderWrapper>
       <StatusWrapper>
-        <h4>Status:</h4>
+        <h4>Status :</h4>
         <span
           style={{
             backgroundColor:
@@ -77,15 +103,39 @@ export default function Projectsummary({ project }) {
         </span>
       </StatusWrapper>
       <AssigneeWrapper>
-        <h4>Assignee: </h4>
+        <h4>Assignee : </h4>
         <div>
           {project.assigneeList.map((user) => (
             <div key={user.id}>
-              <Avatar src={user.photoURL} />
+              {/* <Avatar src={user.photoURL} /> */}
+              <span>{user.displayName}</span>
             </div>
           ))}
         </div>
       </AssigneeWrapper>
+      <BudgetTable>
+        <h4>Budget Plan :</h4>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          {documents &&
+            documents.map((expense) =>
+              project.projectName === expense.assignProject.projectName ? (
+                <tbody>
+                  <tr key={expense.id}>
+                    <td>{expense.category}</td>
+                    <td>$ {expense.amount}</td>
+                  </tr>
+                </tbody>
+              ) : null
+            )}
+        </table>
+      </BudgetTable>
     </DetailsWrapper>
   );
 }

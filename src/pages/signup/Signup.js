@@ -14,7 +14,11 @@ import {
   Wrapper,
   BGStyle,
   Container,
+  BackToHomePage,
+  GoBackArrow,
 } from "../../global-style/Form.styled";
+
+import { BiArrowBack } from "react-icons/bi";
 
 /////////////////////////////////////////////
 
@@ -79,7 +83,6 @@ export default function Signup() {
 
   return (
     <BGStyle>
-      {!user && <Navbar />}
       <Container>
         <Wrapper>
           <FormLeft>
@@ -134,6 +137,10 @@ export default function Signup() {
             {error && <p style={{ color: "red" }}>{error}</p>}
           </FormWrapper>
         </Wrapper>
+        <BackToHomePage>
+          <BiArrowBack style={GoBackArrow} />
+          <Link to="/">Back to home page</Link>
+        </BackToHomePage>
       </Container>
       {/* <FooterCom /> */}
     </BGStyle>

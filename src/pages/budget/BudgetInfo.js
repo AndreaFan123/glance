@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { COLORS } from "../../components/constants";
 import EditBudget from "./EditBudget";
 import SaveBudget from "./SaveBudget";
+
 //style
 import { BudgetCard, BudgetInfoCard } from "./styles/BudgetInfo.styled";
 
@@ -14,6 +15,8 @@ export default function BudgetInfo({ expenses }) {
     (preValue, currentValue) => Number(preValue) + Number(currentValue.amount),
     0
   );
+
+  // NOTE: sum of each category
 
   // NOTE: warning if doesn't remain much budget
   const remainBudgetAlert =
@@ -54,6 +57,15 @@ export default function BudgetInfo({ expenses }) {
           Remain : <span>$ {budget - totalExpenses}</span>
         </p>
       </BudgetCard>
+      {/* <div>
+        {expenses &&
+          expenses.map((expense) => (
+            <div>
+              <p>{expense.category}</p>
+              <span>$ {expense.amount}</span>
+            </div>
+          ))}
+      </div> */}
     </BudgetInfoCard>
   );
 }

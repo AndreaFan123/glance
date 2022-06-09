@@ -1,42 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// import background_2 from "../../assets/background_2.svg";
-
-import FooterCom from "../../components/footer/FooterCom";
+import FooterCom from "../../pages/landingPage/footer/FooterCom";
 import Navbar from "../../components/navbar/Navbar";
 import { useAuthContext } from "../../hook/useContext";
 
 import {
   Container,
-  LandingPageBG,
+  // LandingPageBG,
   TextWrapper,
   MainWrapper,
   Slogan,
   Title,
   BrandName,
+  SignUpBtn,
 } from "./Landing.styled";
+import About from "./about/About";
+import How from "./howitworks/How";
+import { WordEffect } from "./sections.styled";
+// import ScrollToTop from "../../components/scrollToTop/ScrollToTop";
 
 export default function LandingPage() {
   const { user } = useAuthContext();
+
   return (
     <Container>
-      <LandingPageBG />
       {!user && <Navbar />}
       <MainWrapper>
         <TextWrapper>
           <Slogan>Simplified work space</Slogan>
-          <Title>Manage your team in one space</Title>
+          <Title>
+            <WordEffect>Fast, intuitive, focus!</WordEffect>
+            <br /> Maintain your knowledge in one space.
+          </Title>
           <BrandName>Glance</BrandName>
-          <div>
+          <SignUpBtn>
             <Link to="/signup">Sign up</Link>
-          </div>
+          </SignUpBtn>
         </TextWrapper>
       </MainWrapper>
+      <About />
+      <How />
       <FooterCom />
-      {/* <Footer>
-        <p>Glance &copy; 2022 All roght Reserved</p>
-      </Footer> */}
     </Container>
   );
 }

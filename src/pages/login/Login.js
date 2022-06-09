@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 import { useLogin } from "../../hook/useLogin";
 import Navbar from "../../components/navbar/Navbar";
 // component
-import FooterCom from "../../components/footer/FooterCom";
+import FooterCom from "../landingPage/footer/FooterCom";
 // styles
 import {
-  FileInput,
   FormWrapper,
   FormLeft,
   Wrapper,
   BGStyle,
   Container,
+  BackToHomePage,
+  GoBackArrow,
 } from "../../global-style/Form.styled";
 // icon
 import { BiArrowBack } from "react-icons/bi";
@@ -47,7 +48,7 @@ export default function Login() {
 
   return (
     <BGStyle>
-      {!user && <Navbar />}
+      {/* {!user && <Navbar />} */}
       <Container>
         <Wrapper>
           <FormLeft>
@@ -83,9 +84,14 @@ export default function Login() {
                 Not a member? <Link to="/signup">Sign up</Link> here
               </span>
             </div>
+
             {error && <p style={{ color: "red" }}>{error}</p>}
           </FormWrapper>
         </Wrapper>
+        <BackToHomePage>
+          <BiArrowBack style={GoBackArrow} />
+          <Link to="/">Back to home page</Link>
+        </BackToHomePage>
       </Container>
       {/* <FooterCom /> */}
     </BGStyle>

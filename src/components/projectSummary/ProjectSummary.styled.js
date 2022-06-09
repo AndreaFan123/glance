@@ -80,7 +80,7 @@ export const StatusWrapper = styled.div`
 export const AssigneeWrapper = styled.div`
   display: flex;
   align-items: center;
-
+  margin-bottom: 15px;
   h4 {
     padding-right: 15px;
   }
@@ -88,6 +88,20 @@ export const AssigneeWrapper = styled.div`
   div {
     display: flex;
     gap: 10px;
+  }
+`;
+
+export const BudgetTable = styled.div`
+  h4 {
+    padding-bottom: 15px;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
   }
 `;
 

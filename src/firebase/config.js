@@ -4,7 +4,7 @@ import { getFirestore, Timestamp } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getDatabase } from "firebase/database";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCUIf6LtQtEYmJfCbhHnIjfJ6e2MunTFO8",
   authDomain: "glance-simple-work-space.firebaseapp.com",
   databaseURL:
@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 const db = getFirestore(app);

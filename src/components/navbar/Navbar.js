@@ -1,38 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { LinksWrapper, Logo, NavbarWrapper } from "./Navbar.styled";
-import { useAuthContext } from "../../hook/useContext";
-// import { useLogout } from "../../hook/useLogout";
+import { HiOutlineMenu } from "react-icons/hi";
+import { CgClose } from "react-icons/cg";
+import {
+  LoginWrap,
+  Logo,
+  NavbarWrapper,
+  NavWrap,
+  Menu,
+  Toggle,
+} from "./Navbar.styled";
+import HamburgerMenu from "./HamburgerMenu";
 
 export default function Navbar() {
-  // const { logout, loading, error } = useLogout();
-  const { user } = useAuthContext();
+  const [hamburger, setHamburger] = useState(false);
   return (
-    <NavbarWrapper>
-      <Logo>
-        <li>
-          <Link to="/">Glance</Link>
-        </li>
-      </Logo>
-      <LinksWrapper>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        {/* <li>
-          <Link to="signup">Sign up</Link>
-        </li> */}
-
-        {/* {!loading && (
+    <>
+      <NavbarWrapper>
+        <Logo>
+          <div>
+            <Link to="/">Glance</Link>
+          </div>
+        </Logo>
+        {/* toggle */}
+        <Toggle>
+          {hamburger ? (
+            <div onClick={() => setHamburger(false)}>
+              <CgClose style={Menu} />
+            </div>
+          ) : (
+            <div onClick={() => setHamburger(true)}>
+              <HiOutlineMenu style={Menu} />
+            </div>
+          )}
+        </Toggle>
+        <NavWrap>
           <li>
-            <button onClick={logout}>Logout</button>
+            <a href="#about">About</a>
           </li>
-        )}
-        {loading && (
           <li>
-            <button disabled>Logging out...</button>
+            <a href="#howitworks">How it works</a>
           </li>
-        )} */}
-      </LinksWrapper>
-    </NavbarWrapper>
+        </NavWrap>
+        <LoginWrap>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </LoginWrap>
+      </NavbarWrapper>
+      {hamburger && <HamburgerMenu />}
+    </>
   );
 }
