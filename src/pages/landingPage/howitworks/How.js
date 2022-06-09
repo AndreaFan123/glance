@@ -5,7 +5,9 @@ import {
   TextWrapper,
   HowitWorksSection,
   HowitWorksGrid,
-  SVGWrapper,
+  Slogan,
+  Number,
+  WordEffect,
 } from "../sections.styled";
 
 // Images
@@ -17,25 +19,21 @@ export default function How() {
   return (
     <SectionContainer id="howitworks">
       <TextWrapper>
-        <h2>How it works</h2>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. I
-        </p>
+        <h3>How it works</h3>
+        <Slogan>
+          Follow the simple steps below, create your own{" "}
+          <WordEffect>knowledgebase</WordEffect> in a second!
+        </Slogan>
       </TextWrapper>
       <HowitWorksSection>
         {/* Dashboard */}
         <HowitWorksGrid>
           <TextWrapper>
-            <p>01</p>
+            <Number>01</Number>
             <h3>Dashboard</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500
-            </p>
+            <Slogan>
+              Manage all in <WordEffect>one place</WordEffect>!
+            </Slogan>
           </TextWrapper>
           <ImgWrapper>
             <img src={MockupDashboard} alt="how it works-dashboard tutorial" />
@@ -47,26 +45,24 @@ export default function How() {
             <img src={MockupAddProject} alt="how it works-dashboard tutorial" />
           </ImgWrapper>
           <TextWrapper>
-            <p>02</p>
+            <Number>02</Number>
             <h3>Add project</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500
-            </p>
+            <Slogan>
+              Write down your idea is never been{" "}
+              <WordEffect>so easy</WordEffect>!
+            </Slogan>
           </TextWrapper>
         </HowitWorksGrid>
 
         {/* Budget */}
         <HowitWorksGrid>
           <TextWrapper>
-            <p>03</p>
+            <Number>03</Number>
             <h3>Add Budget</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500
-            </p>
+            <Slogan>
+              Assign budget to relevant project, keep tracking your spending,{" "}
+              <WordEffect>never lost!</WordEffect>
+            </Slogan>
           </TextWrapper>
           <ImgWrapper>
             <img src={MockupBudget} alt="how it works-dashboard tutorial" />
@@ -79,13 +75,12 @@ export default function How() {
             <img src={MockupDashboard} alt="how it works-dashboard tutorial" />
           </ImgWrapper>
           <TextWrapper>
-            <p>04</p>
+            <Number>04</Number>
             <h3>Sync up anytime</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500
-            </p>
+            <Slogan>
+              No need to open another tool, discuss right here, be{" "}
+              <WordEffect>EFFICIENT</WordEffect>!
+            </Slogan>
           </TextWrapper>
         </HowitWorksGrid>
       </HowitWorksSection>

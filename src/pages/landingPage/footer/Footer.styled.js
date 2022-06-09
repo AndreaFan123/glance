@@ -4,8 +4,8 @@ import { COLORS } from "../../../components/constants";
 
 export const Footer = styled.footer`
   width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
+  /* max-width: 1920px;
+  margin: 0 auto; */
   height: 200px;
   background-color: ${COLORS.mainColor};
 

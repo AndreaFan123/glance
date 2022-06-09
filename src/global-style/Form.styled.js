@@ -9,33 +9,54 @@ export const BGStyle = styled.div`
   background-size: cover;
   width: 100%;
   height: 100vh;
-  z-index: -1000;
+  z-index: -10;
   position: absolute;
 `;
+
+export const BackToHomePage = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 5%;
+  left: 43%;
+
+  a {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: ${COLORS.mainColor};
+    transition: 0.5s ease-in-out;
+    &:hover {
+      color: ${COLORS.iconColor};
+    }
+  }
+
+  @media (max-width: 595px) {
+    bottom: 3%;
+    left: 28%;
+  }
+`;
+
+export const GoBackArrow = {
+  color: `${COLORS.mainColor}`,
+  fontSize: "1.3rem",
+};
 
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 700px;
   min-height: 550px;
   /* gap: 30px; */
-  margin: 20px auto;
+  margin: 5rem auto;
   display: flex;
   justify-content: center;
   display: flex;
   /* background-color: ${COLORS.fontColorMedium}; */
   border-radius: 10px;
   overflow: hidden;
+  /* position: relative; */
   box-shadow: -3px -3px 24px -8px #9c9c9c;
-
-  /* @media (max-width: 700px) {
-    max-width: 600px;
-    min-height: 450px;
-  }
-
-  @media (max-width: 603px) {
-    max-width: 500px;
-    min-height: 400px;
-  } */
 
   @media (max-width: 595px) {
     max-width: 400px;
@@ -87,7 +108,6 @@ export const FormWrapper = styled.form`
 
   /* display: flex;
   flex-direction: column; */
-
   h2 {
     color: ${COLORS.fontColorDark};
     margin-bottom: 20px;

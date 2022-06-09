@@ -25,7 +25,7 @@ export const NavbarWrapper = styled.nav`
     color: ${COLORS.mainColor};
   }
 
-  @media (max-width: 721px) {
+  @media (max-width: 590px) {
     ul {
       display: none;
     }
@@ -36,6 +36,22 @@ export const Logo = styled.div`
   font-size: 2.5rem;
   font-weight: 900;
 `;
+
+export const Toggle = styled.div`
+  display: none;
+
+  @media screen and (max-width: 590px) {
+    display: block;
+    z-index: 100;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+  }
+`;
+
+export const Menu = {
+  fontSize: "2.5rem",
+  color: `${COLORS.mainColor}`,
+};
 
 export const LoginWrap = styled.ul`
   display: flex;
@@ -78,10 +94,15 @@ export const NavWrap = styled.ul`
         border-bottom: 1px solid #78ee;
       }
     }
-    &:first-of-type {
+    &:first-of-type,
+    :active {
       a {
         font-weight: 900;
       }
     }
+  }
+
+  @media screen and (max-width: 650px) {
+    gap: 40px;
   }
 `;
