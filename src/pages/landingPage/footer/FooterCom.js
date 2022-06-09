@@ -26,7 +26,6 @@ export default function FooterCom() {
         <LinkWrapper>
           <a href="#about">About</a>
           <a href="#howitworks">How it works</a>
-          <a href="#contact">Contact</a>
         </LinkWrapper>
 
         <IconWrapper>

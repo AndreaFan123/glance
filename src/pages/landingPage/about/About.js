@@ -5,6 +5,7 @@ import {
   ImgWrapper,
   TextWrapper,
   Slogan,
+  WordEffect,
 } from "../sections.styled";
 
 import MockupAbout from "../../../assets/MockupAbout.png";
@@ -16,8 +17,7 @@ export default function About() {
         <TextWrapper>
           <h3>About</h3>
           <Slogan>
-            Simple knowledgebase for small team. One place with intuitive tools
-            that can help you be efficient.
+            <WordEffect>Simple</WordEffect> knowledgebase for you and you team.
           </Slogan>
         </TextWrapper>
 

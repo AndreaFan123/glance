@@ -61,7 +61,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const LinkWrapper = styled.ul`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   display: flex;
   flex-direction: column;
 
@@ -79,5 +79,10 @@ export const IconWrapper = styled.div`
 
   a {
     color: ${COLORS.fontColorLight};
+
+    :hover {
+      transition: 0.4s ease;
+      color: ${COLORS.mainColorLight};
+    }
   }
 `;

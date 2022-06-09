@@ -48,7 +48,7 @@ export default function How() {
             <Number>02</Number>
             <h3>Add project</h3>
             <Slogan>
-              Write down your idea is never been{" "}
+              Write down your idea has never been{" "}
               <WordEffect>so easy</WordEffect>!
             </Slogan>
           </TextWrapper>
