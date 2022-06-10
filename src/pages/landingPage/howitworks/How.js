@@ -70,7 +70,7 @@ export default function How() {
         </HowitWorksGrid>
 
         {/* Chatroom, wait til complete tweaking */}
-        <HowitWorksGrid>
+        {/* <HowitWorksGrid>
           <ImgWrapper>
             <img src={MockupDashboard} alt="how it works-dashboard tutorial" />
           </ImgWrapper>
@@ -82,7 +82,7 @@ export default function How() {
               <WordEffect>EFFICIENT</WordEffect>!
             </Slogan>
           </TextWrapper>
-        </HowitWorksGrid>
+        </HowitWorksGrid> */}
       </HowitWorksSection>
     </SectionContainer>
   );

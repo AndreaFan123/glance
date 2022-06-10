@@ -22,7 +22,7 @@ import {
 } from "./ProjectSummary.styled";
 
 // icon
-import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
+import { BsXCircle } from "react-icons/bs";
 
 export default function Projectsummary({ project }) {
   const history = useHistory();
@@ -39,13 +39,6 @@ export default function Projectsummary({ project }) {
     deletedocment(project.id);
     history.push("/dashboard");
   };
-
-  // console.log(project.projectName);
-  // if (documents) {
-  //   documents.map((expense) => {
-  //     console.log(expense.assignProject.projectName);
-  //   });
-  // }
 
   // NOTE: Map all amount and add it up
   useEffect(() => {
@@ -113,29 +106,31 @@ export default function Projectsummary({ project }) {
           ))}
         </div>
       </AssigneeWrapper>
-      <BudgetTable>
-        <h4>Budget Plan :</h4>
+      {documents && (
+        <BudgetTable>
+          <h4>Budget Plan : </h4>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          {documents &&
-            documents.map((expense) =>
-              project.projectName === expense.assignProject.projectName ? (
-                <tbody>
-                  <tr key={expense.id}>
-                    <td>{expense.category}</td>
-                    <td>$ {expense.amount}</td>
-                  </tr>
-                </tbody>
-              ) : null
-            )}
-        </table>
-      </BudgetTable>
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            {documents &&
+              documents.map((expense) =>
+                project.projectName === expense.assignProject.projectName ? (
+                  <tbody>
+                    <tr key={expense.uid}>
+                      <td>{expense.category}</td>
+                      <td>$ {expense.amount}</td>
+                    </tr>
+                  </tbody>
+                ) : null
+              )}
+          </table>
+        </BudgetTable>
+      )}
     </DetailsWrapper>
   );
 }

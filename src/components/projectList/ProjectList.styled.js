@@ -52,6 +52,12 @@ export const ProjectLinks = styled(Link)`
     /* margin-top: 10px; */
     margin-bottom: 20px;
   }
+
+  :hover {
+    transition: 0.3s ease-in-out;
+    transform: translateY(-5px);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export const AssigneeWrapper = styled.div`

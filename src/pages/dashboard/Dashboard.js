@@ -81,7 +81,7 @@ export default function Dashboard() {
       <h1>Dashboard</h1>
       <ChartsWrapper>
         <ChartWrapper>
-          <h3>Budget Expenses</h3>
+          <h3>Expenses</h3>
           <DoughnutChart />
         </ChartWrapper>
       </ChartsWrapper>
