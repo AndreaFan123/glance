@@ -11,7 +11,7 @@ import Project from "./pages/project/Project";
 import NewProject from "./pages/newproject/NewProject";
 import LandingPage from "./pages/landingPage/LandingPage";
 import Budget from "./pages/budget/Budget";
-import ChatRoom from "./pages/chatroom/ChatRoom";
+// import Todos from "./pages/Todos/Todos";
 // components
 // import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -59,10 +59,10 @@ export default function App() {
                   {user && <Redirect to="/" />}
                   {!user && <Signup />}
                 </Route>
-                <Route path="/chatroom">
+                {/* <Route path="/todos">
                   {!user && <Redirect to="/login" />}
-                  {user && <ChatRoom />}
-                </Route>
+                  {user && <Todos />}
+                </Route> */}
                 <Route path="/budget">
                   {!user && <Redirect to="/" />}
                   {user && <Budget />}

@@ -57,15 +57,6 @@ export default function BudgetInfo({ expenses }) {
           Remain : <span>$ {budget - totalExpenses}</span>
         </p>
       </BudgetCard>
-      {/* <div>
-        {expenses &&
-          expenses.map((expense) => (
-            <div>
-              <p>{expense.category}</p>
-              <span>$ {expense.amount}</span>
-            </div>
-          ))}
-      </div> */}
     </BudgetInfoCard>
   );
 }

@@ -48,7 +48,7 @@ export default function How() {
             <Number>02</Number>
             <h3>Add project</h3>
             <Slogan>
-              Write down your idea is never been{" "}
+              Write down your idea has never been{" "}
               <WordEffect>so easy</WordEffect>!
             </Slogan>
           </TextWrapper>
@@ -70,7 +70,7 @@ export default function How() {
         </HowitWorksGrid>
 
         {/* Chatroom, wait til complete tweaking */}
-        <HowitWorksGrid>
+        {/* <HowitWorksGrid>
           <ImgWrapper>
             <img src={MockupDashboard} alt="how it works-dashboard tutorial" />
           </ImgWrapper>
@@ -82,7 +82,7 @@ export default function How() {
               <WordEffect>EFFICIENT</WordEffect>!
             </Slogan>
           </TextWrapper>
-        </HowitWorksGrid>
+        </HowitWorksGrid> */}
       </HowitWorksSection>
     </SectionContainer>
   );

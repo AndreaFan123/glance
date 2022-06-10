@@ -9,7 +9,8 @@ import {
   AiOutlineFileAdd,
   AiOutlineLogout,
 } from "react-icons/ai";
-import { BsChatDots } from "react-icons/bs";
+import { RiTodoLine } from "react-icons/ri";
+// import { BsChatDots } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 
 import { useAuthContext } from "../../hook/useContext";
@@ -59,9 +60,9 @@ export default function Sidebar() {
                 ? `/create`
                 : `${label}` === "Budget"
                 ? `/budget`
-                : `${label}` === "Chatroom"
-                ? `/chatroom`
-                : null
+                : // : `${label}` === "Todos"
+                  // ? `/todos`
+                  null
               // TEST: figure it out how to implement logout here
             }
             style={!sidebarOpen ? { width: `fit-content` } : {}}
@@ -102,11 +103,11 @@ export const LinkArray = [
     icon: <AiOutlineFileAdd />,
     to: "/create",
   },
-  {
-    label: "Chatroom",
-    icon: <BsChatDots />,
-    to: "/chatroom",
-  },
+  // {
+  //   label: "Todos",
+  //   icon: <RiTodoLine />,
+  //   to: "/todos",
+  // },
   {
     label: "Budget",
     icon: <MdAttachMoney />,
