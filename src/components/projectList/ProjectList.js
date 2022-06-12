@@ -50,7 +50,6 @@ export default function ProjectList({ projects }) {
             <p>Due Date: {project.dueDate.toDate().toDateString()}</p>
 
             <AssigneeWrapper>
-              {/* <span>Project owner:</span> */}
               <ul>
                 {project.assigneeList.map((assignee) => (
                   <li key={assignee.id}>
@@ -62,7 +61,9 @@ export default function ProjectList({ projects }) {
           </ProjectLinks>
         ))}
       </ProjectsWrapper>
-      <LodeMoreBtn onClick={handelShowMore}>Load More</LodeMoreBtn>
+      {projects.length > 3 && (
+        <LodeMoreBtn onClick={handelShowMore}>Load More</LodeMoreBtn>
+      )}
     </>
   );
 }

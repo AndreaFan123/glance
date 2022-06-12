@@ -11,7 +11,6 @@ export const SideBar = styled.div`
   padding: 24px 15px;
   display: flex;
   flex-direction: column;
-  /* align-items: ${({ isOpen }) => (!isOpen ? `center` : ``)}; */
 
   @media screen and (max-width: 1200px) {
     align-items: center;
@@ -21,9 +20,7 @@ export const SideBar = styled.div`
     }
   }
   @media screen and (max-width: 600px) {
-    /* position: fixed; */
     z-index: 10;
-    /* left: 15%; */
     bottom: 0;
 
     position: fixed;
@@ -48,9 +45,6 @@ export const SideBar = styled.div`
       display: none;
     }
   }
-
-  /* @media screen and (max-width: 390px) {
-  } */
 `;
 
 export const SidebarBtn = styled.button`
@@ -62,7 +56,6 @@ export const SidebarBtn = styled.button`
   color: ${COLORS.fontColorLight};
   top: 153px;
   right: -19px;
-  /* right: ${({ isOpen }) => (isOpen ? `-16px` : `-40px`)}; */
   background-color: ${COLORS.mainColor};
   border-radius: 50%;
   border: 3px solid #fff;
@@ -104,7 +97,6 @@ export const UserPhoto = styled.div`
 export const UserEditIcon = styled(Link)`
   text-decoration: none;
   color: ${COLORS.fontColorLight};
-  /* font-size: 1rem; */
   display: flex;
   align-items: center;
 
@@ -168,7 +160,5 @@ export const LinkIcon = styled.div`
 
   svg {
     font-size: 25px;
-    /* width: ${({ isOpen }) => (!isOpen ? `1em` : `2em`)};
-    height: ${({ isOpen }) => (!isOpen ? `1em` : `2em`)}; */
   }
 `;

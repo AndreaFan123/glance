@@ -49,7 +49,6 @@ export const ProjectLinks = styled(Link)`
     color: ${COLORS.fontColorDark};
     padding-top: 10px;
     padding-bottom: 10px;
-    /* margin-top: 10px; */
     margin-bottom: 20px;
   }
 

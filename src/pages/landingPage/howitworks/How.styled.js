@@ -12,6 +12,5 @@ export const HowWrapper = styled.div`
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* grid-gap: 30px; */
   justify-items: center;
 `;

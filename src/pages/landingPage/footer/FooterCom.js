@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // styles
 import {
   Footer,
@@ -29,12 +28,16 @@ export default function FooterCom() {
         </LinkWrapper>
 
         <IconWrapper>
-          <Link to="https://github.com/AndreaFan123">
+          <a href="https://github.com/AndreaFan123" target="_blank">
             <AiFillGithub />
-          </Link>
-          <Link to="https://www.linkedin.com/in/andrea-fan-b98491b9/">
+          </a>
+          <a
+            href="https://www.linkedin.com/in/andrea-fan-b98491b9/"
+            target="
+            _blank"
+          >
             <AiFillLinkedin />
-          </Link>
+          </a>
         </IconWrapper>
       </FooterWrapper>
     </Footer>

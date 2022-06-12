@@ -4,8 +4,7 @@ import { useAuthContext } from "../../hook/useContext";
 import { useSignup } from "../../hook/useSignup";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// component
-import Navbar from "../../components/navbar/Navbar";
+
 // styles
 import {
   FileInput,

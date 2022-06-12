@@ -47,15 +47,12 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 700px;
   min-height: 550px;
-  /* gap: 30px; */
   margin: 5rem auto;
   display: flex;
   justify-content: center;
   display: flex;
-  /* background-color: ${COLORS.fontColorMedium}; */
   border-radius: 10px;
   overflow: hidden;
-  /* position: relative; */
   box-shadow: -3px -3px 24px -8px #9c9c9c;
 
   @media (max-width: 595px) {
@@ -75,7 +72,6 @@ export const FormLeft = styled.div`
   width: 100%;
   width: 100%;
   max-width: 350px;
-  /* background-color: ${COLORS.mainColor}; */
   color: ${COLORS.fontColorLight};
   padding-top: 90px;
   padding-left: 30px;
@@ -106,8 +102,6 @@ export const FormWrapper = styled.form`
   padding: 20px;
   background-color: ${COLORS.fontColorLight};
 
-  /* display: flex;
-  flex-direction: column; */
   h2 {
     color: ${COLORS.fontColorDark};
     margin-bottom: 20px;

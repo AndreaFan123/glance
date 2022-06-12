@@ -90,8 +90,6 @@ export const WordEffect = styled.span`
   );
 `;
 
-////// About //////
-
 ////// How it works //////
 export const HowitWorksSection = styled.section`
   width: 100%;
@@ -123,7 +121,6 @@ export const ContactWrapper = styled.div`
   background-size: cover;
   max-width: 1200px;
   min-height: 700px;
-  /* position: relative; */
   padding: 30px;
   border-radius: 10px;
 `;

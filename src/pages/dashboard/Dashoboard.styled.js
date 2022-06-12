@@ -3,7 +3,6 @@ import { COLORS } from "../../components/constants";
 
 export const DashboardWrapper = styled.div`
   padding: 20px;
-  /* width: 1060px; */
   max-width: 1200px;
   margin: 40px auto 0 auto;
 

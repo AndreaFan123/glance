@@ -4,8 +4,6 @@ import { COLORS } from "../../../components/constants";
 
 export const Footer = styled.footer`
   width: 100%;
-  /* max-width: 1920px;
-  margin: 0 auto; */
   height: 200px;
   background-color: ${COLORS.mainColor};
 
@@ -19,7 +17,6 @@ export const FooterWrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* grid-gap: 30px; */
   justify-items: center;
   align-items: center;
   padding: 20px;
@@ -42,7 +39,6 @@ export const TextWrapper = styled.div`
   }
   h1 {
     font-size: 3rem;
-    /* color: ${COLORS.fontColorLight}; */
     background: rgb(250, 250, 250);
     background: linear-gradient(
       45deg,

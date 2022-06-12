@@ -37,9 +37,6 @@ export default function BudgetInfo({ expenses }) {
   return (
     <BudgetInfoCard>
       <BudgetCard>
-        {/* <p>
-          Totla Budget : <span>$ {budget}</span>
-        </p> */}
         {isEditing ? (
           <EditBudget handleSave={handleSave} budget={budget} />
         ) : (

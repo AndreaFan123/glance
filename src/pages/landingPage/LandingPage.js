@@ -7,7 +7,6 @@ import { useAuthContext } from "../../hook/useContext";
 
 import {
   Container,
-  // LandingPageBG,
   TextWrapper,
   MainWrapper,
   Slogan,
@@ -18,7 +17,6 @@ import {
 import About from "./about/About";
 import How from "./howitworks/How";
 import { WordEffect } from "./sections.styled";
-// import ScrollToTop from "../../components/scrollToTop/ScrollToTop";
 
 export default function LandingPage() {
   const { user } = useAuthContext();
