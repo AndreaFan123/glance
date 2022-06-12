@@ -11,6 +11,7 @@ import {
 import BudgetInfo from "./BudgetInfo";
 import AddExpense from "./AddExpense";
 import ExpenseList from "./ExpenseList";
+import Category from "./Category";
 
 export default function Budget() {
   const { user } = useAuthContext();
@@ -23,7 +24,8 @@ export default function Budget() {
   return (
     <BudgetWrapper>
       <h2>Budget Planner</h2>
-      <div>{documents && <BudgetInfo expenses={documents} />}</div>
+      {documents && <BudgetInfo expenses={documents} />}
+      {documents && <Category expenses={documents} />}
       <ExpenseGrid>
         <ExpenseSecton>
           <h3>Add Expense</h3>

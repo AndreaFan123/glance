@@ -4,6 +4,10 @@ import { COLORS } from "../../../components/constants";
 export const ExpenseListWrapper = styled.ul`
   padding-left: 0px;
   font: 1rem;
+  padding: 15px;
+  height: 400px;
+  overflow: hidden;
+  overflow-y: scroll;
 `;
 
 export const ExpenseListItem = styled.li`
@@ -32,7 +36,7 @@ export const ExpenseFlexVer = styled.div`
     padding: 2px 7px;
     margin-top: 3px;
     border-radius: 20px;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 0.8rem;
     color: ${COLORS.fontColorLight};
     background-color: ${COLORS.mainColorMedium};

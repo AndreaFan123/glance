@@ -2,15 +2,13 @@ import React from "react";
 import { useLogout } from "../../hook/useLogout";
 import { useState } from "react";
 import Avatar from "../Avatar/Avatar";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import {
   AiOutlineAppstore,
   AiOutlineFileAdd,
   AiOutlineLogout,
 } from "react-icons/ai";
-import { RiTodoLine } from "react-icons/ri";
-// import { BsChatDots } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 
 import { useAuthContext } from "../../hook/useContext";
@@ -20,7 +18,6 @@ import {
   SidebarDivider,
   LinkItem,
   LinkIcon,
-  SidebarBtn,
   UserProfile,
   UserEditIcon,
 } from "./Sidebar.styled";
@@ -32,23 +29,15 @@ export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const { pathname } = useLocation();
   return (
-    //isOpen={sidebarOpen}
     <SideBar>
-      {/* <>
-        <SidebarBtn
-          isOpen={sidebarOpen}
-          onClick={() => setSidebarOpen((sidebarOpen) => !sidebarOpen)}
-        >
-          <FaChevronRight />
-        </SidebarBtn>
-      </> */}
-      <UserProfile>
-        <Avatar src={user.photoURL} />
-
-        <UserEditIcon to={`/member/${user.uid}`}>
-          <p>{user.displayName}</p>
-        </UserEditIcon>
-      </UserProfile>
+      {user.photoURL && (
+        <UserProfile>
+          <Avatar src={user.photoURL} />
+          <UserEditIcon to={`/member/${user.uid}`}>
+            <p>{user.displayName}</p>
+          </UserEditIcon>
+        </UserProfile>
+      )}
       <SidebarDivider />
       {LinkArray.map(({ icon, label, to }) => (
         <LinkContainer key={label} isActive={pathname === to}>
@@ -60,10 +49,7 @@ export default function Sidebar() {
                 ? `/create`
                 : `${label}` === "Budget"
                 ? `/budget`
-                : // : `${label}` === "Todos"
-                  // ? `/todos`
-                  null
-              // TEST: figure it out how to implement logout here
+                : ""
             }
             style={!sidebarOpen ? { width: `fit-content` } : {}}
           >
@@ -103,11 +89,6 @@ export const LinkArray = [
     icon: <AiOutlineFileAdd />,
     to: "/create",
   },
-  // {
-  //   label: "Todos",
-  //   icon: <RiTodoLine />,
-  //   to: "/todos",
-  // },
   {
     label: "Budget",
     icon: <MdAttachMoney />,

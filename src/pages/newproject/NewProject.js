@@ -5,11 +5,7 @@ import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
 import { useFirestore } from "../../hook/useFirestore";
 import Select from "react-select";
-import {
-  STAKEHOLDERS,
-  STATUS,
-  EXPENSECATEGORY,
-} from "../../components/constants";
+import { STAKEHOLDERS, STATUS } from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
 
 // style

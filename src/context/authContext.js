@@ -1,7 +1,6 @@
 import { createContext, useReducer, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/config";
-import { ThemeConsumer } from "styled-components";
 
 // create context obj
 export const AuthContext = createContext();

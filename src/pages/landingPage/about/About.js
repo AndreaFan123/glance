@@ -17,7 +17,7 @@ export default function About() {
         <TextWrapper>
           <h3>About</h3>
           <Slogan>
-            <WordEffect>Simple</WordEffect> knowledgebase for you and you team.
+            <WordEffect>Simple</WordEffect> knowledgebase for you and your team.
           </Slogan>
         </TextWrapper>
 

@@ -68,21 +68,6 @@ export default function How() {
             <img src={MockupBudget} alt="how it works-dashboard tutorial" />
           </ImgWrapper>
         </HowitWorksGrid>
-
-        {/* Chatroom, wait til complete tweaking */}
-        {/* <HowitWorksGrid>
-          <ImgWrapper>
-            <img src={MockupDashboard} alt="how it works-dashboard tutorial" />
-          </ImgWrapper>
-          <TextWrapper>
-            <Number>04</Number>
-            <h3>Sync up anytime</h3>
-            <Slogan>
-              No need to open another tool, discuss right here, be{" "}
-              <WordEffect>EFFICIENT</WordEffect>!
-            </Slogan>
-          </TextWrapper>
-        </HowitWorksGrid> */}
       </HowitWorksSection>
     </SectionContainer>
   );

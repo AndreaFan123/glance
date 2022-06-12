@@ -1,6 +1,5 @@
 import React from "react";
 import { useCollection } from "../../hook/useCollection";
-import { BiMenu } from "react-icons/bi";
 
 import Avatar from "../Avatar/Avatar";
 import { UserListWrapper, UserWrapper } from "./OnlineUser.styled";
@@ -19,7 +18,7 @@ export default function OnlineUser() {
             {!user.online && (
               <span style={{ background: "transparent" }}></span>
             )}
-            <Avatar src={user.photoURL} />
+            <Avatar src={user.photoURL} username={user.displayName} />
             <p>{user.displayName}</p>
           </UserWrapper>
         ))}

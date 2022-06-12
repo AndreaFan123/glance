@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFirestore } from "../../hook/useFirestore";
 import { useAuthContext } from "../../hook/useContext";
 import { useHistory } from "react-router-dom";
-// TEST: 嘗試將預算的部分輸出到文件上
 import { useCollection } from "../../hook/useCollection";
-
-// component
-// import Avatar from "../Avatar/Avatar";
-
 // styles
 import {
   AssigneeWrapper,
@@ -44,7 +39,6 @@ export default function Projectsummary({ project }) {
   useEffect(() => {
     if (documents) {
       let amounts = documents.map((expense) => expense.amount);
-
       let totalSpent = amounts.reduce(
         (preValue, currValue) => Number(preValue) + Number(currValue),
         0
@@ -126,8 +120,16 @@ export default function Projectsummary({ project }) {
                       <td>$ {expense.amount}</td>
                     </tr>
                   </tbody>
-                ) : null
+                ) : (
+                  ""
+                )
               )}
+            {project.created === user.displayName && (
+              <tfoot>
+                <td>Total</td>
+                <td>{totalSpent}</td>
+              </tfoot>
+            )}
           </table>
         </BudgetTable>
       )}

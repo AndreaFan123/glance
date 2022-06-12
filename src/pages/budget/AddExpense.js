@@ -13,11 +13,11 @@ import { FormWrapper } from "./styles/Addexpense.styled";
 
 export default function AddExpense({ uid, name, submitter }) {
   const [expenseName, setExpenseName] = useState("");
-  const [amount, setAmount] = useState("");
+  // const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
   const [pjName, setpjName] = useState("");
   const [formError, setFormError] = useState(null);
-  // TEST: listen projects state
   const [projectItems, setProjectItems] = useState([]);
   const { addDocument, response } = useFirestore("expenses");
   const { user } = useAuthContext();
@@ -31,7 +31,6 @@ export default function AddExpense({ uid, name, submitter }) {
   const windowStorage = window.localStorage;
   const SELECT_CATEGORY_KEY = "selectCategory";
 
-  // TEST: When website first render, need to get all project names
   useEffect(() => {
     if (documents) {
       const options = documents.map((item) => {
@@ -68,7 +67,7 @@ export default function AddExpense({ uid, name, submitter }) {
       uid,
       submitter,
       expenseName,
-      amount,
+      amount: Number(amount),
       category: category.value,
       assignProject: pjName.value,
     };
@@ -78,7 +77,8 @@ export default function AddExpense({ uid, name, submitter }) {
     await addDocument(expense);
 
     setExpenseName("");
-    setAmount("");
+    // setAmount("");
+    setAmount(0);
     setCategory("");
     setpjName("");
   };

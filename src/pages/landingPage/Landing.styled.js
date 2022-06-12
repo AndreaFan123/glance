@@ -4,8 +4,6 @@ import { COLORS } from "../../components/constants";
 
 export const Container = styled.div`
   width: 100%;
-  /* max-width: 1920px; */
-  /* margin: 0 auto; */
 `;
 
 export const MainWrapper = styled.main`
@@ -16,32 +14,8 @@ export const MainWrapper = styled.main`
     margin: 1rem auto 5rem auto;
   }
 `;
-// export const NavWrapper = styled.header`
-//   /* width: 100%; */
-//   max-width: 1200px;
-//   margin: 0 auto;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 20px 20px;
-
-//   a {
-//     text-decoration: none;
-//   }
-// `;
-
-// export const Logo = styled.div`
-//   padding: 10px 20px;
-//   a {
-//     font-size: 2rem;
-//     font-weight: 900;
-//     color: ${COLORS.fontColorLight};
-//   }
-// `;
 
 export const TextWrapper = styled.div`
-  /* width: 100%;
-  max-width: 1350px; */
   padding: 20px 20px;
   display: flex;
   flex-direction: column;

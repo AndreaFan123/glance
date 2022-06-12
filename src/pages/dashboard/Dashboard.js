@@ -1,8 +1,3 @@
-// Dashboard is meant to be contain project list and other stuff
-// create component to handle project details and add to here
-
-// Remove const [currentFilter, setCurrentFilter] here is bcz we also need to match the project list, hence, if we only put the state inside component, we won't be able to access filter status
-
 import React from "react";
 import { useState } from "react";
 import { useCollection } from "../../hook/useCollection";
@@ -23,7 +18,6 @@ import {
 
 export default function Dashboard() {
   const { user } = useAuthContext();
-  // const { documents, error } = useCollection("projects");
   const { documents, error } = useCollection("projects", null, [
     "dueDate",
     "asc",

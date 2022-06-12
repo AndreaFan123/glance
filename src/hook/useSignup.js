@@ -16,6 +16,7 @@ export const useSignup = () => {
   const { dispatch } = useAuthContext();
 
   // signup with 3 params
+
   const signup = async (displayName, email, password, userImg) => {
     // init error and loading status
     setError(null);
