@@ -48,6 +48,7 @@ Third party package:
 
 - Active background color based on its current page
 - User photo and the display name
+
   ![sidebar](src/docs/sidebar.png)
 
 ### 4. Add project
@@ -57,6 +58,7 @@ Third party package:
 - Storing data in localstorage one user click save.
 - user can restore content by clicking restore.
 - Once clicking submit, project will be shown on the dashboard and the page will be redirect to dashboard.
+
   ![addproject1](src/docs/addproject-1.png)
 
 ### 5. Budget planner
@@ -64,6 +66,9 @@ Third party package:
 - This is a simple budget planner, user can change total budget accordingly.
 - Once user adds expense, it will render on the dashboard and current page so the user can track every expense.
 - All categories are listed out, including amount and for the duplicated category, it will sum up automatically, if the amount is over $ 1500, font color will be yellow.
+
   ![budget](src/docs/budget.png)
+
 - User can only create project first and add budget to the project belongs to user, only user submit budget to relevant project, it will be shown when use click the project on dashboard.
+
   ![budget_project](src/docs/budget_project.png)
