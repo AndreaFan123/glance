@@ -4,9 +4,7 @@
 
 I love use all sorts of management tools, simply because I am kinda obsessed with the beauty of each tool has its core idea of how to solve problems.
 
-For me, I have encountered a problem of organizing files last year, the company I worked for was using google products, so when I was a new joiner, I hardly found the "right" docs, not to mention majority of docs were outdated, so I was thinking what if we can have a light weight tool to help people manage work space?
-
-This project is inspired by #Netninja and #Fireship, thank you for creating such great course, I've learnt a lot from you. You can find their tutorials on Youtube channel or from their website.
+When I was in my previous company as a marker, we always stored our projects by using gxxxxe drive, we didn't have a space for marketing specifically (something like confluence page, which each department can build its own knowledgebase), therefore, there were lots of scattered documents, let alone to update these files, as for budget planning, we ended up using different sheet to maintain our budget, that's why I want to build a simple ans intuitive tool to just give it a try.
 
 ## Project Description
 
@@ -73,3 +71,9 @@ Third party package:
 - User can only create project first and add budget to the project belongs to user, only user submit budget to relevant project, it will be shown when use click the project on dashboard.
 
   ![budget_project](src/docs/budget_project.png)
+
+### Future update
+
+1. User can reply in the comment section.
+2. Single chatroom
+3. Mention functionality and notification.
