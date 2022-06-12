@@ -26,7 +26,8 @@ Third party package:
 ### 1. Authentication
 
 - By using firebase auth, this allow user to sign up and login.
-  ![Landing-page](src/docs/Landing-page.png)
+  
+  ![LANDING-PAGE](src/docs/Landing-page.png)
 
 - Landing page with animation.
 
