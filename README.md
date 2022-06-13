@@ -60,6 +60,7 @@ Third party package:
   ![Landing-page](src/docs/Landing-page.jpeg)
 
 - Landing page with animation.
+
   ![Landing-page-gif](src/docs/landing-page.gif)
 
 - User can click login button to switch page from signup to login.
