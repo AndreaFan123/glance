@@ -65,15 +65,15 @@ Third party package:
 
 - User can click login button to switch page from signup to login
 - User needs to upload a photo, if size of the photo is over 100kb, it will show warning.
-  ![Signup](src/docs/sign-up.png)
+  ![Signup](src/docs/sign-up.jpeg)
 - Login UI, user can click signup to switch page for signing up.
-  ![Login](src/docs/login.png)
+  ![Login](src/docs/login.jpeg)
 
 ### 2. Dashboard
 
 - Dashboard contains a doughnut chart, project list and a load more button.
 - Projects are sorted by due date, the nearest date will be shown first.
-  ![dashboard](src/docs/dashboard.png)
+  ![dashboard](src/docs/dashboard.jpeg)
 
 ### 3. Add project
 
@@ -83,19 +83,20 @@ Third party package:
 - user can restore content by clicking restore.
 - Once clicking submit, project will be shown on the dashboard and the page will be redirect to dashboard.
 
-  ![addproject1](src/docs/addproject-1.png)
+  ![addproject1](src/docs/addproject-1.jpeg)
 
 ### 4. Budget planner
 
 - This is a simple budget planner, user can change total budget accordingly.
 - Once user adds expense, it will render on the dashboard and current page so the user can track every expense.
-- All categories are listed out, including amount and for the duplicated category, it will sum up automatically, if the amount is over $ 1500, font color will be yellow.
+- All categories are listed out, including amount and for the duplicated category, it will sum up automatically, if the amount is over $ 1500(default value), font color will be yellow.
 
-  ![budget](src/docs/budget.png)
+  ![budget](src/docs/budget.jpeg)
 
-- User can only create project first and add budget to the project belongs to user, only user submit budget to relevant project, it will be shown when use click the project on dashboard.
+- Once user creates a project, user can add expense to the relevant project that user wishes to assign.
+- Only the budget creater can read the expense details to the assigned project, others can only see the content.
 
-  ![budget_project](src/docs/budget_project.png)
+  ![budget_project](src/docs/budget_project.jpeg)
 
 ## Future update
 
