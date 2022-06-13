@@ -1,5 +1,18 @@
 # glance - simplified work space
 
+## Table of contents
+
+- [Description - why](#description---why)
+- [Project Description](#project-description)
+  - [Demo](#demo)
+  - [Tech Stack](#tech-stack)
+- [Features](#features)
+  - [Authentication](#1-authentication)
+  - [Dashboard](#2-dashboard)
+  - [Add project](#3-add-project)
+  - [Budget Planner](#4-budget-planner)
+- [Future Update](#future-update)
+
 ## Description - why
 
 I love use all sorts of management tools, simply because I am kinda obsessed with the beauty of each tool has its core idea of how to solve problems.
@@ -29,6 +42,8 @@ When I was in my previous company as a marker, we always stored our projects by 
 | Git              | Version control                                                          |
 | webpack          | Module bundler                                                           |
 | Babel            | Compiler                                                                 |
+| Firebase         | Firestore: Add, update and delete collection / document                  |
+|                  | Firebase Authentication: Sign up, login and logout                       |
 
 Third party package:
 
@@ -61,14 +76,7 @@ Third party package:
 - Projects are sorted by due date, the nearest date will be shown first.
   ![dashboard](src/docs/dashboard.png)
 
-### 3. Sidebar
-
-- Active background color based on its current page
-- User photo and the display name
-
-  ![sidebar](src/docs/sidebar.png)
-
-### 4. Add project
+### 3. Add project
 
 - Here is a from which allow user to add subject, content, due date, stakeholder and assignees.
 - I use tinymce as text editor.
@@ -78,7 +86,7 @@ Third party package:
 
   ![addproject1](src/docs/addproject-1.png)
 
-### 5. Budget planner
+### 4. Budget planner
 
 - This is a simple budget planner, user can change total budget accordingly.
 - Once user adds expense, it will render on the dashboard and current page so the user can track every expense.
@@ -90,9 +98,7 @@ Third party package:
 
   ![budget_project](src/docs/budget_project.png)
 
-### Obstacles
-
-### Future update
+## Future update
 
 1. User can reply in the comment section.
 2. Single chatroom
