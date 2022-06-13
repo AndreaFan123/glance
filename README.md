@@ -62,7 +62,7 @@ Third party package:
 - Landing page with animation.
   ![Landing-page-gif](src/docs/landing-page.gif)
 
-- User can click login button to switch page from signup to login
+- User can click login button to switch page from signup to login.
 - User needs to upload a photo, if size of the photo is over 100kb, it will show warning.
   ![Signup](src/docs/sign-up.jpeg)
 - Login UI, user can click signup to switch page for signing up.
