@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { db } from "../firebase/config";
 import {
   collection,
-  getDoc,
   onSnapshot,
   orderBy,
   query,
