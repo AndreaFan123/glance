@@ -29,6 +29,8 @@ When I was in my previous company as a marker, we always stored our projects by 
 | Git              | Version control                                                          |
 | webpack          | Module bundler                                                           |
 | Babel            | Compiler                                                                 |
+| Firebase         | Firestore: Add, update and delete collection / document                  |
+|                  | Firebase Authentication: Sign up, login and logout                       |
 
 Third party package:
 
