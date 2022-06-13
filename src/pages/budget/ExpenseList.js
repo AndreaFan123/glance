@@ -1,6 +1,5 @@
 import React from "react";
 import { useFirestore } from "../../hook/useFirestore";
-// import { useDocument } from "../../hook/useDocument";
 //icon
 import { TiDelete } from "react-icons/ti";
 import {

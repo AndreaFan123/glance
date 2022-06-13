@@ -2,15 +2,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hook/useDocument";
+
+// components
 import ProjectSummary from "../../components/projectSummary/ProjectSummary";
-import { ProjectDetailWrapper, Space, Wraning } from "./project.styled";
 import ProjectComment from "../../components/projectComment/ProjectComment";
+
+// styles
+import { ProjectDetailWrapper, Space, Wraning } from "./project.styled";
 
 export default function Project() {
   const { id } = useParams();
   const { document, error } = useDocument("projects", id);
-  // const { doc, err } = useDocument("expenses");
-  // const {docs, err} = useCollection("expenses")
 
   if (error) {
     return (
