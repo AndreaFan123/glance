@@ -22,7 +22,7 @@ export default function How() {
         <h3>How it works</h3>
         <Slogan>
           Follow the simple steps below, create your own{" "}
-          <WordEffect>knowledgebase</WordEffect> in a second!
+          <WordEffect>knowledge base</WordEffect> in a second!
         </Slogan>
       </TextWrapper>
       <HowitWorksSection>

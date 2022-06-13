@@ -33,8 +33,15 @@ export const BackToHomePage = styled.div`
   }
 
   @media (max-width: 595px) {
-    bottom: 3%;
-    left: 28%;
+    top: -85%;
+    left: 15%;
+
+    a {
+      color: ${COLORS.fontColorLight};
+      &:hover {
+        color: ${COLORS.iconColor};
+      }
+    }
   }
 `;
 
