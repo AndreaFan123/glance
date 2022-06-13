@@ -11,16 +11,13 @@ import Project from "./pages/project/Project";
 import NewProject from "./pages/newproject/NewProject";
 import LandingPage from "./pages/landingPage/LandingPage";
 import Budget from "./pages/budget/Budget";
-// import Todos from "./pages/Todos/Todos";
+
 // components
-// import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/sidebar/Sidebar";
-// import OnlineUser from "./components/online/OnlineUser";
+
 //styles
 import { GlobalStyles } from "./global-style/Global.styled";
 import { AppWrapper, Container } from "./App.styled";
-
-// import FooterCom from "./components/footer/FooterCom";
 
 export default function App() {
   const { user, authIsReady } = useAuthContext();
@@ -33,7 +30,6 @@ export default function App() {
           <BrowserRouter>
             {user && <Sidebar />}
             <Container>
-              {/* {!user && <Navbar />} */}
               <Switch>
                 <Route exact path="/">
                   {user && <Redirect to="/dashboard" />}
@@ -59,17 +55,12 @@ export default function App() {
                   {user && <Redirect to="/" />}
                   {!user && <Signup />}
                 </Route>
-                {/* <Route path="/todos">
-                  {!user && <Redirect to="/login" />}
-                  {user && <Todos />}
-                </Route> */}
                 <Route path="/budget">
                   {!user && <Redirect to="/" />}
                   {user && <Budget />}
                 </Route>
               </Switch>
             </Container>
-            {/* {user && <OnlineUser />} */}
           </BrowserRouter>
         </>
       )}

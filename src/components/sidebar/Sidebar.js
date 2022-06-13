@@ -4,12 +4,9 @@ import { useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import { useLocation } from "react-router-dom";
 
-import {
-  AiOutlineAppstore,
-  AiOutlineFileAdd,
-  AiOutlineLogout,
-} from "react-icons/ai";
+import { AiOutlineAppstore, AiOutlineFileAdd } from "react-icons/ai";
 import { MdAttachMoney } from "react-icons/md";
+import { BiLogOut } from "react-icons/bi";
 
 import { useAuthContext } from "../../hook/useContext";
 import {
@@ -68,9 +65,7 @@ export default function Sidebar() {
             {!loading && <LinkIcon onClick={logout}>{icon}</LinkIcon>}
 
             {sidebarOpen && !loading && <span onClick={logout}>{label}</span>}
-            {sidebarOpen && loading && (
-              <span onClick={logout}>Logging...out</span>
-            )}
+            {sidebarOpen && loading && <span onClick={logout}>Log...out</span>}
           </LinkItem>
         </LinkContainer>
       ))}
@@ -99,7 +94,7 @@ export const LinkArray = [
 export const secondaryLinks = [
   {
     label: "Logout",
-    icon: <AiOutlineLogout />,
+    icon: <BiLogOut />,
     to: "/login",
   },
 ];

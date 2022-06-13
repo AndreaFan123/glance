@@ -132,14 +132,11 @@ export default function Signup() {
               <p>
                 Already a member? <Link to="/login">Login</Link> here
               </p>
+              <Link to="/">Back to home page</Link>
             </div>
             {error && <p style={{ color: "red" }}>{error}</p>}
           </FormWrapper>
         </Wrapper>
-        <BackToHomePage>
-          <BiArrowBack style={GoBackArrow} />
-          <Link to="/">Back to home page</Link>
-        </BackToHomePage>
       </Container>
       {/* <FooterCom /> */}
     </BGStyle>

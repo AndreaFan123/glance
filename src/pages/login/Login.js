@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../hook/useLogin";
-import Navbar from "../../components/navbar/Navbar";
-// component
-import FooterCom from "../landingPage/footer/FooterCom";
 // styles
 import {
   FormWrapper,
@@ -22,8 +19,8 @@ import { useAuthContext } from "../../hook/useContext";
 /////////////////////////////////////////
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test1@test.com");
+  const [password, setPassword] = useState("1234567");
   const { login, loading, error } = useLogin();
   const { user } = useAuthContext();
 
@@ -48,7 +45,6 @@ export default function Login() {
 
   return (
     <BGStyle>
-      {/* {!user && <Navbar />} */}
       <Container>
         <Wrapper>
           <FormLeft>
@@ -83,17 +79,15 @@ export default function Login() {
               <span>
                 Not a member? <Link to="/signup">Sign up</Link> here
               </span>
+              <div>
+                <Link to="/">Back to home page</Link>
+              </div>
             </div>
 
             {error && <p style={{ color: "red" }}>{error}</p>}
           </FormWrapper>
         </Wrapper>
-        <BackToHomePage>
-          <BiArrowBack style={GoBackArrow} />
-          <Link to="/">Back to home page</Link>
-        </BackToHomePage>
       </Container>
-      {/* <FooterCom /> */}
     </BGStyle>
   );
 }
