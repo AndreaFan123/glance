@@ -4,7 +4,7 @@
 
 I love use all sorts of management tools, simply because I am kinda obsessed with the beauty of each tool has its core idea of how to solve problems.
 
-When I was in my previous company as a marker, we always stored our projects by using gxxxxe drive, we didn't have a space for marketing specifically (something like confluence page, which each department can build its own knowledgebase), therefore, there were lots of scattered documents, let alone to update these files, as for budget planning, we ended up using different sheet to maintain our budget, that's why I want to build a simple and intuitive tool to just give it a try.
+When I was in my previous company as a marker, we always stored our projects by using gxxxxe drive, we didn't have a space for marketing specifically (something like confluence page, which each department can build its own knowledgebase), therefore, there were lots of scattered documents, let alone to update these files, as for budget planning, we ended up using different sheet to maintain our budget, ever since then the idea of building my own work space has been planted in my mind.
 
 ## Project Description
 
@@ -70,6 +70,8 @@ Third party package:
 - User can only create project first and add budget to the project belongs to user, only user submit budget to relevant project, it will be shown when use click the project on dashboard.
 
   ![budget_project](src/docs/budget_project.png)
+
+### Obstacles
 
 ### Future update
 

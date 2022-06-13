@@ -65,9 +65,7 @@ export default function Sidebar() {
             {!loading && <LinkIcon onClick={logout}>{icon}</LinkIcon>}
 
             {sidebarOpen && !loading && <span onClick={logout}>{label}</span>}
-            {sidebarOpen && loading && (
-              <span onClick={logout}>Logging...out</span>
-            )}
+            {sidebarOpen && loading && <span onClick={logout}>Log...out</span>}
           </LinkItem>
         </LinkContainer>
       ))}
