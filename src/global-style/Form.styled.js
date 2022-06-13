@@ -34,7 +34,7 @@ export const BackToHomePage = styled.div`
 
   @media (max-width: 595px) {
     top: -85%;
-    left: 28%;
+    left: 15%;
 
     a {
       color: ${COLORS.fontColorLight};
