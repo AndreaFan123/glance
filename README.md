@@ -58,7 +58,7 @@ Third party libraries:
 ### 1. Authentication
 
 - By using firebase auth, this allow user to sign up and login.
-  ![Landing-page](src/docs/Landing-page.jpeg)
+![Landing-page](src/docs/Landing-page.jpeg)
 
 - Landing page with animation.
 
