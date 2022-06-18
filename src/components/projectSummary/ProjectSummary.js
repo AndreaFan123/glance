@@ -127,7 +127,7 @@ export default function Projectsummary({ project }) {
             {project.created === user.displayName && (
               <tfoot>
                 <td>Total</td>
-                <td>{totalSpent}</td>
+                <td>$ {totalSpent}</td>
               </tfoot>
             )}
           </table>
