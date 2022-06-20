@@ -130,7 +130,6 @@ export default function NewProject() {
     }
   };
 
-  //RESULT: TinyMCE will need more time to try it, others are okay
   useEffect(() => {
     if (windowStorage.getItem("projectName"))
       setProjectName(windowStorage.getItem("projectName"));
