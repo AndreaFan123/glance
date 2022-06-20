@@ -11,6 +11,7 @@
   - [Dashboard](#2-dashboard)
   - [Add project](#3-add-project)
   - [Budget Planner](#4-budget-planner)
+- [Obstacles](#obstacles)
 - [Future Update](#future-update)
 
 ## Description - why
@@ -32,7 +33,7 @@ When I was in my previous company as a marker, we always stored our projects by 
 
 ### Tech stack:
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+<!-- ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white) ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black) -->
 
 | Skill            | Description                                                                  |
 | :--------------- | :--------------------------------------------------------------------------- |
@@ -57,50 +58,76 @@ Third party libraries:
 
 ### 1. Authentication
 
-- By using firebase auth, this allow user to sign up and login.
-![Landing-page](src/docs/Landing-page.jpeg)
+- Create global context for user authentication, onece user signup, login or logout, it would trigger signup custom hooks (signup, login and logout) to connect with firebase authentication.
 
-- Landing page with animation.
+  - Signup : After clicking signup, by using firebase auth "createUserWithEmailAndPassword" and "updateProfile" to create user data in firestore and uploading image in storage.
+  - Login : After entering email and password, it will trigger login custom hook and connect with firebase auth "signInWithEmailAndPassword" to check if email and password are correct.
+  - Logout: Triggering logout custom hook to update user status from online to offline and redirect user to login page.
+  <!-- ![Landing-page](src/docs/Landing-page.jpeg) -->
 
-  ![Landing-page-gif](src/docs/landing-page.gif)
+<!-- - Landing page with animation. -->
 
-- User can click login button to switch page from signup to login.
-- User needs to upload a photo, if size of the photo is over 100kb, it will show warning.
-  ![Signup](src/docs/sign-up.jpeg)
-- Login UI, user can click signup to switch page for signing up.
-  ![Login](src/docs/login.jpeg)
+  <!-- ![Landing-page-gif](src/docs/landing-page.gif) -->
+
+<!-- - User can click login button to switch page from signup to login.
+- User needs to upload a photo, if size of the photo is over 100kb, it will show warning. -->
+  <!-- ![Signup](src/docs/sign-up.jpeg) -->
+<!-- - Login UI, user can click signup to switch page for signing up. -->
+  <!-- ![Login](src/docs/login.jpeg) -->
 
 ### 2. Dashboard
 
-- Dashboard contains a doughnut chart, project list and a load more button.
+- Dashboard contains a doughnut chart, project list and a load more button when there are more then 3 projects.
 - Projects are sorted by due date, the nearest date will be shown first.
-  ![dashboard](src/docs/dashboard.jpeg)
+- Doughnut chart will be rerendered once user adds or deletes new expense.
+
+  <!-- ![dashboard](src/docs/dashboard.jpeg) -->
 
 ### 3. Add project
 
-- Here is a from which allow user to add subject, content, due date, stakeholder and assignees.
-- I use tinymce as text editor.
-- Storing data in localstorage one user click save.
-- user can restore content by clicking restore.
-- Once clicking submit, project will be shown on the dashboard and the page will be redirect to dashboard.
+- By submitting project, custom firebase hook will be triggered and added project details in firestore, user will be redirected to dashboard and project will be rendered in the same time.
 
-  ![addproject1](src/docs/addproject-1.jpeg)
+  <!-- ![addproject1](src/docs/addproject-1.jpeg) -->
 
 ### 4. Budget planner
 
-- This is a simple budget planner, user can change total budget accordingly.
-- Once user adds expense, it will render on the dashboard and current page so the user can track every expense.
-- All categories are listed out, including amount and for the duplicated category, it will sum up automatically, if the amount is over $ 1500(default value), font color will be yellow.
+- By submitting budget, custom firebase hook will be triggered and added budget details in firestore, expense detail will be shown immediately on the left side.
+- Expense category and amount will be shown on the top.
+- Spent and remain budget will be deducted automatically based on the total budget.
 
-  ![budget](src/docs/budget.jpeg)
+  <!-- ![budget](src/docs/budget.jpeg) -->
+  <!-- ![budget_project](src/docs/budget_project.jpeg) -->
 
-- Once user creates a project, user can add expense to the relevant project that user wishes to assign.
-- Only the budget creater can read the expense details to the assigned project, others can only see the content.
+## Learning / Faild case
 
-  ![budget_project](src/docs/budget_project.jpeg)
+### Implement saving and restoring texts in localstorage for tinyMCE text editor.
+
+- Idea behind :
+
+  - Make it like other input fields, creating keys when page starts rendering and storing data after user typing / selecting any values.
+
+- Outcome:
+
+  - This approach only worked for normal input and select field.
+
+- Solution :
+  - Need to Create 2 buttons, one for saving texts in localstorage, another for restoring texts from localstorage.
+  - This approach wasn't the best one, since user needs to "click" to save and restore, it would be bad for user experience.
+
+### Implement filter functionality
+
+- Filter was one of the features that took me for a while to figure out, initially I wasn't sure where should I put my states, so I've searched few similar features as references.
+
+- Learning points:
+  - Component should be (not limited) as clean as possible, for filter, I shouldn't put all the logics in this component, it only needs to check which tag is active.
+  - It would be better to put all the logics in dashboard as it has filter component, and pass data as props.
+  - Destructure props in filter component.
+
+###
 
 ## Future update
 
 1. User can reply in the comment section.
 2. Single chatroom
 3. Mention functionality and notification.
+4. Fix text editor for saving and restoring content automatically without clicking buttons.
