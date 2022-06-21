@@ -5,6 +5,7 @@ import FooterCom from "../../pages/landingPage/footer/FooterCom";
 import Navbar from "../../components/navbar/Navbar";
 import { useAuthContext } from "../../hook/useContext";
 
+// styles
 import {
   Container,
   TextWrapper,
@@ -14,8 +15,12 @@ import {
   BrandName,
   SignUpBtn,
 } from "./Landing.styled";
+
+// components
 import About from "./about/About";
 import How from "./howitworks/How";
+
+// scrollreveal
 import { WordEffect } from "./sections.styled";
 
 export default function LandingPage() {

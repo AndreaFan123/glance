@@ -2,8 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import { COLORS } from "../components/constants";
 
 export const GlobalStyles = createGlobalStyle`
-  /* @import url("https://fonts.googleapis.com/css2?family=Nunito"); */
-
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -20,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 62.5%;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
