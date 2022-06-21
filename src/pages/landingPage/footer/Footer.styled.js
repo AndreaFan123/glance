@@ -61,6 +61,10 @@ export const LinkWrapper = styled.ul`
   display: flex;
   flex-direction: column;
 
+  li {
+    list-style: none;
+  }
+
   a {
     text-decoration: none;
     color: ${COLORS.fontColorLight};

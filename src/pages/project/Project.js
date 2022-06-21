@@ -7,8 +7,7 @@ import { useDocument } from "../../hook/useDocument";
 import ProjectSummary from "../../components/projectSummary/ProjectSummary";
 import ProjectComment from "../../components/projectComment/ProjectComment";
 
-// styles
-import { ProjectDetailWrapper, Space, Wraning } from "./project.styled";
+// stylefrom { ProjectDetailWrapper, Space, Wraning } from "./project.styled";
 
 export default function Project() {
   const { id } = useParams();

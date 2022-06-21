@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../hook/useLogin";
+import { useAuthContext } from "../../hook/useContext";
 // styles
 import {
   FormWrapper,
@@ -9,12 +10,7 @@ import {
   Wrapper,
   BGStyle,
   Container,
-  BackToHomePage,
-  GoBackArrow,
 } from "../../global-style/Form.styled";
-// icon
-import { BiArrowBack } from "react-icons/bi";
-import { useAuthContext } from "../../hook/useContext";
 
 /////////////////////////////////////////
 

@@ -123,7 +123,43 @@ Third party libraries:
   - It would be better to put all the logics in dashboard as it has filter component, and pass data as props.
   - Destructure props in filter component.
 
-###
+## Performance optimization:
+
+First time checking app performance (website) by Lighthouse, the scores were:
+
+- Performace: 63
+- Accessibility: 89
+- SEO: 82
+
+Lists that can be optimized:
+
+Performance:
+
+- [x] Time to interactive: 2.5s
+- [x] Speed index: 2.3s
+- [x] Total Blocking time: 1,610ms
+- [] Eliminate render-blocking resources
+- [] Serve static assets with an efficient cache policy
+
+Accessibility:
+
+- [x] Link don't have a discernible name
+  - Adding `aria-label=""` to Github and Linkedin links.
+- [x] Lists do not contain only `<li>` element & script supporting elements
+  - Adding `<li>` before 2 `<a>` links in the footer.
+
+SEO:
+
+- [x] Document doesn't have meta description
+  - Adding `<meta name="description" content="">` in index.html
+
+Best practice:
+
+- [x] Browser errors were logged to the console
+  - Adding `type="text/babel"` in `<script>`
+
+Scores after fixing :
+![Lighthiuse](src/docs/lighthouse.png)
 
 ## Future update
 

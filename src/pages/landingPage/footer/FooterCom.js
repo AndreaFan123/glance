@@ -23,16 +23,25 @@ export default function FooterCom() {
         </TextWrapper>
 
         <LinkWrapper>
-          <a href="#about">About</a>
-          <a href="#howitworks">How it works</a>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#howitworks">How it works</a>
+          </li>
         </LinkWrapper>
 
         <IconWrapper>
-          <a href="https://github.com/AndreaFan123" target="_blank">
+          <a
+            href="https://github.com/AndreaFan123"
+            target="_blank"
+            aria-label="Github"
+          >
             <AiFillGithub />
           </a>
           <a
             href="https://www.linkedin.com/in/andrea-fan-b98491b9/"
+            aria-label="Linkedin"
             target="
             _blank"
           >

@@ -13,11 +13,7 @@ import {
   Wrapper,
   BGStyle,
   Container,
-  BackToHomePage,
-  GoBackArrow,
 } from "../../global-style/Form.styled";
-
-import { BiArrowBack } from "react-icons/bi";
 
 /////////////////////////////////////////////
 
