@@ -139,7 +139,6 @@ Performance:
 - [x] Speed index: 2.3s
 - [x] Total Blocking time: 1,610ms
 
-
 Accessibility:
 
 - [x] Link don't have a discernible name

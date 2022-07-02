@@ -7,7 +7,7 @@ import { useDocument } from "../../hook/useDocument";
 import ProjectSummary from "../../components/projectSummary/ProjectSummary";
 import ProjectComment from "../../components/projectComment/ProjectComment";
 
-// stylefrom { ProjectDetailWrapper, Space, Wraning } from "./project.styled";
+import { ProjectDetailWrapper, Warning, Space } from "./project.styled";
 
 export default function Project() {
   const { id } = useParams();
@@ -15,17 +15,17 @@ export default function Project() {
 
   if (error) {
     return (
-      <Wraning>
+      <Warning>
         <h3>{error}</h3>
-      </Wraning>
+      </Warning>
     );
   }
 
   if (!document) {
     return (
-      <Wraning>
+      <Warning>
         <h3>Loading...</h3>
-      </Wraning>
+      </Warning>
     );
   }
 
