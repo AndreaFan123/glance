@@ -138,8 +138,7 @@ Performance:
 - [x] Time to interactive: 2.5s
 - [x] Speed index: 2.3s
 - [x] Total Blocking time: 1,610ms
-- [] Eliminate render-blocking resources
-- [] Serve static assets with an efficient cache policy
+
 
 Accessibility:
 
