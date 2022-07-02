@@ -6,6 +6,11 @@ export const CategoryWrapper = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   grid-gap: 10px;
   font-size: 1.2rem;
+
+  @media screen and (max-width: 590px) {
+    display: grid;
+    grid-template-columns: none;
+  }
 `;
 
 export const CategoryCard = styled.div`
@@ -26,5 +31,11 @@ export const CategoryCard = styled.div`
     line-height: 0;
     display: flex;
     align-items: center;
+  }
+
+  @media screen and (max-width: 590px) {
+    p {
+      font-size: 1.2rem;
+    }
   }
 `;
