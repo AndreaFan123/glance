@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [Description - why](#description---why)
+- [Description - why](#Why)
 - [Project Description](#project-description)
   - [Demo](#demo)
   - [Tech Stack](#tech-stack)
@@ -14,7 +14,7 @@
 - [Obstacles](#obstacles)
 - [Future Update](#future-update)
 
-## Description - why
+## Why
 
 I love use all sorts of management tools, simply because I am kinda obsessed with the beauty of each tool has its core idea of how to solve problems.
 
