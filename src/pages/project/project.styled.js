@@ -19,7 +19,7 @@ export const ProjectDetailWrapper = styled.div`
   }
 `;
 
-export const Wraning = styled.div`
+export const Warning = styled.div`
   margin: 40px 30px 25px 30px;
 
   h3 {
