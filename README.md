@@ -165,4 +165,4 @@ Scores after fixing :
 1. User can reply in the comment section.
 2. Single chatroom
 3. Mention functionality and notification.
-4. Fix text editor for saving and restoring content automatically without clicking buttons.
+4. Fix text editor for saving and restoring content automatically without clicking.
