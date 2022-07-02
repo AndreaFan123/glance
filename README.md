@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [Description - why](#description---why)
+- [Description - why](#Why)
 - [Project Description](#project-description)
   - [Demo](#demo)
   - [Tech Stack](#tech-stack)
