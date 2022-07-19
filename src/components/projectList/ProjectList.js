@@ -23,7 +23,6 @@ export default function ProjectList({ projects }) {
   return (
     <>
       <ProjectsWrapper>
-        {/* Check if there's any project */}
         {projects.length === 0 && <p>No projects yet!</p>}
         {projects.slice(0, visible).map((project) => (
           <ProjectLinks to={`/projects/${project.id}`} key={project.id}>

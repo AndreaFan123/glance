@@ -9,8 +9,6 @@ export const NavbarWrapper = styled.nav`
   align-items: baseline;
   font-size: 1rem;
   padding: 20px 30px;
-  /* position: fixed;
-  top: 0; */
 
   ul {
     padding-left: 0;
