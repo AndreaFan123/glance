@@ -1,4 +1,4 @@
-# glance - simplified work space
+# glance - simplified work space V.1
 
 ## Table of contents
 
@@ -165,3 +165,9 @@ Scores after fixing :
 2. Single chatroom
 3. Mention functionality and notification.
 4. Fix text editor for saving and restoring content automatically without clicking.
+
+## Update V1.1
+
+- Compiled pages into one file (`index.js`).
+- Added member and todo component (Work in Progress).
+- Hiding API key by using .env
