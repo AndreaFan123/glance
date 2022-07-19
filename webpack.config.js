@@ -1,5 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const { webpack } = require("webpack");
 
 module.exports = {
   entry: "./src/index.js",
@@ -16,18 +17,23 @@ module.exports = {
       template: "./src/index.html",
       favicon: "./src/assets/favicon.png",
     }),
+
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
   ],
 
   devServer: {
-    // static: {
-    //   directory: path.resolve(__dirname, "dist"),
-    // },
     port: 8000,
     open: true,
     hot: true,
     compress: true,
     historyApiFallback: true,
-    // proxy: { "/api/**": { target: "http://localhost:3000", secure: false } },
+  },
+  resolve: {
+    alias: {
+      process: "process/browser",
+    },
   },
 
   module: {

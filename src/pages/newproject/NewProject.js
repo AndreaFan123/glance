@@ -26,21 +26,18 @@ export default function NewProject() {
   const [dueDate, setDueDate] = useState("");
   const [stakeholder, setStakeholder] = useState("");
   const [status, setStatus] = useState("");
-
   const [assignee, setAssignee] = useState([]);
-  //  NOTE: hooks below
-  //NOTE: users is the collection in firestore, documents are an array contains all user info
   const { documents } = useCollection("users");
   const [users, setUsers] = useState([]);
   const [formError, setFormError] = useState(null);
   const { user } = useAuthContext();
-  // Need to specify collection name
   const { addDocument, response } = useFirestore("projects");
   const History = useHistory();
   const editorRef = useRef(null);
   const [initValue, setInitValue] = useState(initValue ?? "Write something");
   const windowStorage = window.localStorage;
-  const apiKey = "autvx4gcpszihsp19r37ws5e9yi25xdhbng5sunrywcqk41e";
+  // const apiKey = "autvx4gcpszihsp19r37ws5e9yi25xdhbng5sunrywcqk41e";
+  const APIKEY = process.env.REACT_APP_API_KEY;
 
   //  NOTE: Get users from document, using useEffect to render all the users
   useEffect(() => {
@@ -172,7 +169,7 @@ export default function NewProject() {
             onInit={(evt, editor) => (editorRef.current = editor)}
             textareaName="description"
             initialValue={initValue}
-            apiKey={apiKey}
+            apiKey={APIKEY}
             init={{
               selector: "textarea",
               height: 500,

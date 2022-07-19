@@ -7,7 +7,6 @@ import { useCollection } from "../../hook/useCollection";
 import {
   AssigneeWrapper,
   BudgetTable,
-  CompleteIcon,
   ContentWrapper,
   DeleteIcon,
   DetailsWrapper,
@@ -62,8 +61,6 @@ export default function Projectsummary({ project }) {
         <span>Project owner : {project.createdBy.displayName}</span>
       </TitleWrapper>
       <ContentWrapper>
-        {/* <h3>Summary: </h3> */}
-
         <div dangerouslySetInnerHTML={{ __html: body }} />
       </ContentWrapper>
       <StakeholderWrapper>

@@ -4,13 +4,16 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useAuthContext } from "./hook/useContext";
 
 // Pages
-import Dashboard from "./pages/dashboard/Dashboard";
-import Signup from "./pages/signup/Signup";
-import Login from "./pages/login/Login";
-import Project from "./pages/project/Project";
-import NewProject from "./pages/newproject/NewProject";
-import LandingPage from "./pages/landingPage/LandingPage";
-import Budget from "./pages/budget/Budget";
+import {
+  Dashboard,
+  Signup,
+  Login,
+  Project,
+  NewProject,
+  LandingPage,
+  Budget,
+  Member,
+} from "./pages/index";
 
 // components
 import Sidebar from "./components/sidebar/Sidebar";
@@ -46,6 +49,10 @@ export default function App() {
                 <Route path="/projects/:id">
                   {!user && <Redirect to="/login" />}
                   {user && <Project />}
+                </Route>
+                <Route path="/member/:id">
+                  {!user && <Redirect to="/login" />}
+                  {user && <Member />}
                 </Route>
                 <Route path="/login">
                   {user && <Redirect to="/" />}

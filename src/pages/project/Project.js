@@ -1,4 +1,3 @@
-// use id as an param, then connec to firebase to get project details
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hook/useDocument";
