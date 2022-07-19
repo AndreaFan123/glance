@@ -168,6 +168,8 @@ Scores after fixing :
 
 ## Update V1.1
 
+> Time: 20th Jul 2022
+
 - Compiled pages into one file (`index.js`).
 - Added member and todo component (Work in Progress).
 - Hiding API key by using .env
