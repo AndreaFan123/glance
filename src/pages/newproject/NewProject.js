@@ -36,7 +36,6 @@ export default function NewProject() {
   const editorRef = useRef(null);
   const [initValue, setInitValue] = useState(initValue ?? "Write something");
   const windowStorage = window.localStorage;
-  // const apiKey = "autvx4gcpszihsp19r37ws5e9yi25xdhbng5sunrywcqk41e";
   const APIKEY = process.env.REACT_APP_API_KEY;
 
   //  NOTE: Get users from document, using useEffect to render all the users
