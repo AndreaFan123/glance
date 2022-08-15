@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useContext";
 import { useFirestore } from "../../hook/useFirestore";
-import Select from "react-select";
 import { STAKEHOLDERS, STATUS } from "../../components/constants";
 import { Editor } from "@tinymce/tinymce-react";
+import Select from "react-select";
 
 // style
 import {
@@ -36,7 +36,8 @@ export default function NewProject() {
   const editorRef = useRef(null);
   const [initValue, setInitValue] = useState(initValue ?? "Write something");
   const windowStorage = window.localStorage;
-  const APIKEY = process.env.REACT_APP_API_KEY;
+  // const APIKEY = process.env("API_KEY");
+  const APIKEY = "autvx4gcpszihsp19r37ws5e9yi25xdhbng5sunrywcqk41e";
 
   //  NOTE: Get users from document, using useEffect to render all the users
   useEffect(() => {

@@ -13,9 +13,9 @@ export const MemberWrapper = styled.section`
     margin-bottom: 20px;
     border-bottom: 2px solid ${COLORS.mainColor};
   }
+`;
 
-  div {
-    display: flex;
-    flex: 1;
-  }
+export const MemberContainer = styled.div`
+  display: flex;
+  gap: 3rem;
 `;

@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDocument } from "../../hook/useDocument";
 
 import MemberSummary from "../../components/memberSummary/MemberSummary";
-import Todo from "../../components/todo/Todo";
-import { MemberWrapper } from "./Member.styled";
+import { MemberContainer, MemberWrapper } from "./Member.styled";
+import Todo from "../todo/Todo";
 
 export default function Member() {
   const { id } = useParams();
@@ -20,11 +20,11 @@ export default function Member() {
 
   return (
     <MemberWrapper>
-      <h1>Profiles & Tasks</h1>
-      <div>
+      <h1>Daily Tasks</h1>
+      <MemberContainer>
         <MemberSummary users={document} />
-        <Todo />
-      </div>
+        <Todo users={document} />
+      </MemberContainer>
     </MemberWrapper>
   );
 }

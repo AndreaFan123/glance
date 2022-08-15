@@ -1,13 +1,13 @@
 import React from "react";
 import { useLogout } from "../../hook/useLogout";
 import { useState } from "react";
-import Avatar from "../Avatar/Avatar";
 import { useLocation } from "react-router-dom";
 
 import { AiOutlineAppstore, AiOutlineFileAdd } from "react-icons/ai";
 import { MdAttachMoney } from "react-icons/md";
+import { GrTask } from "react-icons/gr";
 import { BiLogOut } from "react-icons/bi";
-
+import Avatar from "../Avatar/Avatar";
 import { useAuthContext } from "../../hook/useContext";
 import {
   LinkContainer,
@@ -17,6 +17,7 @@ import {
   LinkIcon,
   UserProfile,
   UserEditIcon,
+  TaskIcon,
 } from "./Sidebar.styled";
 
 export default function Sidebar() {
@@ -32,6 +33,7 @@ export default function Sidebar() {
           <Avatar src={user.photoURL} />
           <UserEditIcon to={`/member/${user.uid}`}>
             <p>{user.displayName}</p>
+            <GrTask style={TaskIcon} />
           </UserEditIcon>
         </UserProfile>
       )}
@@ -46,6 +48,8 @@ export default function Sidebar() {
                 ? `/create`
                 : `${label}` === "Budget"
                 ? `/budget`
+                :`${label}` === "Task"
+                ?
                 : ""
             }
             style={!sidebarOpen ? { width: `fit-content` } : {}}
@@ -88,6 +92,11 @@ export const LinkArray = [
     label: "Budget",
     icon: <MdAttachMoney />,
     to: "/budget",
+  },
+  {
+    label: "Task",
+    icon: <GrTask />,
+    to: "/todo/:id",
   },
 ];
 

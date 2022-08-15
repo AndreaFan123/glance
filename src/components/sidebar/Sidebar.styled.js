@@ -98,6 +98,8 @@ export const UserEditIcon = styled(Link)`
   text-decoration: none;
   color: ${COLORS.fontColorLight};
   display: flex;
+  flex-direction: column;
+  gap: 10px;
   align-items: center;
 
   p {
@@ -162,3 +164,8 @@ export const LinkIcon = styled.div`
     font-size: 25px;
   }
 `;
+
+export const TaskIcon = {
+  color: "white",
+  fontSize: "1.5rem",
+};

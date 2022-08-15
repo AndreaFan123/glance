@@ -12,7 +12,7 @@ import {
   NewProject,
   LandingPage,
   Budget,
-  Member,
+  Todo,
 } from "./pages/index";
 
 // components
@@ -50,9 +50,9 @@ export default function App() {
                   {!user && <Redirect to="/login" />}
                   {user && <Project />}
                 </Route>
-                <Route path="/member/:id">
+                <Route path="/todo/:id">
                   {!user && <Redirect to="/login" />}
-                  {user && <Member />}
+                  {user && <Todo />}
                 </Route>
                 <Route path="/login">
                   {user && <Redirect to="/" />}
