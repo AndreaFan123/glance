@@ -1,5 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 const { webpack } = require("webpack");
 
 module.exports = {
@@ -17,10 +18,7 @@ module.exports = {
       template: "./src/index.html",
       favicon: "./src/assets/favicon.png",
     }),
-
-    new webpack.ProvidePlugin({
-      process: "process/browser",
-    }),
+    new Dotenv(),
   ],
 
   devServer: {

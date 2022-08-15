@@ -5,4 +5,4 @@ export { default as Project } from "./project/Project";
 export { default as NewProject } from "./newproject/NewProject";
 export { default as LandingPage } from "./landingPage/LandingPage";
 export { default as Budget } from "./budget/Budget";
-export { default as Member } from "./member/Member";
+export { default as Todo } from "./todo/Todo";
